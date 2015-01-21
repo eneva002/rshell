@@ -1,7 +1,7 @@
 CPPFLAGS = -ansi -pedantic -Wall -Werror
 
 all:
-	g++ rshell.cpp -o rshell.o $(CPPFLAGS) 
+	g++ rshell.cpp -o rshell $(CPPFLAGS) 
 
 clean:
-	rm -rf  *.o
+	rm rshell
