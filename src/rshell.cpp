@@ -21,15 +21,17 @@ int main(int argc, char* argv[]){
   string temp;
   int i = 0;
   
-  getline(fin, temp); 
-  //while(getline(fin, temp)){ 
-    char *temp2 = new char [temp.length()+1];
-    std::strcpy(temp2, temp.c_str());
+  while(getline(fin, temp)){ 
+    if(temp.length() > 0 && temp.at(0) != '#'){
+      char *temp2 = new char [temp.length()+1];
+      std::strcpy(temp2, temp.c_str());
 
-    cout << "========== line " << ++i << " ==========\n";
-    char *token = strtok(temp2, "#"); 
-    cout <<  token << endl;
-    
-    delete temp2;
-  //}
+      cout << "========== line " << ++i << " ==========\n";
+      char *token = strtok(temp2, "#"); 
+      cout <<  token << endl;
+      
+      delete temp2;
+      cout << "-----------------------------\n\n";
+    }
+  }
 }
