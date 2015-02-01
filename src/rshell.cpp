@@ -11,27 +11,31 @@
 using namespace std;
 
 int main(int argc, char* argv[]){
+  char *line[10]; 
 
-  ifstream fin("tests.txt");
-  if(!fin.is_open()){
-    cout << "file failed to open" << endl;
-    exit(1);
+  char *cmd = "ls";
+  char *end = "NULL";
+
+  line[0] = cmd;
+  line[1] = end;
+
+  for(int i = 0; line[i] != "NULL"; ++i){
+    cout << line[i] << endl;
   }
 
-  string temp;
-  int i = 0;
-  
-  while(getline(fin, temp)){ 
-    if(temp.length() > 0 && temp.at(0) != '#'){
-      char *temp2 = new char [temp.length()+1];
-      std::strcpy(temp2, temp.c_str());
+  int pid = fork();
 
-      cout << "========== line " << ++i << " ==========\n";
-      char *token = strtok(temp2, "#"); 
-      cout <<  token << endl;
-      
-      delete temp2;
-      cout << "-----------------------------\n\n";
-    }
+  if(-1 == pid)
+   perror("fork failed");
+
+  if(0 == pid){
+    //something goes here
+    cout << "child running process" << endl;
+    if(-1 == execvp(line[0], line)) perror("exec failed");
+  }
+
+  if(1 == pid){
+    if(-1 == wait(0)) perror("child failed");
+    cout << "parent here" << endl;
   }
 }
