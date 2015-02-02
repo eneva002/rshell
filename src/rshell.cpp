@@ -7,17 +7,11 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <cstring>
-#include <fstream>
 
 using namespace std;
 
-int main(int argc, char* argv[]){
-  string cmd = "ls -l";
+int getcmd(string cmd, wordexp_t &result){
   const char *ccmd = cmd.c_str();
-
-  wordexp_t result;
-  pid_t pid;
-  int status, i;
 
   switch(wordexp(ccmd, &result, 0)){
     case 0:
@@ -28,26 +22,44 @@ int main(int argc, char* argv[]){
       return -1; //failure 
   }
 
-  /*
-  for(i = 0; options[i] != NULL; i++){
-    if(wordexp(options[i], &result, WRDE_APPEND)){
-      wordfree(&result);
-      return -1;
-    }
+  for(int j = 0; result.we_wordv[j] != NULL; j++){
+    cout << result.we_wordv[j] << endl;
   }
-  */
+}
 
-  pid = fork();
+int runcmd(wordexp_t result){
+  int status;
+  int pid = fork();
   if(pid == 0){
     if(-1 == execvp(result.we_wordv[0], result.we_wordv))
       perror("exec failed");
   }
-  else if(pid < 0)
+  else if(pid < 0){
     status = -1; 
+    perror("fork failed");
+  }
   else{
     if(waitpid(pid, &status, 0) != pid){
       status = -1;
       perror("wait failed");
     }
   }
+  return status;
 }
+
+int main(int argc, char* argv[]){
+  string cmd;
+  wordexp_t runme;
+
+  cmd = "ls";
+
+  if(-1 == getcmd(cmd, runme)){
+    perror("cmd parse failed");
+    exit(1);
+  }
+
+  if(-1 == runcmd(runme)){
+    perror("runner failed");
+    exit(1);
+  }
+ }
