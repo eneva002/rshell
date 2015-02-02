@@ -1,7 +1,9 @@
 #include <iostream>
+#include <wordexp.h>
 #include <unistd.h>
 #include <cstdlib>
 #include <cstdio>
+#include <string>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <cstring>
@@ -10,29 +12,42 @@
 using namespace std;
 
 int main(int argc, char* argv[]){
-  char *line[] = {"ls", NULL};
+  string cmd = "ls -l";
+  const char *ccmd = cmd.c_str();
 
-  for(int i = 0; line[i] != NULL; i++){
-    cout << line[i] << endl;
+  wordexp_t result;
+  pid_t pid;
+  int status, i;
+
+  switch(wordexp(ccmd, &result, 0)){
+    case 0:
+      break; //success
+    case WRDE_NOSPACE: 
+      wordfree(&result); //ran out of space
+    default:
+      return -1; //failure 
   }
 
-  int pid = fork();
-
-  if(-1 == pid){
-   perror("fork failed");
-   exit(1);
+  /*
+  for(i = 0; options[i] != NULL; i++){
+    if(wordexp(options[i], &result, WRDE_APPEND)){
+      wordfree(&result);
+      return -1;
+    }
   }
+  */
 
-  if(0 == pid){
-    //something goes here
-    cout << "child running process" << endl;
-    if(-1 == execvp(line[0], line)) perror("exec failed");
-    exit(0);
+  pid = fork();
+  if(pid == 0){
+    if(-1 == execvp(result.we_wordv[0], result.we_wordv))
+      perror("exec failed");
   }
-
-  if(1 == pid){
-    cout << "parent here" << endl;
-    if(-1 == wait(0)) perror("child failed");
-    exit(0);
+  else if(pid < 0)
+    status = -1; 
+  else{
+    if(waitpid(pid, &status, 0) != pid){
+      status = -1;
+      perror("wait failed");
+    }
   }
 }
