@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <string.h>
 #include <sstream>
+#include <queue>
 
 using namespace std;
 
@@ -58,25 +59,37 @@ void printprompt(){
   cout << usrn << "@" << hostn << " --> ";
 }
 
+void popq(string cmd, queue< pair<string,int> > cmdq){
+
+}
+
 int main(int argc, char* argv[]){
 
   string cmd;
   wordexp_t runme;
+  queue< pair<string,int> > cmdq;
 
   //int runcmd(wordexp_t result)
   //int getcmd(string cmd, wordexp_t &result)
- 
-  printprompt(); 
-  getline(cin, cmd); 
-  if(cmd == "exit") exit(0);
+  while(1){ 
+    printprompt(); 
+    getline(cin, cmd); 
 
-  if(-1 == getcmd(cmd, runme)){
-    perror("cmd parse failed");
-    exit(1);
-  }
+    //get rid of comments
+    int cmnt = cmd.find("#");
+    if(cmnt != string::npos) cmd = cmd.substr(0,cmnt);
 
-  if(-1 == runcmd(runme)){
-    perror("runner failed");
-    exit(1);
+    //handle exit
+    if(cmd == "exit") exit(0);
+
+    if(-1 == getcmd(cmd, runme)){
+      perror("cmd parse failed");
+      exit(1);
+    }
+
+    if(-1 == runcmd(runme)){
+      perror("runner failed");
+      exit(1);
+    }
   }
  }
