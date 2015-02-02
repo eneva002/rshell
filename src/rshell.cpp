@@ -9,10 +9,11 @@
 #include <string.h>
 #include <sstream>
 #include <queue>
+#include <vector>
 
 using namespace std;
 
-int getcmd(string cmd, wordexp_t &result){
+int getcmd(const string &cmd, wordexp_t &result){
   const char *ccmd = cmd.c_str();
 
   switch(wordexp(ccmd, &result, 0)){
@@ -25,7 +26,7 @@ int getcmd(string cmd, wordexp_t &result){
   }
 }
 
-int runcmd(wordexp_t result){
+int runcmd(const wordexp_t &result){
   int status;
   int pid = fork();
   if(pid == 0){
@@ -55,13 +56,24 @@ void printprompt(){
     perror("gethostname failed");
   
   char *hostn;
-  hostn = strtok(host, ".");
+  hostn = strtok(host, ".-");
   cout << usrn << "@" << hostn << " --> ";
 }
 
-void popq(string cmd, queue< pair<string,int> > cmdq){
+typedef pair<int, int> P;
+struct Order{ 
+  bool operator()(P const& a, P const& b) const{ 
+    return a.first > b.first;
+  }
+};
+
+void popq(const string &cmd, queue< pair<string,int> > &cmdq){
+  priority_queue<P,vector<P>,Order> list;
+
   int i = 0;
-  //i =
+  while(i != string::npos){
+    // find everything!
+  }
   while(i != string::npos){
    // i = 
   }
