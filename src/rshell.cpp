@@ -2,11 +2,12 @@
 #include <wordexp.h>
 #include <unistd.h>
 #include <cstdlib>
-#include <cstdio>
+#include <stdio.h>
 #include <string>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <cstring>
+#include <string.h>
+#include <sstream>
 
 using namespace std;
 
@@ -20,10 +21,6 @@ int getcmd(string cmd, wordexp_t &result){
       wordfree(&result); //ran out of space
     default:
       return -1; //failure 
-  }
-
-  for(int j = 0; result.we_wordv[j] != NULL; j++){
-    cout << result.we_wordv[j] << endl;
   }
 }
 
@@ -47,11 +44,31 @@ int runcmd(wordexp_t result){
   return status;
 }
 
+void printprompt(){
+  char usrn[64];
+  if(-1 == getlogin_r(usrn, sizeof(usrn)))
+    perror("username acquisition failed");
+
+  char host[64];
+  if(-1 == gethostname(host, sizeof(host))) 
+    perror("hostname acquisition failed");
+  
+  char *hostn;
+  hostn = strtok(host, ".");
+  cout << usrn << "@" << hostn << " --> ";
+}
+
 int main(int argc, char* argv[]){
+
   string cmd;
   wordexp_t runme;
 
-  cmd = "ls";
+  //int runcmd(wordexp_t result)
+  //int getcmd(string cmd, wordexp_t &result)
+ 
+  printprompt(); 
+  getline(cin, cmd); 
+  if(cmd == "exit") exit(0);
 
   if(-1 == getcmd(cmd, runme)){
     perror("cmd parse failed");
