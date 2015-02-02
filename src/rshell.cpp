@@ -48,11 +48,11 @@ int runcmd(wordexp_t result){
 void printprompt(){
   char usrn[64];
   if(-1 == getlogin_r(usrn, sizeof(usrn)))
-    perror("username acquisition failed");
+    perror("getlogin failed");
 
   char host[64];
   if(-1 == gethostname(host, sizeof(host))) 
-    perror("hostname acquisition failed");
+    perror("gethostname failed");
   
   char *hostn;
   hostn = strtok(host, ".");
@@ -60,7 +60,11 @@ void printprompt(){
 }
 
 void popq(string cmd, queue< pair<string,int> > cmdq){
-
+  int i = 0;
+  //i =
+  while(i != string::npos){
+   // i = 
+  }
 }
 
 int main(int argc, char* argv[]){
@@ -83,13 +87,14 @@ int main(int argc, char* argv[]){
     if(cmd == "exit") exit(0);
 
     if(-1 == getcmd(cmd, runme)){
-      perror("cmd parse failed");
+      perror("getcmd failed");
       exit(1);
     }
 
     if(-1 == runcmd(runme)){
-      perror("runner failed");
+      perror("runcmd failed");
       exit(1);
     }
+    wordfree(&runme);
   }
  }
