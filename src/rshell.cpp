@@ -29,24 +29,25 @@ int getcmd(const string &cmd, wordexp_t &result){
 }
 
 int runcmd(const wordexp_t &result){
-  int status;
+  int status = 0;
   int pid = fork();
   if(pid == 0){
-    if(-1 == execvp(result.we_wordv[0], result.we_wordv))
+    if(-1 == (status = execvp(result.we_wordv[0], result.we_wordv))){
       perror("exec failed");
-      return -1;
+      return status;
+    }
+    return 0;
   }
   else if(pid < 0){
     perror("fork failed");
-    return -1; 
+    exit(1); 
   }
   else{
     if(waitpid(pid, &status, 0) != pid){
       perror("wait failed");
-      return -1;
     }
   }
-  return 1;
+  return status;
 }
 
 void printprompt(){
@@ -136,13 +137,16 @@ int main(int argc, char* argv[]){
     while(!cmdq.empty()){
       o = cmdq.front();
       cmdq.pop();
-      cout << "\"" << o.first << "\"" << " |:| " << o.second << endl;
+      //cout << "\"" << o.first << "\"" << " |:| " << o.second << endl;
       
       int cmnt = o.first.find("#");
       if(cmnt != string::npos) o.first = o.first.substr(0,cmnt);
 
       if(o.first == "exit") exit(0);
 
+      if(prevstatus == -1) prevstatus = 256;
+      else if(prevstatus == 1) prevstatus = 0;
+      else if(prevstatus == 0) status = 0;
       if(status == prevstatus ){
         if(-1 == getcmd(o.first, runme))
           perror("getcmd failed");
@@ -152,10 +156,9 @@ int main(int argc, char* argv[]){
         }
         else wordfree(&runme);
       }
-      if(o.second == 0) prevstatus = 1;
       prevstatus = o.second;
-      cout << "prev: " << prevstatus << endl;
-      cout << "stat: " << status << endl;
+      //cout << "prev: " << prevstatus << endl;
+      //cout << "stat: " << status << endl;
     }
   }
 
