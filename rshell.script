@@ -1,0 +1,72 @@
+Script started on Mon 02 Feb 2015 05:33:43 PM PST
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m bin/rshell
+`°8@gyosh --> ls
+bin  LICENSE  Makefile	README.md  rshell.script  src
+@gyosh --> pwd
+/home/gyosh/Documents/rshell
+@gyosh --> nothing
+exec failed: No such file or directory
+runcmd failed: No such file or directory
+@gyosh --> ls - #-R
+bin  LICENSE  Makefile	README.md  rshell.script  src
+@gyosh --> #comment
+@gyosh --> ls && pwd
+bin  LICENSE  Makefile	README.md  rshell.script  src
+/home/gyosh/Documents/rshell
+@gyosh --> ls ;  ; pwd
+bin  LICENSE  Makefile	README.md  rshell.script  src
+/home/gyosh/Documents/rshell
+@gyosh --> pwd || ls
+/home/gyosh/Documents/rshell
+@gyosh --> ls || pwd
+bin  LICENSE  Makefile	README.md  rshell.script  src
+@gyosh -->                 ls
+bin  LICENSE  Makefile	README.md  rshell.script  src
+@gyosh -->   ls                            -R
+.:
+bin  LICENSE  Makefile	README.md  rshell.script  src
+
+./bin:
+rshell
+
+./src:
+rshell.cpp
+@gyosh --> ls    ls &&&   & nothing
+bin  LICENSE  Makefile	README.md  rshell.script  src
+getcmd failed: No such process
+@gyosh --> ls
+bin  LICENSE  Makefile	README.md  rshell.script  src
+@gyosh --> pwd
+/home/gyosh/Documents/rshell
+@gyosh --> clear     ps
+  PID TTY          TIME CMD
+ 3392 pts/6    00:00:00 bash
+ 3403 pts/6    00:00:00 rshell
+ 3425 pts/6    00:00:00 ps
+@gyosh --> l ls - l
+ls: cannot access -: No such file or directory
+ls: cannot access l: No such file or directory
+@gyosh --> ls # - l
+bin  LICENSE  Makefile	README.md  rshell.script  src
+@gyosh --> ls; pwd; ps; echo hello     hello world
+bin  LICENSE  Makefile	README.md  rshell.script  src
+/home/gyosh/Documents/rshell
+  PID TTY          TIME CMD
+ 3392 pts/6    00:00:00 bash
+ 3403 pts/6    00:00:00 rshell
+ 3432 pts/6    00:00:00 ps
+hello world
+@gyosh --> ls && pwd || ls  ls -R     ps; pwd
+bin  LICENSE  Makefile	README.md  rshell.script  src
+/home/gyosh/Documents/rshell
+/home/gyosh/Documents/rshell
+@gyosh --> swag && ls || ps
+exec failed: No such file or directory
+runcmd failed: No such file or directory
+  PID TTY          TIME CMD
+ 3392 pts/6    00:00:00 bash
+ 3403 pts/6    00:00:00 rshell
+ 3438 pts/6    00:00:00 ps
+@gyosh --> exit
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m exit
+Script done on Mon 02 Feb 2015 05:37:40 PM PST
