@@ -1,18 +1,26 @@
 #include <algorithm>
+#include <time.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <ctype.h>
 #include <stdio.h>
 #include <dirent.h>
 #include <stdlib.h>
+#include <pwd.h>
 #include <vector>
 #include <list>
 #include <string>
 #include <unistd.h>
 #include <iostream>
+#include <grp.h>
 #include <errno.h>
+#include <iomanip>
+#include <queue>
 
 using namespace std;
 
-bool compare_nocase(const string &first, const string &second){
+bool compare_nocase(const string &first, const string &second)
+{
   unsigned int i = 0;
   while((i<first.length()) && (i<second.length())){
     if (tolower(first[i]) < tolower(second[i])) return true;
@@ -22,33 +30,73 @@ bool compare_nocase(const string &first, const string &second){
   return (first.length() < second.length());
 }
 
-int main(int argc, char **argv){
-
-  size_t sz = 256;
-  char cur[sz]; 
-  if(NULL == getcwd(cur, sz)) perror("getcwd failed");
-  cout << "current dir: " << cur << endl;
-
-  list<string> files;
-  char* temp;
-
-  DIR *dirp;
-  if((dirp = opendir(cur)) == NULL) perror("opendir failed");
-
-  dirent *direntp;
-  while((direntp = readdir(dirp))){
-    errno = 0;
-    temp = direntp->d_name;
-    files.push_back(string(temp));
-    if(errno != 0) { perror("readdir failed"); closedir(dirp); return -1; }
+int info(const string &dir)
+{
+  struct stat inf;
+  if(-1 == stat(dir.c_str(), &inf)){
+    perror("stat failed");
+    return -1;
   }
-  files.sort(compare_nocase);
+  cout << left;
 
+  int temp = inf.st_mode & S_IFMT;
+  switch(temp){
+    case S_IFDIR:
+      cout << 'd'; break;
+    case S_IFREG:
+      cout << '-'; break;
+    case S_IFLNK:
+      cout << 'l'; break;
+    default:
+      cout << '*'; break;
+  }
+  temp = (inf.st_mode & S_IRUSR); if(temp) cout << 'r'; else cout << '-'; 
+  temp = (inf.st_mode & S_IWUSR); if(temp) cout << 'w'; else cout << '-'; 
+  temp = (inf.st_mode & S_IXUSR); if(temp) cout << 'x'; else cout << '-'; 
+  temp = (inf.st_mode & S_IRGRP); if(temp) cout << 'r'; else cout << '-'; 
+  temp = (inf.st_mode & S_IWGRP); if(temp) cout << 'w'; else cout << '-'; 
+  temp = (inf.st_mode & S_IXGRP); if(temp) cout << 'x'; else cout << '-';
+  temp = (inf.st_mode & S_IROTH); if(temp) cout << 'r'; else cout << '-'; 
+  temp = (inf.st_mode & S_IWOTH); if(temp) cout << 'w'; else cout << '-'; 
+  temp = (inf.st_mode & S_IXOTH); if(temp) cout << 'x'; else cout << '-';
+  cout << right << ' '; 
+  cout << inf.st_nlink;
+  
+  struct passwd *pwd;
+  if(NULL == (pwd = getpwuid(inf.st_uid))) perror("getpwuid failed");
+  cout << ' ' << pwd->pw_name;
+
+  struct group *grp;
+  if(NULL == (grp = getgrgid(inf.st_gid))) perror("getgrgid failed");
+  cout << ' ' << grp->gr_name;
+
+  cout << setw(7);
+  cout << inf.st_size;
+
+  time_t raw = inf.st_mtime;
+  struct tm *timeinfo;
+  char buf[80];
+  timeinfo = localtime(&raw);
+
+  strftime(buf, 80, "%b %e %R", timeinfo);
+  cout << ' ' << buf;
+
+  cout << ' ' << dir << endl;
+  return 0;
+}
+
+int main(int argc, char **argv)
+{
+
+  //parse options, valid options are -a -l and -R
   int aflag = 0;
   int lflag = 0;
   int Rflag = 0;
+
+  //this is to hold directories with the -R flag
   char *xpath = NULL;
 
+  //return values from the getopt function
   int k;
   opterr = 0;
 
@@ -64,19 +112,49 @@ int main(int argc, char **argv){
         lflag = 1;
         break;
       case '?':
-        perror("getopt failed");
+        cout << "invalid option: " << (char)optopt << endl;
         return -1;
       default:
         abort();
     }
   }
-  
+
+  for(int idx = optind; idx < argc; ++idx){
+    cout << "non opt arg: " << argv[idx] << endl;
+  }
+
+  //read current directory
+  size_t sz = 256;
+  char cur[sz]; 
+  if(NULL == getcwd(cur, sz)) perror("getcwd failed");
+
+  //file list
+  list<string> files;
+  char* temp;
+
+  DIR *dirp;
+  if((dirp = opendir(cur)) == NULL) perror("opendir failed");
+
+  //populate file list
+  dirent *direntp;
+  while((direntp = readdir(dirp))){
+    errno = 0;
+    temp = direntp->d_name;
+    files.push_back(string(temp));
+    if(errno != 0) { perror("readdir failed"); closedir(dirp); return -1; }
+  }
+
+  //sort file list
+  files.sort(compare_nocase);
+
   for(list<string>::iterator i = files.begin(); i != files.end(); ++i){
     if(!aflag){
       while(*((*i).begin()) == '.') ++i;
     }
-      
-    cout << *i << "  ";
+    if(lflag){
+      int j = info(*i);   
+    }
+    else cout << *i << "  ";
   }
   cout << endl;
 
