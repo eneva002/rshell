@@ -184,7 +184,7 @@ int main(int argc, char **argv)
       }
       else cout << *i << "  ";
       // RFLAG GOES HERE
-      if(Rflag == 2000){
+      if(Rflag ){
         struct stat inf;
         string wtfamidoing;
         if(cr[0] != '/')  wtfamidoing = cr + '/' + *i;
