@@ -60,8 +60,7 @@ int info(const string &dir)
   temp = (inf.st_mode & S_IWOTH); if(temp) cout << 'w'; else cout << '-'; 
   temp = (inf.st_mode & S_IXOTH); if(temp) cout << 'x'; else cout << '-';
   cout << right << ' '; 
-  cout << inf.st_nlink;
-  
+  cout << inf.st_nlink; 
   struct passwd *pwd;
   if(NULL == (pwd = getpwuid(inf.st_uid))) perror("getpwuid failed");
   cout << ' ' << pwd->pw_name;
