@@ -19,3 +19,7 @@ git checkout hw0
 make
 bin/rshell
 ``` 
+There is also a simple ls utility included within this package.
+
+To use my ls, simply reproduce the commands from above and run `bin/ls` instead of `bin/rshell` to test it out.
+For now, -a and -R are working fine (as far as I know) and -l has some kinks to be worked out. Also putting a hard path such as `/` or `/bin` will give it a hard time and cause some problems.
