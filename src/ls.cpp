@@ -149,7 +149,10 @@ int main(int argc, char **argv)
     cr = paths.front();
     paths.pop();
     DIR *dirp;
-    if((dirp = opendir(cr.c_str())) == NULL) perror("opendir failed");
+    if((dirp = opendir(cr.c_str())) == NULL){
+      perror("opendir failed");
+      return -1;
+    }
 
     //populate file list
     dirent *direntp;
