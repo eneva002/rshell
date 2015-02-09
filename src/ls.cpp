@@ -108,7 +108,7 @@ int main(int argc, char **argv)
         lflag = 1;
         break;
       case 'R':
-        lflag = 1;
+        Rflag = 1;
         break;
       case '?':
         cout << "invalid option: " << (char)optopt << endl;
@@ -120,25 +120,32 @@ int main(int argc, char **argv)
 
   queue<string> paths;
   int idx = optind;
+
+  //read current directory
+  size_t sz = 256;
+  char cur[sz]; 
+  if(NULL == getcwd(cur, sz)) perror("getcwd failed");
+
+  string curd = ".";
+
   if(idx != argc){
     for(; idx < argc; ++idx){
       paths.push(string(argv[idx]));
     }
   }
   else{
-    //read current directory
-    size_t sz = 256;
-    char cur[sz]; 
-    if(NULL == getcwd(cur, sz)) perror("getcwd failed");
-    paths.push(string(cur));
+        paths.push(curd);
   }
 
   //file list
   list<string> files;
   char* temp;
   string cr;
+  bool mult = false;
 
+  if(paths.size() > 1 || Rflag) mult = true; 
   while(!paths.empty()){
+    //cr == current file
     cr = paths.front();
     paths.pop();
     DIR *dirp;
@@ -146,30 +153,58 @@ int main(int argc, char **argv)
 
     //populate file list
     dirent *direntp;
+    errno = 0;
+
     while((direntp = readdir(dirp))){
-      errno = 0;
       temp = direntp->d_name;
       files.push_back(string(temp));
-      if(errno != 0) { perror("readdir failed"); closedir(dirp); return -1; }
     }
+    if(errno != 0) {
+      perror("readdir failed"); 
+      if(-1 == closedir(dirp)) perror("closedir failed");
+      return -1; 
+    }
+
+    
 
     //sort file list
     files.sort(compare_nocase);
 
+    if(mult) cout <<  cr << ':' << endl;
     for(list<string>::iterator i = files.begin(); i != files.end(); ++i){
       if(!aflag){
         while(*((*i).begin()) == '.') ++i;
       }
       if(lflag){
         int j = info(*i);   
-        if(-1 == j) return -1;
+        if(-1 == j){
+          if(-1 == closedir(dirp)) perror("closedir failed");
+          return -1;
+        }
       }
       else cout << *i << "  ";
+      // RFLAG GOES HERE
+      if(Rflag == 2000){
+        struct stat inf;
+        string wtfamidoing;
+        if(cr[0] != '/')  wtfamidoing = cr + '/' + *i;
+        else wtfamidoing = cr + *i;
+        if(-1 == stat(wtfamidoing.c_str(), &inf)){
+          perror("stat failed");
+          return -1;
+        }
+        if(*i != "." && *i != ".."){
+          if((inf.st_mode & S_IFDIR) == S_IFDIR){
+            paths.push(cr+'/'+(*i)); 
+          }
+        }
+      }
     }
     if(!lflag) cout << endl;
+    if(mult) cout << endl;
 
     files.clear();
-    closedir(dirp);
+    if(-1 == closedir(dirp)) perror("closedir failed");
   }
 
   
