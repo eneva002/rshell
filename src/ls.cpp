@@ -119,46 +119,59 @@ int main(int argc, char **argv)
     }
   }
 
-  for(int idx = optind; idx < argc; ++idx){
-    cout << "non opt arg: " << argv[idx] << endl;
+  queue<string> paths;
+  int idx = optind;
+  if(idx != argc){
+    for(; idx < argc; ++idx){
+      paths.push(string(argv[idx]));
+    }
   }
-
-  //read current directory
-  size_t sz = 256;
-  char cur[sz]; 
-  if(NULL == getcwd(cur, sz)) perror("getcwd failed");
+  else{
+    //read current directory
+    size_t sz = 256;
+    char cur[sz]; 
+    if(NULL == getcwd(cur, sz)) perror("getcwd failed");
+    paths.push(string(cur));
+  }
 
   //file list
   list<string> files;
   char* temp;
+  string cr;
 
-  DIR *dirp;
-  if((dirp = opendir(cur)) == NULL) perror("opendir failed");
+  while(!paths.empty()){
+    cr = paths.front();
+    paths.pop();
+    DIR *dirp;
+    if((dirp = opendir(cr.c_str())) == NULL) perror("opendir failed");
 
-  //populate file list
-  dirent *direntp;
-  while((direntp = readdir(dirp))){
-    errno = 0;
-    temp = direntp->d_name;
-    files.push_back(string(temp));
-    if(errno != 0) { perror("readdir failed"); closedir(dirp); return -1; }
-  }
-
-  //sort file list
-  files.sort(compare_nocase);
-
-  for(list<string>::iterator i = files.begin(); i != files.end(); ++i){
-    if(!aflag){
-      while(*((*i).begin()) == '.') ++i;
+    //populate file list
+    dirent *direntp;
+    while((direntp = readdir(dirp))){
+      errno = 0;
+      temp = direntp->d_name;
+      files.push_back(string(temp));
+      if(errno != 0) { perror("readdir failed"); closedir(dirp); return -1; }
     }
-    if(lflag){
-      int j = info(*i);   
-    }
-    else cout << *i << "  ";
-  }
-  cout << endl;
 
-  closedir(dirp);
+    //sort file list
+    files.sort(compare_nocase);
+
+    for(list<string>::iterator i = files.begin(); i != files.end(); ++i){
+      if(!aflag){
+        while(*((*i).begin()) == '.') ++i;
+      }
+      if(lflag){
+        int j = info(*i);   
+        if(-1 == j) return -1;
+      }
+      else cout << *i << "  ";
+    }
+    if(!lflag) cout << endl;
+
+    files.clear();
+    closedir(dirp);
+  }
 
   
   return 0;
