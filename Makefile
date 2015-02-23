@@ -1,18 +1,16 @@
 FLAGS = -ansi -pedantic -Wall -Werror
+STD = -std=c++11
 
-all: bin ls rshell move 
+all: bin rshell ls 
 
 rshell:
-	g++ src/rshell.cpp -o rshell $(CPPFLAGS)
+	g++ $(STD) src/rshell.cpp -o bin/rshell $(CPPFLAGS)
 
 ls:
-	g++ src/ls.cpp -o ls $(CPPFLAGS)
+	g++ $(STD) src/ls.cpp -o bin/ls $(CPPFLAGS)
 
 bin:
 	mkdir bin
-
-move: 
-	mv rshell bin; mv ls bin
 
 clean:
 	rm -r bin

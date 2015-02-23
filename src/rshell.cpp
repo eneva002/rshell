@@ -1,4 +1,5 @@
 #include <iostream>
+#include <array>
 #include <wordexp.h>
 #include <unistd.h>
 #include <cstdlib>
@@ -15,21 +16,27 @@
 
 using namespace std;
 
-int getcmd(const string &cmd, wordexp_t &result){
+//parse string into wordexp_t
+int getcmd(const string &cmd, wordexp_t &result)
+{
   const char *ccmd = cmd.c_str();
 
+  //wordexp converts a string into a char **
   switch(wordexp(ccmd, &result, 0)){
     case 0:
       break; //success
     case WRDE_NOSPACE: 
       wordfree(&result); //ran out of space
     default:
-      return -1; //failure 
+      perror("wordexp failed"); //failure 
+      return -1;
   }
 }
 
-int runcmd(const wordexp_t &result){
-  int status = 0;
+//execute command, taking a wordexp_t type as an input
+int runcmd(const wordexp_t &result)
+{
+  int status;
   int pid = fork();
   if(pid == 0){
     if(-1 == (status = execvp(result.we_wordv[0], result.we_wordv))){
@@ -50,9 +57,11 @@ int runcmd(const wordexp_t &result){
   return status;
 }
 
-void printprompt(){
-  char usrn[64];
-  if(-1 == getlogin_r(usrn, sizeof(usrn)))
+//determine username and hostname, then print prompt
+void printprompt()
+{
+  char *usrn;
+  if(NULL == (usrn = getlogin()))
     perror("getlogin failed");
 
   char host[64];
@@ -64,6 +73,7 @@ void printprompt(){
   cout << usrn << "@" << hostn << " --> ";
 }
 
+//unary function to sort priority_queue in the popq funct.
 typedef pair<int, int> P;
 struct Order{ 
   bool operator()(P const& a, P const& b) const{ 
@@ -71,19 +81,23 @@ struct Order{
   }
 };
 
-void popq(const string &cmd, queue< pair<string,int> > &cmdq){
+//function to pupulate a command list to be ran in the shell
+void popq(const string &cmd, queue< pair<string,int> > &cmdq)
+{
+  //the priority queue is to maintain the order that commands are found
   priority_queue<P,vector<P>,Order> list;
-  string piece;
   P temp;
-  vector<string> look;
-  look.push_back(";");
-  look.push_back("||");
-  look.push_back("&&");
 
-  for(int i = 0; i < 3; ++i){
+  //vector of connectors to look for
+  vector<string> look = {";", "||", "&&"};
+
+  for(int i = 0; i < 3; ++i)
+  {
     int j = 0;
     j = cmd.find(look[i], j);
-    while(j != string::npos){ 
+
+    while(j != string::npos)
+    {
       temp.first = j;
       switch(i){
         case 0: 
@@ -99,7 +113,8 @@ void popq(const string &cmd, queue< pair<string,int> > &cmdq){
   }
 
   int i = 0;
-  while(!list.empty()){
+  while(!list.empty())
+  {
     temp = list.top();
     list.pop();
     string temp2 = cmd.substr(i, temp.first-i);
@@ -113,7 +128,138 @@ void popq(const string &cmd, queue< pair<string,int> > &cmdq){
     }
     cmdq.push(make_pair(temp2,temp.second));
   }
+
   cmdq.push(make_pair(cmd.substr(i, cmd.length()-i),0));
+}
+
+//pexec is a function to handle piped execution
+int pexec(const string &cmd, const int inFD, const int outFD, int fd[2])
+{
+  
+  int saveout, savein;
+  int outfd, infd;
+  cout << "PEXEC(" << cmd << "," << inFD << "," << outFD
+     << ",[" << fd[0] << "," << fd[1] << "])" << endl;
+  int pid;
+  if(-1 == (pid = fork())){ perror("fork failed"); exit(-1); }
+  
+  if(pid == 0)
+  {
+    wordexp_t runme;
+    if(-1 == getcmd(cmd, runme)) perror("getcmd failed");
+
+    //if there is an input FD then close default fd 0 and dup pipe input fd
+    if(inFD > 0){
+      if(-1 == (savein = dup(0))) perror("dup failed");
+      if(-1 == dup2(inFD, 0)) perror("dup failed");
+      cout << "INSIDE " << runme.we_wordv[0] << " dup2(" << inFD << "," 
+        << 0 << ")" << endl;
+    }
+    //otherwise close input pipe fd
+    else{
+      if(-1 == close(fd[0])) perror("failed pexec close2");
+    }
+
+    //if there is an output FD then close default fd 1 and dup pipe output fd
+    if(outFD > 0){
+      
+      if(-1 == (saveout = dup(1))) perror("dup failed");
+      if( -1 == dup2(outFD,1)) perror("dup failed");
+      cout << "INSIDE " << runme.we_wordv[0] << " dup2(" << outFD << "," 
+        << 1 << ")" << endl;
+    }
+    //otherwise close output pipe fd;
+    else{
+      if(-1 == close(fd[1])) perror("failed pexec close4");
+    }
+    
+    cout << "MADE IT TO THE EXECVP" << endl;
+    cout << "EXECUTING ";
+    for(int e=0; e < runme.we_wordc; ++e) cout << runme.we_wordv[e] << " ";
+    cout << endl; 
+    
+    if(-1 == execvp(runme.we_wordv[0], runme.we_wordv)) perror("runcmd failed");
+    wordfree(&runme);
+
+    if(inFD > 0) {
+      if(-1 == dup2(savein, infd)) perror("restore stdout failed");
+      if(-1 == close(savein)) perror("close savin failed");
+    }
+    if(outFD > 0){
+      if(-1 == dup2(saveout, outfd)) perror("restore stdout failed");
+      if(-1 == close(saveout)) perror("close savout failed)");
+    }
+    cout << "EXECUTE SUCCESS" << endl;
+    return 0;
+  }
+  else{
+    int status;
+    if(waitpid(pid, &status, 0) != pid){
+      perror("wait failed");
+    }
+    return 0;
+  }
+
+}
+
+
+//piper is the main function to handle pexec calls (forks)
+int piper(const string &cmd)
+{
+  queue<string> cmdq;
+
+  //step1 parse string
+  int prev = 0;
+  int finder = 0;
+  finder = cmd.find("|");
+  while(finder != string::npos)
+  {
+    cmdq.push(cmd.substr(prev, finder-prev));
+    prev = finder+1;
+    finder = cmd.find("|", finder+1);
+  }
+  cmdq.push(cmd.substr(prev));
+
+  //step2 setup pipes and such
+  int fd[2];
+  //waitcount to recall how many processes were spawned
+  int waitct = 0;
+
+  string nucmd;
+  //cout << "CMDQ SIZE: " << cmdq.size() << endl;
+  nucmd = cmdq.front();
+  cmdq.pop();
+  if(-1 == pipe(fd)) perror("pipe failed");
+  //take no inputs
+  //write out to fd[1]
+  if(0 == pexec(nucmd, 0, fd[1], fd)) waitct++;
+  
+  int newfd[2];
+  while(!cmdq.empty())
+  {
+    nucmd = cmdq.front();
+    cmdq.pop();
+    if(-1 == pipe(newfd)) perror("pipe failed");
+
+    if(!cmdq.empty())
+    {
+      if( 0 == pexec(nucmd, fd[0], newfd[1], newfd)) waitct++;
+    }
+    else
+    {
+      if(0 == pexec(nucmd, fd[0], 0, fd)) waitct++; 
+    }
+    cout << " end loopp!!!!!!! " << endl;
+  }
+
+  //step4 wait like a mofo
+  cout << "WAITING FOR " << waitct << " PROCESSES TO EXIT" << endl;
+  
+
+
+
+  return 0;
+
 }
 
 int main(int argc, char* argv[]){
@@ -127,39 +273,74 @@ int main(int argc, char* argv[]){
   while(1){ 
     printprompt(); 
     getline(cin, cmd); 
-    
+
+    //search for first # and create substring for everything up till then
+    int cmnt = cmd.find("#");
+    if(cmnt != string::npos) cmd = cmd.substr(0,cmnt);
+
     int status = 0;
     int prevstatus = 0;
     pair<string, int> o;
     popq(cmd, cmdq);
     string temp;
 
+    //auto tempq = cmdq;
+    //while(!tempq.empty()) { cout << tempq.front().first << " "; tempq.pop(); }
+    //cout << endl;
+
+
     while(!cmdq.empty()){
+      //o is type pair<string,int>
       o = cmdq.front();
       cmdq.pop();
       //cout << "\"" << o.first << "\"" << " |:| " << o.second << endl;
       
-      int cmnt = o.first.find("#");
-      if(cmnt != string::npos) o.first = o.first.substr(0,cmnt);
-
+      //hardcoded exit
+      //may consider going balls out and creating an exit executable
       if(o.first == "exit") exit(0);
 
-      if(prevstatus == -1) prevstatus = 256;
-      else if(prevstatus == 1) prevstatus = 0;
-      else if(prevstatus == 0) status = 0;
-      if(status == prevstatus ){
-        if(-1 == getcmd(o.first, runme))
-          perror("getcmd failed");
-        else if(-1 ==(status = runcmd(runme))){
-          perror("runcmd failed");
-          exit(1);
-        }
-        else wordfree(&runme);
+      if(o.first.find("|") != string::npos)
+      {
+        piper(o.first);
       }
-      prevstatus = o.second;
-      //cout << "prev: " << prevstatus << endl;
-      //cout << "stat: " << status << endl;
-    }
-  }
+      /*
+      else if(){
 
+      }
+      else if(){
+
+      }
+      */
+      else
+      {
+        //hotfix for exit statuses
+        if(prevstatus == -1) prevstatus = 256;
+        else if(prevstatus == 1) prevstatus = 0;
+        else if(prevstatus == 0) status = 0;
+
+        //check if exit status matches that of the connector
+        //if they match, execute
+        //by default the first command will always execute
+        if(status == prevstatus ){
+          if(-1 == getcmd(o.first, runme))
+            perror("getcmd failed");
+          else if(-1 ==(status = runcmd(runme))){
+            perror("runcmd failed");
+            //may consider continuing if exit fails.
+            //not sure if this exit is for the failed execution or for the shell
+            //but it's working so i'm going to leave it
+            exit(1);
+          }
+          else{
+            wordfree(&runme);
+          }
+        }
+        prevstatus = o.second;
+        //cout << "prev: " << prevstatus << endl;
+        //cout << "stat: " << status << endl;
+      }
+      
+    }
+
+  }
 }
