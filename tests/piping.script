@@ -1,0 +1,39 @@
+Script started on Mon 23 Feb 2015 12:00:05 AM PST
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m ls
+LICENSE  Makefile  README.md  [0m[01;34msrc[0m  [01;34mtests[0m
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m make
+mkdir bin
+g++ -std=c++11 src/rshell.cpp -o bin/rshell 
+g++ -std=c++11 src/ls.cpp -o bin/ls 
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m bin/rshell
+gyosh@gyosh --> ls
+bin  LICENSE  Makefile	README.md  src	tests
+gyosh@gyosh --> ls | cat
+PEXEC(ls ,0,4,[3,4])
+PEXEC( cat,3,0,[3,4])
+INSIDE cat dup2(3,0)
+MADE IT TO THE EXECVP
+EXECUTING cat 
+INSIDE ls dup2(4,1)
+MADE IT TO THE EXECVP
+EXECUTING ls 
+bin
+LICENSE
+Makefile
+README.md
+src
+tests
+^C
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m lots of oupt[K[K[K[K[K[K[K[K[K[K[K[K#lots of outpu[Kut
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m whoo[K[K[K[K#whoops
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m ls
+[0m[01;34mbin[0m  LICENSE  Makefile  README.md  [01;34msrc[0m  [01;34mtests[0m
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m cd tests
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell/tests $[00m ls
+ls.script  piping.script  rshell.script
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell/tests $[00m v[Kls
+ls.script  piping.script  rshell.script
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell/tests $[00m exit
+exit
+
+Script done on Mon 23 Feb 2015 12:00:39 AM PST

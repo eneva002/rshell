@@ -140,8 +140,8 @@ int pexec(const string &cmd, const int inFD, const int outFD, int fd[2])
   
   int saveout, savein;
   int outfd, infd;
-  cout << "PEXEC(" << cmd << "," << inFD << "," << outFD
-     << ",[" << fd[0] << "," << fd[1] << "])" << endl;
+  //cout << "PEXEC(" << cmd << "," << inFD << "," << outFD
+  //   << ",[" << fd[0] << "," << fd[1] << "])" << endl;
   int pid;
   if(-1 == (pid = fork())){ perror("fork failed"); exit(-1); }
   
@@ -154,8 +154,8 @@ int pexec(const string &cmd, const int inFD, const int outFD, int fd[2])
     if(inFD > 0){
       if(-1 == (savein = dup(0))) perror("dup failed");
       if(-1 == dup2(inFD, 0)) perror("dup failed");
-      cout << "INSIDE " << runme.we_wordv[0] << " dup2(" << inFD << "," 
-        << 0 << ")" << endl;
+      //cout << "INSIDE " << runme.we_wordv[0] << " dup2(" << inFD << "," 
+      //  << 0 << ")" << endl;
     }
     //otherwise close input pipe fd
     else{
@@ -167,18 +167,18 @@ int pexec(const string &cmd, const int inFD, const int outFD, int fd[2])
       
       if(-1 == (saveout = dup(1))) perror("dup failed");
       if( -1 == dup2(outFD,1)) perror("dup failed");
-      cout << "INSIDE " << runme.we_wordv[0] << " dup2(" << outFD << "," 
-        << 1 << ")" << endl;
+      //cout << "INSIDE " << runme.we_wordv[0] << " dup2(" << outFD << "," 
+      //  << 1 << ")" << endl;
     }
     //otherwise close output pipe fd;
     else{
       if(-1 == close(fd[1])) perror("failed pexec close4");
     }
     
-    cout << "MADE IT TO THE EXECVP" << endl;
-    cout << "EXECUTING ";
-    for(int e=0; e < runme.we_wordc; ++e) cout << runme.we_wordv[e] << " ";
-    cout << endl; 
+    //cout << "MADE IT TO THE EXECVP" << endl;
+    //cout << "EXECUTING ";
+    //for(int e=0; e < runme.we_wordc; ++e) cout << runme.we_wordv[e] << " ";
+    //cout << endl; 
     
     if(-1 == execvp(runme.we_wordv[0], runme.we_wordv)) perror("runcmd failed");
     wordfree(&runme);
