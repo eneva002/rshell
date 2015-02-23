@@ -12,6 +12,7 @@
 #include <queue>
 #include <sys/types.h>
 #include <signal.h>
+#include <pwd.h>
 #include <vector>
 
 using namespace std;
@@ -60,9 +61,10 @@ int runcmd(const wordexp_t &result)
 //determine username and hostname, then print prompt
 void printprompt()
 {
-  char *usrn;
-  if(NULL == (usrn = getlogin()))
-    perror("getlogin failed");
+  uid_t usrID = getuid();
+  struct passwd *pwd;
+  pwd = getpwuid(usrID);
+  char *usrn = pwd->pw_name;
 
   char host[64];
   if(-1 == gethostname(host, sizeof(host))) 
