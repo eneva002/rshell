@@ -1,0 +1,75 @@
+Script started on Mon 09 Mar 2015 02:21:11 PM PDT
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell/tests $[00m ls
+ls.script  piping.script  regrade.script  rshell.script  signals.script
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell/tests $[00m cd ..
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m ls
+LICENSE  Makefile  README.md  [0m[01;34msrc[0m  [01;34mtests[0m
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m pwd
+/home/gyosh/Documents/rshell
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m bin/rshell[K[K[K[K[K[K[K[K[K[Kmake
+mkdir bin
+g++ -std=c++11 src/rshell.cpp -o bin/rshell 
+g++ -std=c++11 src/ls.cpp -o bin/ls 
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m ls
+[0m[01;34mbin[0m  LICENSE  Makefile  README.md  [01;34msrc[0m  [01;34mtests[0m
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m bin/rshell
+gyosh@gyosh-/home/gyosh/Documents/rshell$ #this is a demo of  for my signals n and stuff
+gyosh@gyosh-/home/gyosh/Documents/rshell$ #hw3
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ls
+bin  LICENSE  Makefile	README.md  src	tests
+gyosh@gyosh-/home/gyosh/Documents/rshell$ pwd
+/home/gyosh/Documents/rshell
+gyosh@gyosh-/home/gyosh/Documents/rshell$ cd ..
+gyosh@gyosh-/home/gyosh/Documents$ pwd
+/home/gyosh/Documents
+gyosh@gyosh-/home/gyosh/Documents$ cd ..
+gyosh@gyosh-/home/gyosh$ pwd
+/home/gyosh
+gyosh@gyosh-/home/gyosh$ cd Documents
+gyosh@gyosh-/home/gyosh/Documents$ pwd
+/home/gyosh/Documents
+gyosh@gyosh-/home/gyosh/Documents$ cd /
+gyosh@gyosh-/$ ls
+bin    dev   initrd.img  lib64	     media  proc  sbin	tmp  vmlinuz
+boot   etc   lib	 libx32      mnt    root  srv	usr
+cdrom  home  lib32	 lost+found  opt    run   sys	var
+gyosh@gyosh-/$ pwd
+/
+gyosh@gyosh-/$ #cd o works well enough
+gyosh@gyosh-/$ cd /home/gyosh/Documents/rshell
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ls
+bin  LICENSE  Makefile	README.md  src	tests
+gyosh@gyosh-/home/gyosh/Documents/rshell$ pwd
+/home/gyosh/Documents/rshell
+gyosh@gyosh-/home/gyosh/Documents/rshell$ #isngla      sg ignals!!!
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ^C
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ^C
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ^C
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ^C
+gyosh@gyosh-/home/gyosh/Documents/rshell$ c #cntrl c does nothing
+gyosh@gyosh-/home/gyosh/Documents/rshell$ #how about in a child process
+gyosh@gyosh-/home/gyosh/Documents/rshell$ cat
+tes
+tes
+test
+test
+testt
+testt
+cool
+cool
+lets quit
+lets quit
+^Cgyosh@gyosh-/home/gyosh/Documents/rshell$ #back to normal
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ^C
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ^C
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ^C
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ^C
+gyosh@gyosh-/home/gyosh/Documents/rshell$ #as for proof of me not using execpv  vp
+gyosh@gyosh-/home/gyosh/Documents/rshell$ #just open up my rshell.h
+gyosh@gyosh-/home/gyosh/Documents/rshell$ #and then search for myexec
+gyosh@gyosh-/home/gyosh/Documents/rshell$ #`' /myexec` in vim
+gyosh@gyosh-/home/gyosh/Documents/rshell$ #i wrote a function to handle the path expansion stuff
+gyosh@gyosh-/home/gyosh/Documents/rshell$ t #thats al  l folks!
+gyosh@gyosh-/home/gyosh/Documents/rshell$ exit
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m exit
+Script done on Mon 09 Mar 2015 02:24:22 PM PDT
