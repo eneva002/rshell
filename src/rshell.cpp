@@ -43,12 +43,8 @@ int main(int argc, char* argv[]){
         //may consider going balls out and creating an exit executable
         if(o.first == "exit") exit(0);
 
-        if(o.first.find("|") != string::npos)
-        {
-          piper(o.first);
-        }
-        else if(o.first.find("<") != string::npos 
-             || o.first.find(">") != string::npos){
+        if(o.first.find("<") != string::npos 
+        || o.first.find(">") != string::npos){
           redexec(o.first);
         }
         else
