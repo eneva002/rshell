@@ -16,6 +16,7 @@
 #include <errno.h>
 #include <iomanip>
 #include <queue>
+#include <sstream>
 
 using namespace std;
 
@@ -80,7 +81,10 @@ int info(const string &dir)
   strftime(buf, 80, "%b %e %R", timeinfo);
   cout << ' ' << buf;
 
-  cout << ' ' << dir << endl;
+  size_t fndr = dir.find_last_of("/");
+  string tmp = dir.substr(fndr+1);
+
+  cout << ' ' << tmp << endl;
   return 0;
 }
 
@@ -144,7 +148,8 @@ int main(int argc, char **argv)
   bool mult = false;
 
   if(paths.size() > 1 || Rflag) mult = true; 
-  while(!paths.empty()){
+  while(!paths.empty())
+  {
     //cr == current file
     cr = paths.front();
     paths.pop();
@@ -168,30 +173,43 @@ int main(int argc, char **argv)
       return -1; 
     }
 
-    
-
     //sort file list
     files.sort(compare_nocase);
 
+    struct stat swagg;
+    
     if(mult) cout <<  cr << ':' << endl;
+    if(lflag){
+      blkcnt_t totalblocks = 0;
+      for(auto &p : files){
+        if(!aflag && p[0] == '.'){
+          continue;
+        }
+        if(-1 == stat((cr + "/" + p).c_str(), &swagg)) perror("idk what anymor");
+        totalblocks += swagg.st_blocks/2;
+      }
+      cout << "total " << totalblocks << endl;
+    }
     for(list<string>::iterator i = files.begin(); i != files.end(); ++i){
       if(!aflag){
         while(*((*i).begin()) == '.') ++i;
       }
       if(lflag){
-        int j = info(*i);   
+        int j = info(cr + "/" + (*i));   
         if(-1 == j){
           if(-1 == closedir(dirp)) perror("closedir failed");
           return -1;
         }
       }
       else cout << *i << "  ";
+
       // RFLAG GOES HERE
       if(Rflag ){
         struct stat inf;
         string wtfamidoing;
         if(cr[0] != '/')  wtfamidoing = cr + '/' + *i;
         else wtfamidoing = cr + *i;
+        //cout <<  "statting - " << wtfamidoing << endl;
         if(-1 == stat(wtfamidoing.c_str(), &inf)){
           perror("stat failed");
           return -1;
