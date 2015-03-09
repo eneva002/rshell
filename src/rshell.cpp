@@ -25,6 +25,7 @@ int main(int argc, char* argv[]){
       //search for first # and create substring for everything up till then
       int cmnt = cmd.find("#");
       if(cmnt != string::npos) cmd = cmd.substr(0,cmnt);
+      if(cmd.size() < 1) continue;
 
       int status = 0;
       int prevstatus = 0;
