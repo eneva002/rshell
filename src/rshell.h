@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fcntl.h>
 #include <signal.h>
 #include <errno.h>
 #include <array>
@@ -75,12 +76,35 @@ int getcmd(const string &cmd, wordexp_t &result)
   }
 }
 
+int myexec(const wordexp_t &result)
+{
+  int status;
+  char *cpth;
+  if(NULL == (cpth = getenv("PATH"))) perror("getenv failed");
+  string spth = cpth;
+  string pth;
+  size_t start = 0;
+  size_t loc = spth.find(':', start);
+
+  execv(result.we_wordv[0], result.we_wordv);
+  while(loc != string::npos){
+    pth = spth.substr(start, loc-start) + "/" + (string)result.we_wordv[0];
+    start = loc+1;
+    loc = spth.find(':',start);
+    execv(pth.c_str(), result.we_wordv);
+  }
+  pth = spth.substr(start, loc-start) + "/" + (string)result.we_wordv[0];
+  if(-1 == (status = execv(pth.c_str(), result.we_wordv))){
+    perror("exec failed");
+    return -1;
+  }
+  return 0;
+}
+
 //execute command, taking a wordexp_t type as an input
 int runcmd(const wordexp_t &result)
 {
   int status;
-  char *cpth;
-
   //cast the char* to a string because it doesn't work otherwise
   if((string)result.we_wordv[0] == "cd"){
     if(result.we_wordc != 2)
@@ -95,28 +119,11 @@ int runcmd(const wordexp_t &result)
     else return 1;
   }
 
-  if(NULL == (cpth = getenv("PATH"))) perror("getenv failed");
-  string spth = cpth;
-
   int pid = fork();
 
   if(pid == 0){
     signal(SIGINT, SIG_DFL);
-    string pth;
-    size_t start = 0;
-    size_t loc = spth.find(':', start);
-
-    execv(result.we_wordv[0], result.we_wordv);
-    while(loc != string::npos){
-      pth = spth.substr(start, loc-start) + "/" + (string)result.we_wordv[0];
-      start = loc+1;
-      loc = spth.find(':',start);
-      execv(pth.c_str(), result.we_wordv);
-    }
-    pth = spth.substr(start, loc-start) + "/" + (string)result.we_wordv[0];
-    if(-1 == (status = execv(pth.c_str(), result.we_wordv))){
-      perror("exec failed");
-    }
+    status  = myexec(result);
     return status;
   }
 
@@ -131,8 +138,6 @@ int runcmd(const wordexp_t &result)
   }
   return status;
 }
-
-
 
 //unary function to sort priority_queue in the popq funct.
 typedef pair<int, int> P;
@@ -172,7 +177,6 @@ void popq(const string &cmd, queue< pair<string,int> > &cmdq)
       j = cmd.find(look[i],j);
     }
   }
-
   int i = 0;
   while(!list.empty())
   {
@@ -189,7 +193,6 @@ void popq(const string &cmd, queue< pair<string,int> > &cmdq)
     }
     cmdq.push(make_pair(temp2,temp.second));
   }
-
   cmdq.push(make_pair(cmd.substr(i, cmd.length()-i),0));
 }
 
@@ -197,10 +200,9 @@ void popq(const string &cmd, queue< pair<string,int> > &cmdq)
 int pexec(const string &cmd, const int inFD, const int outFD, int fd[2])
 {
   
+  cout << "PIPER" << endl;
   int saveout, savein;
   int outfd, infd;
-  //cout << "PEXEC(" << cmd << "," << inFD << "," << outFD
-  //   << ",[" << fd[0] << "," << fd[1] << "])" << endl;
   int pid;
   if(-1 == (pid = fork())){ perror("fork failed"); exit(-1); }
   
@@ -269,6 +271,7 @@ int pexec(const string &cmd, const int inFD, const int outFD, int fd[2])
 int piper(const string &cmd)
 {
   queue<string> cmdq;
+  cout << "PIPER" << endl;
 
   //step1 parse string
   int prev = 0;
@@ -321,4 +324,63 @@ int piper(const string &cmd)
 
 }
 
+int redexec(string &cmd)
+{
+  pid_t pid = fork();
+  //child
+  if(pid == 0)
+  {
+    size_t index = cmd.find('<');
+    wordexp_t wexp; 
+    if(index != string::npos)
+    {
+      //open file, close 0, dup fd;
+      string prg = cmd.substr(0, index);
+      string file = cmd.substr(index+1);
+      while(file[0] == ' ') file.erase(0,1);
+      while(file[file.length()-1] == ' ') file.erase(file.length()-1,1);
+      getcmd(prg, wexp);
+      int fd = open(file.c_str(), O_RDONLY);
+      if(fd < 0) perror("open");
+      if (close(0) < 0) perror("close");
+      if (-1 == (fd = dup(fd))) perror("dup");
+      myexec(wexp);
+      return 0;
+    }
+    else
+    {
+      bool appnd;
+      mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
+      size_t index = cmd.find('>');
+      if(cmd[index+1] == '>') appnd = true;
+      string prg = cmd.substr(0, index);
+      string file;
+      if(appnd) file = cmd.substr(index+2);
+      else file = cmd.substr(index+1);
+      while(file[0] == ' ') file.erase(0,1);
+      while(file[file.length()-1] == ' ') file.erase(file.length()-1,1);
+      getcmd(prg, wexp);
+      int fd;
+      if(appnd) fd = open(file.c_str(), O_WRONLY|O_CREAT|O_APPEND,mode);
+      else fd = open(file.c_str(), O_WRONLY|O_CREAT|O_TRUNC,mode);
+      if(fd < 0) perror("open");
+      if (close(1) < 0) perror("close");
+      if (-1 == (fd = dup(fd))) perror("dup");
+      myexec(wexp);
+      return 0;
+    }
+    return 0;
+  }
+  //parent
+  else if(pid > 0)
+  {
+    int status;
+    if(waitpid(pid, &status, 0) != pid){
+      perror("wait failed");
+    }
+    return 0;
+  }
+  else perror("fork");
+}
     
+

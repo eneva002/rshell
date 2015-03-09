@@ -32,17 +32,11 @@ int main(int argc, char* argv[]){
       popq(cmd, cmdq);
       string temp;
 
-      //auto tempq = cmdq;
-      //while(!tempq.empty()) { cout << tempq.front().first << " "; tempq.pop(); }
-      //cout << endl;
-
-
       while(!cmdq.empty())
       {
         //o is type pair<string,int>
         o = cmdq.front();
         cmdq.pop();
-        //cout << "\"" << o.first << "\"" << " |:| " << o.second << endl;
         
         //hardcoded exit
         //may consider going balls out and creating an exit executable
@@ -51,6 +45,10 @@ int main(int argc, char* argv[]){
         if(o.first.find("|") != string::npos)
         {
           piper(o.first);
+        }
+        else if(o.first.find("<") != string::npos 
+             || o.first.find(">") != string::npos){
+          redexec(o.first);
         }
         else
         {
@@ -77,12 +75,8 @@ int main(int argc, char* argv[]){
             }
           }
           prevstatus = o.second;
-          //cout << "prev: " << prevstatus << endl;
-          //cout << "stat: " << status << endl;
         }
-        
       }
     }
-
   }
 }
