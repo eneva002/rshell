@@ -1,39 +1,73 @@
-Script started on Mon 23 Feb 2015 12:00:05 AM PST
+Script started on Mon 09 Mar 2015 05:08:08 PM PDT
 [01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m ls
-LICENSE  Makefile  README.md  [0m[01;34msrc[0m  [01;34mtests[0m
-[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m make
-mkdir bin
-g++ -std=c++11 src/rshell.cpp -o bin/rshell 
-g++ -std=c++11 src/ls.cpp -o bin/ls 
+[0m[01;34mbin[0m  LICENSE  Makefile  README.md  [01;34msrc[0m  [01;34mtests[0m
 [01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m bin/rshell
-gyosh@gyosh --> ls
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ls
 bin  LICENSE  Makefile	README.md  src	tests
-gyosh@gyosh --> ls | cat
-PEXEC(ls ,0,4,[3,4])
-PEXEC( cat,3,0,[3,4])
-INSIDE cat dup2(3,0)
-MADE IT TO THE EXECVP
-EXECUTING cat 
-INSIDE ls dup2(4,1)
-MADE IT TO THE EXECVP
-EXECUTING ls 
+gyosh@gyosh-/home/gyosh/Documents/rshell$ #oupt  tput redirection
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ls > test
+gyosh@gyosh-/home/gyosh/Documents/rshell$ cat test
 bin
 LICENSE
 Makefile
 README.md
 src
+test
 tests
-^C
-[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m lots of oupt[K[K[K[K[K[K[K[K[K[K[K[K#lots of outpu[Kut
-[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m whoo[K[K[K[K#whoops
-[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m ls
-[0m[01;34mbin[0m  LICENSE  Makefile  README.md  [01;34msrc[0m  [01;34mtests[0m
-[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m cd tests
-[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell/tests $[00m ls
-ls.script  piping.script  rshell.script
-[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell/tests $[00m v[Kls
-ls.script  piping.script  rshell.script
-[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell/tests $[00m exit
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ls
+bin  LICENSE  Makefile	README.md  src	test  tests
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ls    ##  appending
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ls >>      -l >> tests 
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ls
+bin  LICENSE  Makefile	README.md  src	test  tests
+gyosh@gyosh-/home/gyosh/Documents/rshell$ cat test
+bin
+LICENSE
+Makefile
+README.md
+src
+test
+tests
+total 44
+drwxr-xr-x 2 gyosh gyosh  4096 Mar  9 17:06 bin
+-rw-r--r-- 1 gyosh gyosh 18027 Feb  2 17:22 LICENSE
+-rw-r--r-- 1 gyosh gyosh   224 Feb 23 00:10 Makefile
+-rw-r--r-- 1 gyosh gyosh  1075 Feb 23 00:10 README.md
+drwxr-xr-x 2 gyosh gyosh  4096 Mar  9 17:06 src
+-rw-r--r-- 1 gyosh gyosh    46 Mar  9 17:08 test
+drwxr-xr-x 2 gyosh gyosh  4096 Mar  9 17:08 tests
+gyosh@gyosh-/home/gyosh/Documents/rshell$ #input redirection
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ls
+bin  LICENSE  Makefile	README.md  src	test  tests
+gyosh@gyosh-/home/gyosh/Documents/rshell$ grep a < test
+Makefile
+total 44
+drwxr-xr-x 2 gyosh gyosh  4096 Mar  9 17:06 bin
+-rw-r--r-- 1 gyosh gyosh   224 Feb 23 00:10 Makefile
+drwxr-xr-x 2 gyosh gyosh  4096 Mar  9 17:06 src
+-rw-r--r-- 1 gyosh gyosh    46 Mar  9 17:08 test
+drwxr-xr-x 2 gyosh gyosh  4096 Mar  9 17:08 tests
+gyosh@gyosh-/home/gyosh/Documents/rshell$ 	ls
+bin  LICENSE  Makefile	README.md  src	test  tests
+gyosh@gyosh-/home/gyosh/Documents/rshell$ # ls > test
+gyosh@gyosh-/home/gyosh/Documents/rshell$ cat test
+bin
+LICENSE
+Makefile
+README.md
+src
+test
+tests
+gyosh@gyosh-/home/gyosh/Documents/rshell$ 			ls
+bin  LICENSE  Makefile	README.md  src	test  tests
+gyosh@gyosh-/home/gyosh/Documents/rshell$ grep a < nonex
+open: No such file or directory
+dup: Bad file descriptor
+grep: (standard input): Bad file descriptor
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ls
+bin  LICENSE  Makefile	README.md  src	test  tests
+gyosh@gyosh-/home/gyosh/Documents/rshell$ exit
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m exit
 exit
 
-Script done on Mon 23 Feb 2015 12:00:39 AM PST
+Script done on Mon 09 Mar 2015 05:10:04 PM PDT

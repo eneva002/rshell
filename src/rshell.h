@@ -349,7 +349,7 @@ int redexec(string &cmd)
     }
     else
     {
-      bool appnd;
+      bool appnd = false;
       mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
       size_t index = cmd.find('>');
       if(cmd[index+1] == '>') appnd = true;

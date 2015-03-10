@@ -43,10 +43,7 @@ int main(int argc, char* argv[]){
         //may consider going balls out and creating an exit executable
         if(o.first == "exit") exit(0);
 
-        if(o.first.find("<") != string::npos 
-        || o.first.find(">") != string::npos){
-          redexec(o.first);
-        }
+        
         else
         {
           //hotfix for exit statuses
@@ -58,6 +55,11 @@ int main(int argc, char* argv[]){
           //if they match, execute
           //by default the first command will always execute
           if(status == prevstatus ){
+            if(o.first.find("<") != string::npos 
+              || o.first.find(">") != string::npos){
+              redexec(o.first);
+            }
+            else{
             if(-1 == getcmd(o.first, runme))
               perror("getcmd failed");
             else if(-1 ==(status = runcmd(runme))){
@@ -69,6 +71,7 @@ int main(int argc, char* argv[]){
             }
             else{
               wordfree(&runme);
+            }
             }
           }
           prevstatus = o.second;

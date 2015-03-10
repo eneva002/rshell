@@ -1,2671 +1,966 @@
-Script started on Sun 08 Feb 2015 11:47:33 PM PST
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m alias tset[K[K[Kest="bin/ls"
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m #i'm lazy and don't want to forget to type th e[K[Ke bin/ part
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test
-bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -a
-.  ..  .git  bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -l
-drwxr-xr-x 2 yoshi yoshi   4096 Feb  8 23:47 bin
--rw-r--r-- 1 yoshi yoshi  18027 Feb  1 23:30 LICENSE
--rw-r--r-- 1 yoshi yoshi      0 Feb  8 23:47 ls.script
--rw-r--r-- 1 yoshi yoshi    224 Feb  8 11:50 Makefile
--rw-r--r-- 1 yoshi yoshi    462 Feb  8 11:50 README.md
--rw-r--r-- 1 yoshi yoshi   2423 Feb  8 11:50 rshell.script
-drwxr-xr-x 2 yoshi yoshi   4096 Feb  8 23:46 src
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -R
+Script started on Mon 09 Mar 2015 05:03:13 PM PDT
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m ls
+[0m[01;34mbin[0m  LICENSE  Makefile  README.md  [01;34msrc[0m  [01;34mtests[0m
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m make
+g++ -std=c++11 src/rshell.cpp -o bin/rshell 
+g++ -std=c++11 src/ls.cpp -o bin/ls 
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m bin/rshell
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ls
+bin  LICENSE  Makefile	README.md  src	tests
+gyosh@gyosh-/home/gyosh/Documents/rshell$ cd bin
+gyosh@gyosh-/home/gyosh/Documents/rshell/bin$ ls
+ls  rshell  
+gyosh@gyosh-/home/gyosh/Documents/rshell/bin$ ./ls
+ls  rshell  
+gyosh@gyosh-/home/gyosh/Documents/rshell/bin$ #myls
+gyosh@gyosh-/home/gyosh/Documents/rshell/bin$ ./ls    cd ..
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ./bin/ls -a
+.  ..  .git  bin  LICENSE  Makefile  README.md  src  tests  
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ./bin/ls -l
+total 40
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 17:03 bin
+-rw-r--r-- 1 gyosh gyosh  18027 Feb  2 17:22 LICENSE
+-rw-r--r-- 1 gyosh gyosh    224 Feb 23 00:10 Makefile
+-rw-r--r-- 1 gyosh gyosh   1075 Feb 23 00:10 README.md
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 17:02 src
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 17:03 tests
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ./bin/ls -R
 .:
-bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
+bin  LICENSE  Makefile  README.md  src  tests  
 
 ./bin:
 ls  rshell  
 
 ./src:
-ls.cpp  rshell.cpp  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -al
-drwxr-xr-x 5 yoshi yoshi   4096 Feb  8 23:47 .
-drwxr-xr-x 3 yoshi yoshi   4096 Feb  8 23:34 ..
-drwxr-xr-x 8 yoshi yoshi   4096 Feb  8 23:40 .git
-drwxr-xr-x 2 yoshi yoshi   4096 Feb  8 23:47 bin
--rw-r--r-- 1 yoshi yoshi  18027 Feb  1 23:30 LICENSE
--rw-r--r-- 1 yoshi yoshi      0 Feb  8 23:47 ls.script
--rw-r--r-- 1 yoshi yoshi    224 Feb  8 11:50 Makefile
--rw-r--r-- 1 yoshi yoshi    462 Feb  8 11:50 README.md
--rw-r--r-- 1 yoshi yoshi   2423 Feb  8 11:50 rshell.script
-drwxr-xr-x 2 yoshi yoshi   4096 Feb  8 23:46 src
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m tea[K[K[K#this [K[K[K[K[Kall the single liners work on the current directory
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m #testing m[Kcombinations and permuat[K[Ktations of flags on current directory
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -al
-drwxr-xr-x 5 yoshi yoshi   4096 Feb  8 23:47 .
-drwxr-xr-x 3 yoshi yoshi   4096 Feb  8 23:34 ..
-drwxr-xr-x 8 yoshi yoshi   4096 Feb  8 23:40 .git
-drwxr-xr-x 2 yoshi yoshi   4096 Feb  8 23:47 bin
--rw-r--r-- 1 yoshi yoshi  18027 Feb  1 23:30 LICENSE
--rw-r--r-- 1 yoshi yoshi      0 Feb  8 23:47 ls.script
--rw-r--r-- 1 yoshi yoshi    224 Feb  8 11:50 Makefile
--rw-r--r-- 1 yoshi yoshi    462 Feb  8 11:50 README.md
--rw-r--r-- 1 yoshi yoshi   2423 Feb  8 11:50 rshell.script
-drwxr-xr-x 2 yoshi yoshi   4096 Feb  8 23:46 src
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -alR
-.:
-drwxr-xr-x 5 yoshi yoshi   4096 Feb  8 23:47 .
-drwxr-xr-x 3 yoshi yoshi   4096 Feb  8 23:34 ..
-drwxr-xr-x 8 yoshi yoshi   4096 Feb  8 23:40 .git
-drwxr-xr-x 2 yoshi yoshi   4096 Feb  8 23:47 bin
--rw-r--r-- 1 yoshi yoshi  18027 Feb  1 23:30 LICENSE
--rw-r--r-- 1 yoshi yoshi      0 Feb  8 23:47 ls.script
--rw-r--r-- 1 yoshi yoshi    224 Feb  8 11:50 Makefile
--rw-r--r-- 1 yoshi yoshi    462 Feb  8 11:50 README.md
--rw-r--r-- 1 yoshi yoshi   2423 Feb  8 11:50 rshell.script
-drwxr-xr-x 2 yoshi yoshi   4096 Feb  8 23:46 src
-
-./.git:
-drwxr-xr-x 5 yoshi yoshi   4096 Feb  8 23:47 .
-drwxr-xr-x 3 yoshi yoshi   4096 Feb  8 23:34 ..
-stat failed: No such file or directory
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -aR
-.:
-.  ..  .git  bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-
-./.git:
-.  ..  branches  COMMIT_EDITMSG  config  description  FETCH_HEAD  HEAD  hooks  index  info  logs  objects  ORIG_HEAD  packed-refs  refs  TAG_EDITMSG  
-
-./bin:
-.  ..  ls  rshell  
-
-./src:
-.  ..  ls.cpp  rshell.cpp  
-
-./.git/branches:
-.  ..  
-
-./.git/hooks:
-.  ..  applypatch-msg.sample  commit-msg.sample  post-update.sample  pre-applypatch.sample  pre-commit.sample  pre-push.sample  pre-rebase.sample  prepare-commit-msg.sample  update.sample  
-
-./.git/info:
-.  ..  exclude  
-
-./.git/logs:
-.  ..  HEAD  refs  
-
-./.git/objects:
-.  ..  01  02  05  07  09  0a  0c  15  18  1a  1b  1c  1d  21  26  2c  2f  30  31  32  35  38  39  3a  3e  3f  40  43  46  4a  4b  51  52  54  55  58  59  5b  5c  5d  5e  5f  60  64  66  67  68  6b  6c  6e  70  74  7d  7f  81  82  85  86  89  93  94  96  9b  9c  9d  9e  a1  a2  a5  a6  a7  a9  ae  b0  b1  b4  b5  b7  b9  ba  bb  bd  bf  c1  c3  c6  cb  cc  d6  d7  d9  dc  dd  df  e0  e2  e3  e4  e5  e6  ed  f0  f2  f3  f5  f6  f8  f9  fc  ff  info  pack  
-
-./.git/refs:
-.  ..  heads  remotes  tags  
-
-./.git/logs/refs:
-.  ..  heads  remotes  
-
-./.git/objects/01:
-.  ..  6c70dff36bbb92b74c41ad02f06d42857f6697  
-
-./.git/objects/02:
-.  ..  01cb13422dfb5833c16b8bb7f561c16cfe8bd4  
-
-./.git/objects/05:
-.  ..  9a8204ba5e18deebf185e8bab6a417baa245e2  
-
-./.git/objects/07:
-.  ..  771028e33fe3d6d58d50674b018246ad559bcc  
-
-./.git/objects/09:
-.  ..  6fc78ceabc918bc1cd8738ff6ca7e1950a8435  7f51d9c367ce117d3a8ee5dd18b683ea63057a  cd5de3a47b877c22d72759218f8ebeac30a9f1  
-
-./.git/objects/0a:
-.  ..  f669b84c33344b4a82f9a001bafc8aa7e31c53  
-
-./.git/objects/0c:
-.  ..  fce3fe4bf6a81996a0ff98b901142eff1d4acf  
-
-./.git/objects/15:
-.  ..  90e854a03a0a55ffc51fb60fd11e022286b9cd  
-
-./.git/objects/18:
-.  ..  c09b9ed9a77ca45f7edec3956cb55d0cb6cb3b  
-
-./.git/objects/1a:
-.  ..  9030b7328135ed2f8794c14df997e60abcf625  c2b7ad929c5cec2fbc0818d4380e3d23ca64e2  
-
-./.git/objects/1b:
-.  ..  b1b47e570bea1d4dfba36cd3fe95fe0256a53c  f09bf99d43af774b3fd8d2322d2fe55d3be258  f5ef8a3318950b4b316d8796fed96594a28cae  
-
-./.git/objects/1c:
-.  ..  96f9d1a3f15e8e1287f6d2b7da8517c0fa22ce  
-
-./.git/objects/1d:
-.  ..  6d9cab3b7c7d59d9cca1d5e7883f6f228a9bed  
-
-./.git/objects/21:
-.  ..  57e7d7a800c100ac4fe9e5c246004f956fcbde  
-
-./.git/objects/26:
-.  ..  40d9a898425bf47ac487c79e644ad656dcfae3  
-
-./.git/objects/2c:
-.  ..  0fd6cfba1525b357944baedffd9a61ebcd1efd  
-
-./.git/objects/2f:
-.  ..  7596ec2f711d84bd67f91959c40e84cd47d495  
-
-./.git/objects/30:
-.  ..  3bc39e9a915193b5ff91bbce89cb0512775714  
-
-./.git/objects/31:
-.  ..  f5fefa97238423f354983fd729b9bf1e13ceca  
-
-./.git/objects/32:
-.  ..  56460a04994a9052da23683a7f51dcd8b89ce3  f7faba856fe9329e691c2e98c85e2ee6cb6787  
-
-./.git/objects/35:
-.  ..  ccd463d3a1ac6f99ec03a4705b0cad983435a8  
-
-./.git/objects/38:
-.  ..  030a6bd6707e9f9714ba5ee0ec3fe9d3f9b35a  
-
-./.git/objects/39:
-.  ..  1c70cb39430f6b85be99fe88e81601c73b1ce4  
-
-./.git/objects/3a:
-.  ..  a1dcbd85da6775a6308c43c560cc6b81b4d33e  aa262a21001ed693a5e50076dea75b66fb5b8e  
-
-./.git/objects/3e:
-.  ..  2cebe0ac58def14c00f88a4a8ec411b912d9aa  
-
-./.git/objects/3f:
-.  ..  4b9b4f9b53bcbcbe3c9cee8b8a38614dfb502b  a64312be32a2faa4a9ed84e18684cad80106ad  
-
-./.git/objects/40:
-.  ..  7779c26b4a04ccfc45c4b872df8c9fb3b68ea5  
-
-./.git/objects/43:
-.  ..  c358cb741f36e38612cebb1b15356aa9424a7c  
-
-./.git/objects/46:
-.  ..  e8b8147dd3111183fe1abec6965167eb8f0976  
-
-./.git/objects/4a:
-.  ..  a1e0344e471e7ad1911631d985c58b9a68b982  e75393b41064112017b37e594ba11f2d860523  
-
-./.git/objects/4b:
-.  ..  4e81352b9f010ef94abbca4cfa80a41864ffad  85346619b9bc02f6180871b97b080d37346f4a  
-
-./.git/objects/51:
-.  ..  4430c4c6073d129408823bc808d337c551c1da  
-
-./.git/objects/52:
-.  ..  d2a08a6c2f1e46d84c8d2f61ee382d0ce7f610  
-
-./.git/objects/54:
-.  ..  9a9f01a2a478fa67e3d9a8c860923f6b88096e  e71072bcec6a2bd780a7ff214b0f0ac37154c3  
-
-./.git/objects/55:
-.  ..  61b657df0c72d1523e28fb7e1cb9b87227087a  
-
-./.git/objects/58:
-.  ..  6a76610c4322fcfb9138d4b0f443bc6011906a  
-
-./.git/objects/59:
-.  ..  a15c7de23962b75eb192d0e965ed1dfcf9f10b  
-
-./.git/objects/5b:
-.  ..  d9c0b5091b4617f8107a927e97a77678611620  
-
-./.git/objects/5c:
-.  ..  571745334ea87cfe1b3c8b5ea7c0b0097c9e41  9a61df154a6ba13d39578f730a2a26a5d4f564  
-
-./.git/objects/5d:
-.  ..  579146d9942dcd272791d9b5347c5bc630c4d5  97af31598fc6d118f5c8dab0639db5dd2c0d0f  
-
-./.git/objects/5e:
-.  ..  64cb3e57ea27a1bc7dee84173b392861acff78  
-
-./.git/objects/5f:
-.  ..  412dc36a6922c51c343b1e98249ed28b3ac6f8  
-
-./.git/objects/60:
-.  ..  3bdcaa5064d17e1a2eee823fa47fc9d484c09d  
-
-./.git/objects/64:
-.  ..  03150be767ba65d4386abcfedd477b4e8430ac  
-
-./.git/objects/66:
-.  ..  cd8427d081b3f83a288bb9c3d98b8bd9628db2  
-
-./.git/objects/67:
-.  ..  1076600d84c03ccbbe3af15516bddddce233b0  c3a21382d97fc8ab1000ca3136c8c5a079a1e5  
-
-./.git/objects/68:
-.  ..  f7d30f23daf6c849b53af41cfb9c58ba593fb1  
-
-./.git/objects/6b:
-.  ..  83d48307cdf189a27005bd8fc13efa0aab721d  8d5099904874b94de0ccd36986e0b91f0ba98e  eef64314acc39ec71d5c2f5b165229bb2d84cd  
-
-./.git/objects/6c:
-.  ..  92b5b3c18e404aa43edf76a061d346b24047f2  
-
-./.git/objects/6e:
-.  ..  57e7bf01febbaf8eb46f9d9caddee71d08b5d7  
-
-./.git/objects/70:
-.  ..  2e00032ebf55952bae197639ab6728fed1b71d  
-
-./.git/objects/74:
-.  ..  41f093f4513b7af648a857302fb1b2796e8c4c  
-
-./.git/objects/7d:
-.  ..  39a1e0224913bd6b530800c3f05d6c55dc5b53  4f27d12ff2c761d0fd84e689dcf3ff296b126c  
-
-./.git/objects/7f:
-.  ..  09857d85e6e49b21cdd145a7e6a826d337e332  
-
-./.git/objects/81:
-.  ..  198b3cbfd050cdc47e8923afbf5363cd1ccae5  303a10ca52243c69a21e60507c8d40c6f78f55  452697ebdc0f4bb2a53dbc54ed5ded8e75381f  f77c41f5b5c2ea284d4bce9296468a04cb20e8  
-
-./.git/objects/82:
-.  ..  ff152e1fa706bc098edec499e01d3e57f53a9b  
-
-./.git/objects/85:
-.  ..  4bd625e132d006bbff7b552c91f1664d61e518  
-
-./.git/objects/86:
-.  ..  73bb640cf269ab9741e516b81709ef1f9fdfa4  
-
-./.git/objects/89:
-.  ..  d78a7b3e49d2144949c41ecb65d0b0366459a8  
-
-./.git/objects/93:
-.  ..  1d6ca760d8cccb505ee40ac170e4e6fab1211f  9d97a0f7db4202391e44571c4e0bc3d2266e22  
-
-./.git/objects/94:
-.  ..  295cd1c10a569fd4cf7cc922982b5d413ad493  
-
-./.git/objects/96:
-.  ..  740d40de9c7a6a85c08f707dfd4aff97627786  
-
-./.git/objects/9b:
-.  ..  0d954bf1f63b4879dce6d7f01e04048f753e4b  
-
-./.git/objects/9c:
-.  ..  776abe663038d1b2880ac1b7afa9e2dac99a08  e32d9ee93f1bd00fff214e29633ce096b912f2  
-
-./.git/objects/9d:
-.  ..  b2c2b658747d89688dc239e9609aa281e4d34b  
-
-./.git/objects/9e:
-.  ..  87cfe4650a90d7bfb996694cc048ad5f46c5fd  c3f72076be39b5c26768eb44ba3be6c3d97ca3  
-
-./.git/objects/a1:
-.  ..  63cb1961c54b708f870ddd8a33c8c3f224fe05  
-
-./.git/objects/a2:
-.  ..  803cd9945d7e535ea6970f4525489422411e17  a1366e098e389c1fb0ebfafb7720f64316d2c4  
-
-./.git/objects/a5:
-.  ..  80b5c1cc4805b7db4e7bde11e8f35f838bfd43  85d052ca5d2fe8e1f4f0e5b7b8c8dbecdca56b  ac1a47dc0c03601fa1d18b28146d8bf6ad3283  
-
-./.git/objects/a6:
-.  ..  31eb96563e3093438913d9f96cbf456ebc9f73  7f87db0c3518823f3c268268081f72231fcdd1  
-
-./.git/objects/a7:
-.  ..  6362193e637d15554232a48c3f71e801c2976e  
-
-./.git/objects/a9:
-.  ..  e26381d6338b00cf403612f31f596670d7c4ec  
-
-./.git/objects/ae:
-.  ..  4c1e6560f5095f5a7153bda7e7263c103fb487  
-
-./.git/objects/b0:
-.  ..  71daa90f18fe46ca489f0aa15f347386bfa0f4  
-
-./.git/objects/b1:
-.  ..  8646583d5102d8873d31d6c00adfbaac1e8a87  9f111353094cad0ce319b4f98468b561edc4b8  
-
-./.git/objects/b4:
-.  ..  0f13532522cff8a74d19df5a02de0601a2bf50  0fac867890af40af7722d2311a937cb83b9706  cb63242c42e165b38d0fc7401a7222d1dabbc3  
-
-./.git/objects/b5:
-.  ..  a9f70c2b21f2d3a97002c2f3b70c013e3cca1a  
-
-./.git/objects/b7:
-.  ..  36909fd3aad6642a82c3a2e84479f546c3c081  
-
-./.git/objects/b9:
-.  ..  fbfadc2a3bc2a2a1dcc7ee1a633d1eed65a895  
-
-./.git/objects/ba:
-.  ..  261b2d93e2f7aeb6a843fa9b724866f7fa9e5c  c2af21d8bd1da2a9f4cbc7d96e20cab6983e3f  
-
-./.git/objects/bb:
-.  ..  ee33655c6772b801f043cb031fb7c8a986c266  
-
-./.git/objects/bd:
-.  ..  0aaa4e514ef044219d68e086c3b1c274489f79  9cb7a8f6ca0238aedad4564613142d744e5b47  
-
-./.git/objects/bf:
-.  ..  bd1f91b51b5fd5df2d42020f1a6523454c304a  
-
-./.git/objects/c1:
-.  ..  777ba9c25c340716fe7f0ba7577b3fc684f631  
-
-./.git/objects/c3:
-.  ..  6e863886a5e008fa88b2e7d02c06c22daafa00  
-
-./.git/objects/c6:
-.  ..  90f9f8c6271333471f52bb6de85f76f186ce17  
-
-./.git/objects/cb:
-.  ..  99d27c3833f708ed65668be5ebceecff30be3f  
-
-./.git/objects/cc:
-.  ..  f1a85289fc3778799f380d7253c40f03c927b2  
-
-./.git/objects/d6:
-.  ..  a93266f748d606b884f9434ff662fe80b9dc21  eb9be76d4d887a60c0a75bb1914c666c0e9ac3  
-
-./.git/objects/d7:
-.  ..  df2a935bfbb71118832245bbcab80acc4df702  
-
-./.git/objects/d9:
-.  ..  730c16eb46386eb6ed0c7ce50a74745c600ccc  8f99426d3ba5385c88673c432f25bf7ea967e8  
-
-./.git/objects/dc:
-.  ..  46a94832fc89a12ce7bdefb3318066c3910973  ac09d3542b466b12fb0cb64e483ca9d97a0b2a  
-
-./.git/objects/dd:
-.  ..  b618342e805e00e97b83fa0411500b0c3b6d7c  e8338143b194a5955aa49ee79337ffc6612605  f3d9e0f474afcc04f5230f0755110e5cb6e721  
-
-./.git/objects/df:
-.  ..  2199f3e7466d3c6d77fb7b6e2d3d2c6fd037e1  752a03d1c8cbef8faf1fa7c895377c90c786a2  
-
-./.git/objects/e0:
-.  ..  32bd3792e3b531f0bda7f369a149b9961bd79f  b8c88c749864d302b1d6cdbc39e9a71bd1ec27  
-
-./.git/objects/e2:
-.  ..  057fe5069128712b3f45bdcdabb77a9026c291  efabc0352d512368f041301b1f00dc55b25e82  
-
-./.git/objects/e3:
-.  ..  01ac92b6fbb9e3bf320901e6dd12828c91d7bf  
-
-./.git/objects/e4:
-.  ..  68ca2f599c9c2448924f2ac5bb142162ae3bc6  
-
-./.git/objects/e5:
-.  ..  90996bfedc065a3953b266ddffb056e388925b  d129c309546c07a04b6e4a3aee7e234961d360  
-
-./.git/objects/e6:
-.  ..  368f46526f42818b0c52aa46c90dc923faa578  
-
-./.git/objects/ed:
-.  ..  914de40fb7ce391b932dd757c68cd040b93f4b  f052c47dcff9673d94e878349a15367f7d8c3b  
-
-./.git/objects/f0:
-.  ..  b094602e180d35cc138cb7b0bb8eebbace6273  c96adaba412ec1a6a1ddb6af5775651ba8dcda  
-
-./.git/objects/f2:
-.  ..  19bbe697f4105894c48b9892339948d058d9ba  
-
-./.git/objects/f3:
-.  ..  aa20147e8adc277d957e9cc77b4549fb54d850  
-
-./.git/objects/f5:
-.  ..  361cb6220915daa8e1040fd4f7a72150a099f7  d4733941f7e794f1ae0e026461348a532e08c9  
-
-./.git/objects/f6:
-.  ..  0d63bd85221b76a2151f2a97f11ef71e5a159f  7d56ce74a177a744755f9dea4e8ebfa3b7c9fa  
-
-./.git/objects/f8:
-.  ..  bfcb6735fcdedf99324a12f924855bb2a9651e  
-
-./.git/objects/f9:
-.  ..  4a0179e4d2c5dff5b992408795d0a5f4b6ff76  d88b1738341f5f8776f4277e5c6364f1136486  
-
-./.git/objects/fc:
-.  ..  7c0a2a083128366ef0d35123754e86eb8a644b  
-
-./.git/objects/ff:
-.  ..  0309b5b8affff7dbbfe92b864f6a7bf3c5b321  4270ef5b46166604f85dabfe2a46ae50b0d811  
-
-./.git/objects/info:
-.  ..  
-
-./.git/objects/pack:
-.  ..  
-
-./.git/refs/heads:
-.  ..  ls  master  origin  
-
-./.git/refs/remotes:
-.  ..  origin  
-
-./.git/refs/tags:
-.  ..  hw1  
-
-./.git/logs/refs/heads:
-.  ..  ls  master  origin  
-
-./.git/logs/refs/remotes:
-.  ..  origin  
-
-./.git/refs/heads/origin:
-.  ..  
-
-./.git/refs/remotes/origin:
-.  ..  exec  HEAD  master  
-
-./.git/logs/refs/heads/origin:
-.  ..  
-
-./.git/logs/refs/remotes/origin:
-.  ..  exec  HEAD  master  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -[K[K[K[K[K[K#it seems like my -l is messed up, i will fis[Kx it later
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m #on[K[Kno time for now
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -Ra
-.:
-.  ..  .git  bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-
-./.git:
-.  ..  branches  COMMIT_EDITMSG  config  description  FETCH_HEAD  HEAD  hooks  index  info  logs  objects  ORIG_HEAD  packed-refs  refs  TAG_EDITMSG  
-
-./bin:
-.  ..  ls  rshell  
-
-./src:
-.  ..  ls.cpp  rshell.cpp  
-
-./.git/branches:
-.  ..  
-
-./.git/hooks:
-.  ..  applypatch-msg.sample  commit-msg.sample  post-update.sample  pre-applypatch.sample  pre-commit.sample  pre-push.sample  pre-rebase.sample  prepare-commit-msg.sample  update.sample  
-
-./.git/info:
-.  ..  exclude  
-
-./.git/logs:
-.  ..  HEAD  refs  
-
-./.git/objects:
-.  ..  01  02  05  07  09  0a  0c  15  18  1a  1b  1c  1d  21  26  2c  2f  30  31  32  35  38  39  3a  3e  3f  40  43  46  4a  4b  51  52  54  55  58  59  5b  5c  5d  5e  5f  60  64  66  67  68  6b  6c  6e  70  74  7d  7f  81  82  85  86  89  93  94  96  9b  9c  9d  9e  a1  a2  a5  a6  a7  a9  ae  b0  b1  b4  b5  b7  b9  ba  bb  bd  bf  c1  c3  c6  cb  cc  d6  d7  d9  dc  dd  df  e0  e2  e3  e4  e5  e6  ed  f0  f2  f3  f5  f6  f8  f9  fc  ff  info  pack  
-
-./.git/refs:
-.  ..  heads  remotes  tags  
-
-./.git/logs/refs:
-.  ..  heads  remotes  
-
-./.git/objects/01:
-.  ..  6c70dff36bbb92b74c41ad02f06d42857f6697  
-
-./.git/objects/02:
-.  ..  01cb13422dfb5833c16b8bb7f561c16cfe8bd4  
-
-./.git/objects/05:
-.  ..  9a8204ba5e18deebf185e8bab6a417baa245e2  
-
-./.git/objects/07:
-.  ..  771028e33fe3d6d58d50674b018246ad559bcc  
-
-./.git/objects/09:
-.  ..  6fc78ceabc918bc1cd8738ff6ca7e1950a8435  7f51d9c367ce117d3a8ee5dd18b683ea63057a  cd5de3a47b877c22d72759218f8ebeac30a9f1  
-
-./.git/objects/0a:
-.  ..  f669b84c33344b4a82f9a001bafc8aa7e31c53  
-
-./.git/objects/0c:
-.  ..  fce3fe4bf6a81996a0ff98b901142eff1d4acf  
-
-./.git/objects/15:
-.  ..  90e854a03a0a55ffc51fb60fd11e022286b9cd  
-
-./.git/objects/18:
-.  ..  c09b9ed9a77ca45f7edec3956cb55d0cb6cb3b  
-
-./.git/objects/1a:
-.  ..  9030b7328135ed2f8794c14df997e60abcf625  c2b7ad929c5cec2fbc0818d4380e3d23ca64e2  
-
-./.git/objects/1b:
-.  ..  b1b47e570bea1d4dfba36cd3fe95fe0256a53c  f09bf99d43af774b3fd8d2322d2fe55d3be258  f5ef8a3318950b4b316d8796fed96594a28cae  
-
-./.git/objects/1c:
-.  ..  96f9d1a3f15e8e1287f6d2b7da8517c0fa22ce  
-
-./.git/objects/1d:
-.  ..  6d9cab3b7c7d59d9cca1d5e7883f6f228a9bed  
-
-./.git/objects/21:
-.  ..  57e7d7a800c100ac4fe9e5c246004f956fcbde  
-
-./.git/objects/26:
-.  ..  40d9a898425bf47ac487c79e644ad656dcfae3  
-
-./.git/objects/2c:
-.  ..  0fd6cfba1525b357944baedffd9a61ebcd1efd  
-
-./.git/objects/2f:
-.  ..  7596ec2f711d84bd67f91959c40e84cd47d495  
-
-./.git/objects/30:
-.  ..  3bc39e9a915193b5ff91bbce89cb0512775714  
-
-./.git/objects/31:
-.  ..  f5fefa97238423f354983fd729b9bf1e13ceca  
-
-./.git/objects/32:
-.  ..  56460a04994a9052da23683a7f51dcd8b89ce3  f7faba856fe9329e691c2e98c85e2ee6cb6787  
-
-./.git/objects/35:
-.  ..  ccd463d3a1ac6f99ec03a4705b0cad983435a8  
-
-./.git/objects/38:
-.  ..  030a6bd6707e9f9714ba5ee0ec3fe9d3f9b35a  
-
-./.git/objects/39:
-.  ..  1c70cb39430f6b85be99fe88e81601c73b1ce4  
-
-./.git/objects/3a:
-.  ..  a1dcbd85da6775a6308c43c560cc6b81b4d33e  aa262a21001ed693a5e50076dea75b66fb5b8e  
-
-./.git/objects/3e:
-.  ..  2cebe0ac58def14c00f88a4a8ec411b912d9aa  
-
-./.git/objects/3f:
-.  ..  4b9b4f9b53bcbcbe3c9cee8b8a38614dfb502b  a64312be32a2faa4a9ed84e18684cad80106ad  
-
-./.git/objects/40:
-.  ..  7779c26b4a04ccfc45c4b872df8c9fb3b68ea5  
-
-./.git/objects/43:
-.  ..  c358cb741f36e38612cebb1b15356aa9424a7c  
-
-./.git/objects/46:
-.  ..  e8b8147dd3111183fe1abec6965167eb8f0976  
-
-./.git/objects/4a:
-.  ..  a1e0344e471e7ad1911631d985c58b9a68b982  e75393b41064112017b37e594ba11f2d860523  
-
-./.git/objects/4b:
-.  ..  4e81352b9f010ef94abbca4cfa80a41864ffad  85346619b9bc02f6180871b97b080d37346f4a  
-
-./.git/objects/51:
-.  ..  4430c4c6073d129408823bc808d337c551c1da  
-
-./.git/objects/52:
-.  ..  d2a08a6c2f1e46d84c8d2f61ee382d0ce7f610  
-
-./.git/objects/54:
-.  ..  9a9f01a2a478fa67e3d9a8c860923f6b88096e  e71072bcec6a2bd780a7ff214b0f0ac37154c3  
-
-./.git/objects/55:
-.  ..  61b657df0c72d1523e28fb7e1cb9b87227087a  
-
-./.git/objects/58:
-.  ..  6a76610c4322fcfb9138d4b0f443bc6011906a  
-
-./.git/objects/59:
-.  ..  a15c7de23962b75eb192d0e965ed1dfcf9f10b  
-
-./.git/objects/5b:
-.  ..  d9c0b5091b4617f8107a927e97a77678611620  
-
-./.git/objects/5c:
-.  ..  571745334ea87cfe1b3c8b5ea7c0b0097c9e41  9a61df154a6ba13d39578f730a2a26a5d4f564  
-
-./.git/objects/5d:
-.  ..  579146d9942dcd272791d9b5347c5bc630c4d5  97af31598fc6d118f5c8dab0639db5dd2c0d0f  
-
-./.git/objects/5e:
-.  ..  64cb3e57ea27a1bc7dee84173b392861acff78  
-
-./.git/objects/5f:
-.  ..  412dc36a6922c51c343b1e98249ed28b3ac6f8  
-
-./.git/objects/60:
-.  ..  3bdcaa5064d17e1a2eee823fa47fc9d484c09d  
-
-./.git/objects/64:
-.  ..  03150be767ba65d4386abcfedd477b4e8430ac  
-
-./.git/objects/66:
-.  ..  cd8427d081b3f83a288bb9c3d98b8bd9628db2  
-
-./.git/objects/67:
-.  ..  1076600d84c03ccbbe3af15516bddddce233b0  c3a21382d97fc8ab1000ca3136c8c5a079a1e5  
-
-./.git/objects/68:
-.  ..  f7d30f23daf6c849b53af41cfb9c58ba593fb1  
-
-./.git/objects/6b:
-.  ..  83d48307cdf189a27005bd8fc13efa0aab721d  8d5099904874b94de0ccd36986e0b91f0ba98e  eef64314acc39ec71d5c2f5b165229bb2d84cd  
-
-./.git/objects/6c:
-.  ..  92b5b3c18e404aa43edf76a061d346b24047f2  
-
-./.git/objects/6e:
-.  ..  57e7bf01febbaf8eb46f9d9caddee71d08b5d7  
-
-./.git/objects/70:
-.  ..  2e00032ebf55952bae197639ab6728fed1b71d  
-
-./.git/objects/74:
-.  ..  41f093f4513b7af648a857302fb1b2796e8c4c  
-
-./.git/objects/7d:
-.  ..  39a1e0224913bd6b530800c3f05d6c55dc5b53  4f27d12ff2c761d0fd84e689dcf3ff296b126c  
-
-./.git/objects/7f:
-.  ..  09857d85e6e49b21cdd145a7e6a826d337e332  
-
-./.git/objects/81:
-.  ..  198b3cbfd050cdc47e8923afbf5363cd1ccae5  303a10ca52243c69a21e60507c8d40c6f78f55  452697ebdc0f4bb2a53dbc54ed5ded8e75381f  f77c41f5b5c2ea284d4bce9296468a04cb20e8  
-
-./.git/objects/82:
-.  ..  ff152e1fa706bc098edec499e01d3e57f53a9b  
-
-./.git/objects/85:
-.  ..  4bd625e132d006bbff7b552c91f1664d61e518  
-
-./.git/objects/86:
-.  ..  73bb640cf269ab9741e516b81709ef1f9fdfa4  
-
-./.git/objects/89:
-.  ..  d78a7b3e49d2144949c41ecb65d0b0366459a8  
-
-./.git/objects/93:
-.  ..  1d6ca760d8cccb505ee40ac170e4e6fab1211f  9d97a0f7db4202391e44571c4e0bc3d2266e22  
-
-./.git/objects/94:
-.  ..  295cd1c10a569fd4cf7cc922982b5d413ad493  
-
-./.git/objects/96:
-.  ..  740d40de9c7a6a85c08f707dfd4aff97627786  
-
-./.git/objects/9b:
-.  ..  0d954bf1f63b4879dce6d7f01e04048f753e4b  
-
-./.git/objects/9c:
-.  ..  776abe663038d1b2880ac1b7afa9e2dac99a08  e32d9ee93f1bd00fff214e29633ce096b912f2  
-
-./.git/objects/9d:
-.  ..  b2c2b658747d89688dc239e9609aa281e4d34b  
-
-./.git/objects/9e:
-.  ..  87cfe4650a90d7bfb996694cc048ad5f46c5fd  c3f72076be39b5c26768eb44ba3be6c3d97ca3  
-
-./.git/objects/a1:
-.  ..  63cb1961c54b708f870ddd8a33c8c3f224fe05  
-
-./.git/objects/a2:
-.  ..  803cd9945d7e535ea6970f4525489422411e17  a1366e098e389c1fb0ebfafb7720f64316d2c4  
-
-./.git/objects/a5:
-.  ..  80b5c1cc4805b7db4e7bde11e8f35f838bfd43  85d052ca5d2fe8e1f4f0e5b7b8c8dbecdca56b  ac1a47dc0c03601fa1d18b28146d8bf6ad3283  
-
-./.git/objects/a6:
-.  ..  31eb96563e3093438913d9f96cbf456ebc9f73  7f87db0c3518823f3c268268081f72231fcdd1  
-
-./.git/objects/a7:
-.  ..  6362193e637d15554232a48c3f71e801c2976e  
-
-./.git/objects/a9:
-.  ..  e26381d6338b00cf403612f31f596670d7c4ec  
-
-./.git/objects/ae:
-.  ..  4c1e6560f5095f5a7153bda7e7263c103fb487  
-
-./.git/objects/b0:
-.  ..  71daa90f18fe46ca489f0aa15f347386bfa0f4  
-
-./.git/objects/b1:
-.  ..  8646583d5102d8873d31d6c00adfbaac1e8a87  9f111353094cad0ce319b4f98468b561edc4b8  
-
-./.git/objects/b4:
-.  ..  0f13532522cff8a74d19df5a02de0601a2bf50  0fac867890af40af7722d2311a937cb83b9706  cb63242c42e165b38d0fc7401a7222d1dabbc3  
-
-./.git/objects/b5:
-.  ..  a9f70c2b21f2d3a97002c2f3b70c013e3cca1a  
-
-./.git/objects/b7:
-.  ..  36909fd3aad6642a82c3a2e84479f546c3c081  
-
-./.git/objects/b9:
-.  ..  fbfadc2a3bc2a2a1dcc7ee1a633d1eed65a895  
-
-./.git/objects/ba:
-.  ..  261b2d93e2f7aeb6a843fa9b724866f7fa9e5c  c2af21d8bd1da2a9f4cbc7d96e20cab6983e3f  
-
-./.git/objects/bb:
-.  ..  ee33655c6772b801f043cb031fb7c8a986c266  
-
-./.git/objects/bd:
-.  ..  0aaa4e514ef044219d68e086c3b1c274489f79  9cb7a8f6ca0238aedad4564613142d744e5b47  
-
-./.git/objects/bf:
-.  ..  bd1f91b51b5fd5df2d42020f1a6523454c304a  
-
-./.git/objects/c1:
-.  ..  777ba9c25c340716fe7f0ba7577b3fc684f631  
-
-./.git/objects/c3:
-.  ..  6e863886a5e008fa88b2e7d02c06c22daafa00  
-
-./.git/objects/c6:
-.  ..  90f9f8c6271333471f52bb6de85f76f186ce17  
-
-./.git/objects/cb:
-.  ..  99d27c3833f708ed65668be5ebceecff30be3f  
-
-./.git/objects/cc:
-.  ..  f1a85289fc3778799f380d7253c40f03c927b2  
-
-./.git/objects/d6:
-.  ..  a93266f748d606b884f9434ff662fe80b9dc21  eb9be76d4d887a60c0a75bb1914c666c0e9ac3  
-
-./.git/objects/d7:
-.  ..  df2a935bfbb71118832245bbcab80acc4df702  
-
-./.git/objects/d9:
-.  ..  730c16eb46386eb6ed0c7ce50a74745c600ccc  8f99426d3ba5385c88673c432f25bf7ea967e8  
-
-./.git/objects/dc:
-.  ..  46a94832fc89a12ce7bdefb3318066c3910973  ac09d3542b466b12fb0cb64e483ca9d97a0b2a  
-
-./.git/objects/dd:
-.  ..  b618342e805e00e97b83fa0411500b0c3b6d7c  e8338143b194a5955aa49ee79337ffc6612605  f3d9e0f474afcc04f5230f0755110e5cb6e721  
-
-./.git/objects/df:
-.  ..  2199f3e7466d3c6d77fb7b6e2d3d2c6fd037e1  752a03d1c8cbef8faf1fa7c895377c90c786a2  
-
-./.git/objects/e0:
-.  ..  32bd3792e3b531f0bda7f369a149b9961bd79f  b8c88c749864d302b1d6cdbc39e9a71bd1ec27  
-
-./.git/objects/e2:
-.  ..  057fe5069128712b3f45bdcdabb77a9026c291  efabc0352d512368f041301b1f00dc55b25e82  
-
-./.git/objects/e3:
-.  ..  01ac92b6fbb9e3bf320901e6dd12828c91d7bf  
-
-./.git/objects/e4:
-.  ..  68ca2f599c9c2448924f2ac5bb142162ae3bc6  
-
-./.git/objects/e5:
-.  ..  90996bfedc065a3953b266ddffb056e388925b  d129c309546c07a04b6e4a3aee7e234961d360  
-
-./.git/objects/e6:
-.  ..  368f46526f42818b0c52aa46c90dc923faa578  
-
-./.git/objects/ed:
-.  ..  914de40fb7ce391b932dd757c68cd040b93f4b  f052c47dcff9673d94e878349a15367f7d8c3b  
-
-./.git/objects/f0:
-.  ..  b094602e180d35cc138cb7b0bb8eebbace6273  c96adaba412ec1a6a1ddb6af5775651ba8dcda  
-
-./.git/objects/f2:
-.  ..  19bbe697f4105894c48b9892339948d058d9ba  
-
-./.git/objects/f3:
-.  ..  aa20147e8adc277d957e9cc77b4549fb54d850  
-
-./.git/objects/f5:
-.  ..  361cb6220915daa8e1040fd4f7a72150a099f7  d4733941f7e794f1ae0e026461348a532e08c9  
-
-./.git/objects/f6:
-.  ..  0d63bd85221b76a2151f2a97f11ef71e5a159f  7d56ce74a177a744755f9dea4e8ebfa3b7c9fa  
-
-./.git/objects/f8:
-.  ..  bfcb6735fcdedf99324a12f924855bb2a9651e  
-
-./.git/objects/f9:
-.  ..  4a0179e4d2c5dff5b992408795d0a5f4b6ff76  d88b1738341f5f8776f4277e5c6364f1136486  
-
-./.git/objects/fc:
-.  ..  7c0a2a083128366ef0d35123754e86eb8a644b  
-
-./.git/objects/ff:
-.  ..  0309b5b8affff7dbbfe92b864f6a7bf3c5b321  4270ef5b46166604f85dabfe2a46ae50b0d811  
-
-./.git/objects/info:
-.  ..  
-
-./.git/objects/pack:
-.  ..  
-
-./.git/refs/heads:
-.  ..  ls  master  origin  
-
-./.git/refs/remotes:
-.  ..  origin  
-
-./.git/refs/tags:
-.  ..  hw1  
-
-./.git/logs/refs/heads:
-.  ..  ls  master  origin  
-
-./.git/logs/refs/remotes:
-.  ..  origin  
-
-./.git/refs/heads/origin:
-.  ..  
-
-./.git/refs/remotes/origin:
-.  ..  exec  HEAD  master  
-
-./.git/logs/refs/heads/origin:
-.  ..  
-
-./.git/logs/refs/remotes/origin:
-.  ..  exec  HEAD  master  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -a
-.  ..  .git  bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test[K[K[K[K#testing mul[K[K[Kseparate option flags
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -a -r
-invalid option: r
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -a -r[KR
-.:
-.  ..  .git  bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-
-./.git:
-.  ..  branches  COMMIT_EDITMSG  config  description  FETCH_HEAD  HEAD  hooks  index  info  logs  objects  ORIG_HEAD  packed-refs  refs  TAG_EDITMSG  
-
-./bin:
-.  ..  ls  rshell  
-
-./src:
-.  ..  ls.cpp  rshell.cpp  
-
-./.git/branches:
-.  ..  
-
-./.git/hooks:
-.  ..  applypatch-msg.sample  commit-msg.sample  post-update.sample  pre-applypatch.sample  pre-commit.sample  pre-push.sample  pre-rebase.sample  prepare-commit-msg.sample  update.sample  
-
-./.git/info:
-.  ..  exclude  
-
-./.git/logs:
-.  ..  HEAD  refs  
-
-./.git/objects:
-.  ..  01  02  05  07  09  0a  0c  15  18  1a  1b  1c  1d  21  26  2c  2f  30  31  32  35  38  39  3a  3e  3f  40  43  46  4a  4b  51  52  54  55  58  59  5b  5c  5d  5e  5f  60  64  66  67  68  6b  6c  6e  70  74  7d  7f  81  82  85  86  89  93  94  96  9b  9c  9d  9e  a1  a2  a5  a6  a7  a9  ae  b0  b1  b4  b5  b7  b9  ba  bb  bd  bf  c1  c3  c6  cb  cc  d6  d7  d9  dc  dd  df  e0  e2  e3  e4  e5  e6  ed  f0  f2  f3  f5  f6  f8  f9  fc  ff  info  pack  
-
-./.git/refs:
-.  ..  heads  remotes  tags  
-
-./.git/logs/refs:
-.  ..  heads  remotes  
-
-./.git/objects/01:
-.  ..  6c70dff36bbb92b74c41ad02f06d42857f6697  
-
-./.git/objects/02:
-.  ..  01cb13422dfb5833c16b8bb7f561c16cfe8bd4  
-
-./.git/objects/05:
-.  ..  9a8204ba5e18deebf185e8bab6a417baa245e2  
-
-./.git/objects/07:
-.  ..  771028e33fe3d6d58d50674b018246ad559bcc  
-
-./.git/objects/09:
-.  ..  6fc78ceabc918bc1cd8738ff6ca7e1950a8435  7f51d9c367ce117d3a8ee5dd18b683ea63057a  cd5de3a47b877c22d72759218f8ebeac30a9f1  
-
-./.git/objects/0a:
-.  ..  f669b84c33344b4a82f9a001bafc8aa7e31c53  
-
-./.git/objects/0c:
-.  ..  fce3fe4bf6a81996a0ff98b901142eff1d4acf  
-
-./.git/objects/15:
-.  ..  90e854a03a0a55ffc51fb60fd11e022286b9cd  
-
-./.git/objects/18:
-.  ..  c09b9ed9a77ca45f7edec3956cb55d0cb6cb3b  
-
-./.git/objects/1a:
-.  ..  9030b7328135ed2f8794c14df997e60abcf625  c2b7ad929c5cec2fbc0818d4380e3d23ca64e2  
-
-./.git/objects/1b:
-.  ..  b1b47e570bea1d4dfba36cd3fe95fe0256a53c  f09bf99d43af774b3fd8d2322d2fe55d3be258  f5ef8a3318950b4b316d8796fed96594a28cae  
-
-./.git/objects/1c:
-.  ..  96f9d1a3f15e8e1287f6d2b7da8517c0fa22ce  
-
-./.git/objects/1d:
-.  ..  6d9cab3b7c7d59d9cca1d5e7883f6f228a9bed  
-
-./.git/objects/21:
-.  ..  57e7d7a800c100ac4fe9e5c246004f956fcbde  
-
-./.git/objects/26:
-.  ..  40d9a898425bf47ac487c79e644ad656dcfae3  
-
-./.git/objects/2c:
-.  ..  0fd6cfba1525b357944baedffd9a61ebcd1efd  
-
-./.git/objects/2f:
-.  ..  7596ec2f711d84bd67f91959c40e84cd47d495  
-
-./.git/objects/30:
-.  ..  3bc39e9a915193b5ff91bbce89cb0512775714  
-
-./.git/objects/31:
-.  ..  f5fefa97238423f354983fd729b9bf1e13ceca  
-
-./.git/objects/32:
-.  ..  56460a04994a9052da23683a7f51dcd8b89ce3  f7faba856fe9329e691c2e98c85e2ee6cb6787  
-
-./.git/objects/35:
-.  ..  ccd463d3a1ac6f99ec03a4705b0cad983435a8  
-
-./.git/objects/38:
-.  ..  030a6bd6707e9f9714ba5ee0ec3fe9d3f9b35a  
-
-./.git/objects/39:
-.  ..  1c70cb39430f6b85be99fe88e81601c73b1ce4  
-
-./.git/objects/3a:
-.  ..  a1dcbd85da6775a6308c43c560cc6b81b4d33e  aa262a21001ed693a5e50076dea75b66fb5b8e  
-
-./.git/objects/3e:
-.  ..  2cebe0ac58def14c00f88a4a8ec411b912d9aa  
-
-./.git/objects/3f:
-.  ..  4b9b4f9b53bcbcbe3c9cee8b8a38614dfb502b  a64312be32a2faa4a9ed84e18684cad80106ad  
-
-./.git/objects/40:
-.  ..  7779c26b4a04ccfc45c4b872df8c9fb3b68ea5  
-
-./.git/objects/43:
-.  ..  c358cb741f36e38612cebb1b15356aa9424a7c  
-
-./.git/objects/46:
-.  ..  e8b8147dd3111183fe1abec6965167eb8f0976  
-
-./.git/objects/4a:
-.  ..  a1e0344e471e7ad1911631d985c58b9a68b982  e75393b41064112017b37e594ba11f2d860523  
-
-./.git/objects/4b:
-.  ..  4e81352b9f010ef94abbca4cfa80a41864ffad  85346619b9bc02f6180871b97b080d37346f4a  
-
-./.git/objects/51:
-.  ..  4430c4c6073d129408823bc808d337c551c1da  
-
-./.git/objects/52:
-.  ..  d2a08a6c2f1e46d84c8d2f61ee382d0ce7f610  
-
-./.git/objects/54:
-.  ..  9a9f01a2a478fa67e3d9a8c860923f6b88096e  e71072bcec6a2bd780a7ff214b0f0ac37154c3  
-
-./.git/objects/55:
-.  ..  61b657df0c72d1523e28fb7e1cb9b87227087a  
-
-./.git/objects/58:
-.  ..  6a76610c4322fcfb9138d4b0f443bc6011906a  
-
-./.git/objects/59:
-.  ..  a15c7de23962b75eb192d0e965ed1dfcf9f10b  
-
-./.git/objects/5b:
-.  ..  d9c0b5091b4617f8107a927e97a77678611620  
-
-./.git/objects/5c:
-.  ..  571745334ea87cfe1b3c8b5ea7c0b0097c9e41  9a61df154a6ba13d39578f730a2a26a5d4f564  
-
-./.git/objects/5d:
-.  ..  579146d9942dcd272791d9b5347c5bc630c4d5  97af31598fc6d118f5c8dab0639db5dd2c0d0f  
-
-./.git/objects/5e:
-.  ..  64cb3e57ea27a1bc7dee84173b392861acff78  
-
-./.git/objects/5f:
-.  ..  412dc36a6922c51c343b1e98249ed28b3ac6f8  
-
-./.git/objects/60:
-.  ..  3bdcaa5064d17e1a2eee823fa47fc9d484c09d  
-
-./.git/objects/64:
-.  ..  03150be767ba65d4386abcfedd477b4e8430ac  
-
-./.git/objects/66:
-.  ..  cd8427d081b3f83a288bb9c3d98b8bd9628db2  
-
-./.git/objects/67:
-.  ..  1076600d84c03ccbbe3af15516bddddce233b0  c3a21382d97fc8ab1000ca3136c8c5a079a1e5  
-
-./.git/objects/68:
-.  ..  f7d30f23daf6c849b53af41cfb9c58ba593fb1  
-
-./.git/objects/6b:
-.  ..  83d48307cdf189a27005bd8fc13efa0aab721d  8d5099904874b94de0ccd36986e0b91f0ba98e  eef64314acc39ec71d5c2f5b165229bb2d84cd  
-
-./.git/objects/6c:
-.  ..  92b5b3c18e404aa43edf76a061d346b24047f2  
-
-./.git/objects/6e:
-.  ..  57e7bf01febbaf8eb46f9d9caddee71d08b5d7  
-
-./.git/objects/70:
-.  ..  2e00032ebf55952bae197639ab6728fed1b71d  
-
-./.git/objects/74:
-.  ..  41f093f4513b7af648a857302fb1b2796e8c4c  
-
-./.git/objects/7d:
-.  ..  39a1e0224913bd6b530800c3f05d6c55dc5b53  4f27d12ff2c761d0fd84e689dcf3ff296b126c  
-
-./.git/objects/7f:
-.  ..  09857d85e6e49b21cdd145a7e6a826d337e332  
-
-./.git/objects/81:
-.  ..  198b3cbfd050cdc47e8923afbf5363cd1ccae5  303a10ca52243c69a21e60507c8d40c6f78f55  452697ebdc0f4bb2a53dbc54ed5ded8e75381f  f77c41f5b5c2ea284d4bce9296468a04cb20e8  
-
-./.git/objects/82:
-.  ..  ff152e1fa706bc098edec499e01d3e57f53a9b  
-
-./.git/objects/85:
-.  ..  4bd625e132d006bbff7b552c91f1664d61e518  
-
-./.git/objects/86:
-.  ..  73bb640cf269ab9741e516b81709ef1f9fdfa4  
-
-./.git/objects/89:
-.  ..  d78a7b3e49d2144949c41ecb65d0b0366459a8  
-
-./.git/objects/93:
-.  ..  1d6ca760d8cccb505ee40ac170e4e6fab1211f  9d97a0f7db4202391e44571c4e0bc3d2266e22  
-
-./.git/objects/94:
-.  ..  295cd1c10a569fd4cf7cc922982b5d413ad493  
-
-./.git/objects/96:
-.  ..  740d40de9c7a6a85c08f707dfd4aff97627786  
-
-./.git/objects/9b:
-.  ..  0d954bf1f63b4879dce6d7f01e04048f753e4b  
-
-./.git/objects/9c:
-.  ..  776abe663038d1b2880ac1b7afa9e2dac99a08  e32d9ee93f1bd00fff214e29633ce096b912f2  
-
-./.git/objects/9d:
-.  ..  b2c2b658747d89688dc239e9609aa281e4d34b  
-
-./.git/objects/9e:
-.  ..  87cfe4650a90d7bfb996694cc048ad5f46c5fd  c3f72076be39b5c26768eb44ba3be6c3d97ca3  
-
-./.git/objects/a1:
-.  ..  63cb1961c54b708f870ddd8a33c8c3f224fe05  
-
-./.git/objects/a2:
-.  ..  803cd9945d7e535ea6970f4525489422411e17  a1366e098e389c1fb0ebfafb7720f64316d2c4  
-
-./.git/objects/a5:
-.  ..  80b5c1cc4805b7db4e7bde11e8f35f838bfd43  85d052ca5d2fe8e1f4f0e5b7b8c8dbecdca56b  ac1a47dc0c03601fa1d18b28146d8bf6ad3283  
-
-./.git/objects/a6:
-.  ..  31eb96563e3093438913d9f96cbf456ebc9f73  7f87db0c3518823f3c268268081f72231fcdd1  
-
-./.git/objects/a7:
-.  ..  6362193e637d15554232a48c3f71e801c2976e  
-
-./.git/objects/a9:
-.  ..  e26381d6338b00cf403612f31f596670d7c4ec  
-
-./.git/objects/ae:
-.  ..  4c1e6560f5095f5a7153bda7e7263c103fb487  
-
-./.git/objects/b0:
-.  ..  71daa90f18fe46ca489f0aa15f347386bfa0f4  
-
-./.git/objects/b1:
-.  ..  8646583d5102d8873d31d6c00adfbaac1e8a87  9f111353094cad0ce319b4f98468b561edc4b8  
-
-./.git/objects/b4:
-.  ..  0f13532522cff8a74d19df5a02de0601a2bf50  0fac867890af40af7722d2311a937cb83b9706  cb63242c42e165b38d0fc7401a7222d1dabbc3  
-
-./.git/objects/b5:
-.  ..  a9f70c2b21f2d3a97002c2f3b70c013e3cca1a  
-
-./.git/objects/b7:
-.  ..  36909fd3aad6642a82c3a2e84479f546c3c081  
-
-./.git/objects/b9:
-.  ..  fbfadc2a3bc2a2a1dcc7ee1a633d1eed65a895  
-
-./.git/objects/ba:
-.  ..  261b2d93e2f7aeb6a843fa9b724866f7fa9e5c  c2af21d8bd1da2a9f4cbc7d96e20cab6983e3f  
-
-./.git/objects/bb:
-.  ..  ee33655c6772b801f043cb031fb7c8a986c266  
-
-./.git/objects/bd:
-.  ..  0aaa4e514ef044219d68e086c3b1c274489f79  9cb7a8f6ca0238aedad4564613142d744e5b47  
-
-./.git/objects/bf:
-.  ..  bd1f91b51b5fd5df2d42020f1a6523454c304a  
-
-./.git/objects/c1:
-.  ..  777ba9c25c340716fe7f0ba7577b3fc684f631  
-
-./.git/objects/c3:
-.  ..  6e863886a5e008fa88b2e7d02c06c22daafa00  
-
-./.git/objects/c6:
-.  ..  90f9f8c6271333471f52bb6de85f76f186ce17  
-
-./.git/objects/cb:
-.  ..  99d27c3833f708ed65668be5ebceecff30be3f  
-
-./.git/objects/cc:
-.  ..  f1a85289fc3778799f380d7253c40f03c927b2  
-
-./.git/objects/d6:
-.  ..  a93266f748d606b884f9434ff662fe80b9dc21  eb9be76d4d887a60c0a75bb1914c666c0e9ac3  
-
-./.git/objects/d7:
-.  ..  df2a935bfbb71118832245bbcab80acc4df702  
-
-./.git/objects/d9:
-.  ..  730c16eb46386eb6ed0c7ce50a74745c600ccc  8f99426d3ba5385c88673c432f25bf7ea967e8  
-
-./.git/objects/dc:
-.  ..  46a94832fc89a12ce7bdefb3318066c3910973  ac09d3542b466b12fb0cb64e483ca9d97a0b2a  
-
-./.git/objects/dd:
-.  ..  b618342e805e00e97b83fa0411500b0c3b6d7c  e8338143b194a5955aa49ee79337ffc6612605  f3d9e0f474afcc04f5230f0755110e5cb6e721  
-
-./.git/objects/df:
-.  ..  2199f3e7466d3c6d77fb7b6e2d3d2c6fd037e1  752a03d1c8cbef8faf1fa7c895377c90c786a2  
-
-./.git/objects/e0:
-.  ..  32bd3792e3b531f0bda7f369a149b9961bd79f  b8c88c749864d302b1d6cdbc39e9a71bd1ec27  
-
-./.git/objects/e2:
-.  ..  057fe5069128712b3f45bdcdabb77a9026c291  efabc0352d512368f041301b1f00dc55b25e82  
-
-./.git/objects/e3:
-.  ..  01ac92b6fbb9e3bf320901e6dd12828c91d7bf  
-
-./.git/objects/e4:
-.  ..  68ca2f599c9c2448924f2ac5bb142162ae3bc6  
-
-./.git/objects/e5:
-.  ..  90996bfedc065a3953b266ddffb056e388925b  d129c309546c07a04b6e4a3aee7e234961d360  
-
-./.git/objects/e6:
-.  ..  368f46526f42818b0c52aa46c90dc923faa578  
-
-./.git/objects/ed:
-.  ..  914de40fb7ce391b932dd757c68cd040b93f4b  f052c47dcff9673d94e878349a15367f7d8c3b  
-
-./.git/objects/f0:
-.  ..  b094602e180d35cc138cb7b0bb8eebbace6273  c96adaba412ec1a6a1ddb6af5775651ba8dcda  
-
-./.git/objects/f2:
-.  ..  19bbe697f4105894c48b9892339948d058d9ba  
-
-./.git/objects/f3:
-.  ..  aa20147e8adc277d957e9cc77b4549fb54d850  
-
-./.git/objects/f5:
-.  ..  361cb6220915daa8e1040fd4f7a72150a099f7  d4733941f7e794f1ae0e026461348a532e08c9  
-
-./.git/objects/f6:
-.  ..  0d63bd85221b76a2151f2a97f11ef71e5a159f  7d56ce74a177a744755f9dea4e8ebfa3b7c9fa  
-
-./.git/objects/f8:
-.  ..  bfcb6735fcdedf99324a12f924855bb2a9651e  
-
-./.git/objects/f9:
-.  ..  4a0179e4d2c5dff5b992408795d0a5f4b6ff76  d88b1738341f5f8776f4277e5c6364f1136486  
-
-./.git/objects/fc:
-.  ..  7c0a2a083128366ef0d35123754e86eb8a644b  
-
-./.git/objects/ff:
-.  ..  0309b5b8affff7dbbfe92b864f6a7bf3c5b321  4270ef5b46166604f85dabfe2a46ae50b0d811  
-
-./.git/objects/info:
-.  ..  
-
-./.git/objects/pack:
-.  ..  
-
-./.git/refs/heads:
-.  ..  ls  master  origin  
-
-./.git/refs/remotes:
-.  ..  origin  
-
-./.git/refs/tags:
-.  ..  hw1  
-
-./.git/logs/refs/heads:
-.  ..  ls  master  origin  
-
-./.git/logs/refs/remotes:
-.  ..  origin  
-
-./.git/refs/heads/origin:
-.  ..  
-
-./.git/refs/remotes/origin:
-.  ..  exec  HEAD  master  
-
-./.git/logs/refs/heads/origin:
-.  ..  
-
-./.git/logs/refs/remotes/origin:
-.  ..  exec  HEAD  master  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -a -l
-drwxr-xr-x 5 yoshi yoshi   4096 Feb  8 23:47 .
-drwxr-xr-x 3 yoshi yoshi   4096 Feb  8 23:34 ..
-drwxr-xr-x 8 yoshi yoshi   4096 Feb  8 23:40 .git
-drwxr-xr-x 2 yoshi yoshi   4096 Feb  8 23:47 bin
--rw-r--r-- 1 yoshi yoshi  18027 Feb  1 23:30 LICENSE
--rw-r--r-- 1 yoshi yoshi  36864 Feb  8 23:49 ls.script
--rw-r--r-- 1 yoshi yoshi    224 Feb  8 11:50 Makefile
--rw-r--r-- 1 yoshi yoshi    462 Feb  8 11:50 README.md
--rw-r--r-- 1 yoshi yoshi   2423 Feb  8 11:50 rshell.script
-drwxr-xr-x 2 yoshi yoshi   4096 Feb  8 23:46 src
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -l -a
-drwxr-xr-x 5 yoshi yoshi   4096 Feb  8 23:47 .
-drwxr-xr-x 3 yoshi yoshi   4096 Feb  8 23:34 ..
-drwxr-xr-x 8 yoshi yoshi   4096 Feb  8 23:40 .git
-drwxr-xr-x 2 yoshi yoshi   4096 Feb  8 23:47 bin
--rw-r--r-- 1 yoshi yoshi  18027 Feb  1 23:30 LICENSE
--rw-r--r-- 1 yoshi yoshi  36864 Feb  8 23:49 ls.script
--rw-r--r-- 1 yoshi yoshi    224 Feb  8 11:50 Makefile
--rw-r--r-- 1 yoshi yoshi    462 Feb  8 11:50 README.md
--rw-r--r-- 1 yoshi yoshi   2423 Feb  8 11:50 rshell.script
-drwxr-xr-x 2 yoshi yoshi   4096 Feb  8 23:46 src
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -R -a
-.:
-.  ..  .git  bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-
-./.git:
-.  ..  branches  COMMIT_EDITMSG  config  description  FETCH_HEAD  HEAD  hooks  index  info  logs  objects  ORIG_HEAD  packed-refs  refs  TAG_EDITMSG  
-
-./bin:
-.  ..  ls  rshell  
-
-./src:
-.  ..  ls.cpp  rshell.cpp  
-
-./.git/branches:
-.  ..  
-
-./.git/hooks:
-.  ..  applypatch-msg.sample  commit-msg.sample  post-update.sample  pre-applypatch.sample  pre-commit.sample  pre-push.sample  pre-rebase.sample  prepare-commit-msg.sample  update.sample  
-
-./.git/info:
-.  ..  exclude  
-
-./.git/logs:
-.  ..  HEAD  refs  
-
-./.git/objects:
-.  ..  01  02  05  07  09  0a  0c  15  18  1a  1b  1c  1d  21  26  2c  2f  30  31  32  35  38  39  3a  3e  3f  40  43  46  4a  4b  51  52  54  55  58  59  5b  5c  5d  5e  5f  60  64  66  67  68  6b  6c  6e  70  74  7d  7f  81  82  85  86  89  93  94  96  9b  9c  9d  9e  a1  a2  a5  a6  a7  a9  ae  b0  b1  b4  b5  b7  b9  ba  bb  bd  bf  c1  c3  c6  cb  cc  d6  d7  d9  dc  dd  df  e0  e2  e3  e4  e5  e6  ed  f0  f2  f3  f5  f6  f8  f9  fc  ff  info  pack  
-
-./.git/refs:
-.  ..  heads  remotes  tags  
-
-./.git/logs/refs:
-.  ..  heads  remotes  
-
-./.git/objects/01:
-.  ..  6c70dff36bbb92b74c41ad02f06d42857f6697  
-
-./.git/objects/02:
-.  ..  01cb13422dfb5833c16b8bb7f561c16cfe8bd4  
-
-./.git/objects/05:
-.  ..  9a8204ba5e18deebf185e8bab6a417baa245e2  
-
-./.git/objects/07:
-.  ..  771028e33fe3d6d58d50674b018246ad559bcc  
-
-./.git/objects/09:
-.  ..  6fc78ceabc918bc1cd8738ff6ca7e1950a8435  7f51d9c367ce117d3a8ee5dd18b683ea63057a  cd5de3a47b877c22d72759218f8ebeac30a9f1  
-
-./.git/objects/0a:
-.  ..  f669b84c33344b4a82f9a001bafc8aa7e31c53  
-
-./.git/objects/0c:
-.  ..  fce3fe4bf6a81996a0ff98b901142eff1d4acf  
-
-./.git/objects/15:
-.  ..  90e854a03a0a55ffc51fb60fd11e022286b9cd  
-
-./.git/objects/18:
-.  ..  c09b9ed9a77ca45f7edec3956cb55d0cb6cb3b  
-
-./.git/objects/1a:
-.  ..  9030b7328135ed2f8794c14df997e60abcf625  c2b7ad929c5cec2fbc0818d4380e3d23ca64e2  
-
-./.git/objects/1b:
-.  ..  b1b47e570bea1d4dfba36cd3fe95fe0256a53c  f09bf99d43af774b3fd8d2322d2fe55d3be258  f5ef8a3318950b4b316d8796fed96594a28cae  
-
-./.git/objects/1c:
-.  ..  96f9d1a3f15e8e1287f6d2b7da8517c0fa22ce  
-
-./.git/objects/1d:
-.  ..  6d9cab3b7c7d59d9cca1d5e7883f6f228a9bed  
-
-./.git/objects/21:
-.  ..  57e7d7a800c100ac4fe9e5c246004f956fcbde  
-
-./.git/objects/26:
-.  ..  40d9a898425bf47ac487c79e644ad656dcfae3  
-
-./.git/objects/2c:
-.  ..  0fd6cfba1525b357944baedffd9a61ebcd1efd  
-
-./.git/objects/2f:
-.  ..  7596ec2f711d84bd67f91959c40e84cd47d495  
-
-./.git/objects/30:
-.  ..  3bc39e9a915193b5ff91bbce89cb0512775714  
-
-./.git/objects/31:
-.  ..  f5fefa97238423f354983fd729b9bf1e13ceca  
-
-./.git/objects/32:
-.  ..  56460a04994a9052da23683a7f51dcd8b89ce3  f7faba856fe9329e691c2e98c85e2ee6cb6787  
-
-./.git/objects/35:
-.  ..  ccd463d3a1ac6f99ec03a4705b0cad983435a8  
-
-./.git/objects/38:
-.  ..  030a6bd6707e9f9714ba5ee0ec3fe9d3f9b35a  
-
-./.git/objects/39:
-.  ..  1c70cb39430f6b85be99fe88e81601c73b1ce4  
-
-./.git/objects/3a:
-.  ..  a1dcbd85da6775a6308c43c560cc6b81b4d33e  aa262a21001ed693a5e50076dea75b66fb5b8e  
-
-./.git/objects/3e:
-.  ..  2cebe0ac58def14c00f88a4a8ec411b912d9aa  
-
-./.git/objects/3f:
-.  ..  4b9b4f9b53bcbcbe3c9cee8b8a38614dfb502b  a64312be32a2faa4a9ed84e18684cad80106ad  
-
-./.git/objects/40:
-.  ..  7779c26b4a04ccfc45c4b872df8c9fb3b68ea5  
-
-./.git/objects/43:
-.  ..  c358cb741f36e38612cebb1b15356aa9424a7c  
-
-./.git/objects/46:
-.  ..  e8b8147dd3111183fe1abec6965167eb8f0976  
-
-./.git/objects/4a:
-.  ..  a1e0344e471e7ad1911631d985c58b9a68b982  e75393b41064112017b37e594ba11f2d860523  
-
-./.git/objects/4b:
-.  ..  4e81352b9f010ef94abbca4cfa80a41864ffad  85346619b9bc02f6180871b97b080d37346f4a  
-
-./.git/objects/51:
-.  ..  4430c4c6073d129408823bc808d337c551c1da  
-
-./.git/objects/52:
-.  ..  d2a08a6c2f1e46d84c8d2f61ee382d0ce7f610  
-
-./.git/objects/54:
-.  ..  9a9f01a2a478fa67e3d9a8c860923f6b88096e  e71072bcec6a2bd780a7ff214b0f0ac37154c3  
-
-./.git/objects/55:
-.  ..  61b657df0c72d1523e28fb7e1cb9b87227087a  
-
-./.git/objects/58:
-.  ..  6a76610c4322fcfb9138d4b0f443bc6011906a  
-
-./.git/objects/59:
-.  ..  a15c7de23962b75eb192d0e965ed1dfcf9f10b  
-
-./.git/objects/5b:
-.  ..  d9c0b5091b4617f8107a927e97a77678611620  
-
-./.git/objects/5c:
-.  ..  571745334ea87cfe1b3c8b5ea7c0b0097c9e41  9a61df154a6ba13d39578f730a2a26a5d4f564  
-
-./.git/objects/5d:
-.  ..  579146d9942dcd272791d9b5347c5bc630c4d5  97af31598fc6d118f5c8dab0639db5dd2c0d0f  
-
-./.git/objects/5e:
-.  ..  64cb3e57ea27a1bc7dee84173b392861acff78  
-
-./.git/objects/5f:
-.  ..  412dc36a6922c51c343b1e98249ed28b3ac6f8  
-
-./.git/objects/60:
-.  ..  3bdcaa5064d17e1a2eee823fa47fc9d484c09d  
-
-./.git/objects/64:
-.  ..  03150be767ba65d4386abcfedd477b4e8430ac  
-
-./.git/objects/66:
-.  ..  cd8427d081b3f83a288bb9c3d98b8bd9628db2  
-
-./.git/objects/67:
-.  ..  1076600d84c03ccbbe3af15516bddddce233b0  c3a21382d97fc8ab1000ca3136c8c5a079a1e5  
-
-./.git/objects/68:
-.  ..  f7d30f23daf6c849b53af41cfb9c58ba593fb1  
-
-./.git/objects/6b:
-.  ..  83d48307cdf189a27005bd8fc13efa0aab721d  8d5099904874b94de0ccd36986e0b91f0ba98e  eef64314acc39ec71d5c2f5b165229bb2d84cd  
-
-./.git/objects/6c:
-.  ..  92b5b3c18e404aa43edf76a061d346b24047f2  
-
-./.git/objects/6e:
-.  ..  57e7bf01febbaf8eb46f9d9caddee71d08b5d7  
-
-./.git/objects/70:
-.  ..  2e00032ebf55952bae197639ab6728fed1b71d  
-
-./.git/objects/74:
-.  ..  41f093f4513b7af648a857302fb1b2796e8c4c  
-
-./.git/objects/7d:
-.  ..  39a1e0224913bd6b530800c3f05d6c55dc5b53  4f27d12ff2c761d0fd84e689dcf3ff296b126c  
-
-./.git/objects/7f:
-.  ..  09857d85e6e49b21cdd145a7e6a826d337e332  
-
-./.git/objects/81:
-.  ..  198b3cbfd050cdc47e8923afbf5363cd1ccae5  303a10ca52243c69a21e60507c8d40c6f78f55  452697ebdc0f4bb2a53dbc54ed5ded8e75381f  f77c41f5b5c2ea284d4bce9296468a04cb20e8  
-
-./.git/objects/82:
-.  ..  ff152e1fa706bc098edec499e01d3e57f53a9b  
-
-./.git/objects/85:
-.  ..  4bd625e132d006bbff7b552c91f1664d61e518  
-
-./.git/objects/86:
-.  ..  73bb640cf269ab9741e516b81709ef1f9fdfa4  
-
-./.git/objects/89:
-.  ..  d78a7b3e49d2144949c41ecb65d0b0366459a8  
-
-./.git/objects/93:
-.  ..  1d6ca760d8cccb505ee40ac170e4e6fab1211f  9d97a0f7db4202391e44571c4e0bc3d2266e22  
-
-./.git/objects/94:
-.  ..  295cd1c10a569fd4cf7cc922982b5d413ad493  
-
-./.git/objects/96:
-.  ..  740d40de9c7a6a85c08f707dfd4aff97627786  
-
-./.git/objects/9b:
-.  ..  0d954bf1f63b4879dce6d7f01e04048f753e4b  
-
-./.git/objects/9c:
-.  ..  776abe663038d1b2880ac1b7afa9e2dac99a08  e32d9ee93f1bd00fff214e29633ce096b912f2  
-
-./.git/objects/9d:
-.  ..  b2c2b658747d89688dc239e9609aa281e4d34b  
-
-./.git/objects/9e:
-.  ..  87cfe4650a90d7bfb996694cc048ad5f46c5fd  c3f72076be39b5c26768eb44ba3be6c3d97ca3  
-
-./.git/objects/a1:
-.  ..  63cb1961c54b708f870ddd8a33c8c3f224fe05  
-
-./.git/objects/a2:
-.  ..  803cd9945d7e535ea6970f4525489422411e17  a1366e098e389c1fb0ebfafb7720f64316d2c4  
-
-./.git/objects/a5:
-.  ..  80b5c1cc4805b7db4e7bde11e8f35f838bfd43  85d052ca5d2fe8e1f4f0e5b7b8c8dbecdca56b  ac1a47dc0c03601fa1d18b28146d8bf6ad3283  
-
-./.git/objects/a6:
-.  ..  31eb96563e3093438913d9f96cbf456ebc9f73  7f87db0c3518823f3c268268081f72231fcdd1  
-
-./.git/objects/a7:
-.  ..  6362193e637d15554232a48c3f71e801c2976e  
-
-./.git/objects/a9:
-.  ..  e26381d6338b00cf403612f31f596670d7c4ec  
-
-./.git/objects/ae:
-.  ..  4c1e6560f5095f5a7153bda7e7263c103fb487  
-
-./.git/objects/b0:
-.  ..  71daa90f18fe46ca489f0aa15f347386bfa0f4  
-
-./.git/objects/b1:
-.  ..  8646583d5102d8873d31d6c00adfbaac1e8a87  9f111353094cad0ce319b4f98468b561edc4b8  
-
-./.git/objects/b4:
-.  ..  0f13532522cff8a74d19df5a02de0601a2bf50  0fac867890af40af7722d2311a937cb83b9706  cb63242c42e165b38d0fc7401a7222d1dabbc3  
-
-./.git/objects/b5:
-.  ..  a9f70c2b21f2d3a97002c2f3b70c013e3cca1a  
-
-./.git/objects/b7:
-.  ..  36909fd3aad6642a82c3a2e84479f546c3c081  
-
-./.git/objects/b9:
-.  ..  fbfadc2a3bc2a2a1dcc7ee1a633d1eed65a895  
-
-./.git/objects/ba:
-.  ..  261b2d93e2f7aeb6a843fa9b724866f7fa9e5c  c2af21d8bd1da2a9f4cbc7d96e20cab6983e3f  
-
-./.git/objects/bb:
-.  ..  ee33655c6772b801f043cb031fb7c8a986c266  
-
-./.git/objects/bd:
-.  ..  0aaa4e514ef044219d68e086c3b1c274489f79  9cb7a8f6ca0238aedad4564613142d744e5b47  
-
-./.git/objects/bf:
-.  ..  bd1f91b51b5fd5df2d42020f1a6523454c304a  
-
-./.git/objects/c1:
-.  ..  777ba9c25c340716fe7f0ba7577b3fc684f631  
-
-./.git/objects/c3:
-.  ..  6e863886a5e008fa88b2e7d02c06c22daafa00  
-
-./.git/objects/c6:
-.  ..  90f9f8c6271333471f52bb6de85f76f186ce17  
-
-./.git/objects/cb:
-.  ..  99d27c3833f708ed65668be5ebceecff30be3f  
-
-./.git/objects/cc:
-.  ..  f1a85289fc3778799f380d7253c40f03c927b2  
-
-./.git/objects/d6:
-.  ..  a93266f748d606b884f9434ff662fe80b9dc21  eb9be76d4d887a60c0a75bb1914c666c0e9ac3  
-
-./.git/objects/d7:
-.  ..  df2a935bfbb71118832245bbcab80acc4df702  
-
-./.git/objects/d9:
-.  ..  730c16eb46386eb6ed0c7ce50a74745c600ccc  8f99426d3ba5385c88673c432f25bf7ea967e8  
-
-./.git/objects/dc:
-.  ..  46a94832fc89a12ce7bdefb3318066c3910973  ac09d3542b466b12fb0cb64e483ca9d97a0b2a  
-
-./.git/objects/dd:
-.  ..  b618342e805e00e97b83fa0411500b0c3b6d7c  e8338143b194a5955aa49ee79337ffc6612605  f3d9e0f474afcc04f5230f0755110e5cb6e721  
-
-./.git/objects/df:
-.  ..  2199f3e7466d3c6d77fb7b6e2d3d2c6fd037e1  752a03d1c8cbef8faf1fa7c895377c90c786a2  
-
-./.git/objects/e0:
-.  ..  32bd3792e3b531f0bda7f369a149b9961bd79f  b8c88c749864d302b1d6cdbc39e9a71bd1ec27  
-
-./.git/objects/e2:
-.  ..  057fe5069128712b3f45bdcdabb77a9026c291  efabc0352d512368f041301b1f00dc55b25e82  
-
-./.git/objects/e3:
-.  ..  01ac92b6fbb9e3bf320901e6dd12828c91d7bf  
-
-./.git/objects/e4:
-.  ..  68ca2f599c9c2448924f2ac5bb142162ae3bc6  
-
-./.git/objects/e5:
-.  ..  90996bfedc065a3953b266ddffb056e388925b  d129c309546c07a04b6e4a3aee7e234961d360  
-
-./.git/objects/e6:
-.  ..  368f46526f42818b0c52aa46c90dc923faa578  
-
-./.git/objects/ed:
-.  ..  914de40fb7ce391b932dd757c68cd040b93f4b  f052c47dcff9673d94e878349a15367f7d8c3b  
-
-./.git/objects/f0:
-.  ..  b094602e180d35cc138cb7b0bb8eebbace6273  c96adaba412ec1a6a1ddb6af5775651ba8dcda  
-
-./.git/objects/f2:
-.  ..  19bbe697f4105894c48b9892339948d058d9ba  
-
-./.git/objects/f3:
-.  ..  aa20147e8adc277d957e9cc77b4549fb54d850  
-
-./.git/objects/f5:
-.  ..  361cb6220915daa8e1040fd4f7a72150a099f7  d4733941f7e794f1ae0e026461348a532e08c9  
-
-./.git/objects/f6:
-.  ..  0d63bd85221b76a2151f2a97f11ef71e5a159f  7d56ce74a177a744755f9dea4e8ebfa3b7c9fa  
-
-./.git/objects/f8:
-.  ..  bfcb6735fcdedf99324a12f924855bb2a9651e  
-
-./.git/objects/f9:
-.  ..  4a0179e4d2c5dff5b992408795d0a5f4b6ff76  d88b1738341f5f8776f4277e5c6364f1136486  
-
-./.git/objects/fc:
-.  ..  7c0a2a083128366ef0d35123754e86eb8a644b  
-
-./.git/objects/ff:
-.  ..  0309b5b8affff7dbbfe92b864f6a7bf3c5b321  4270ef5b46166604f85dabfe2a46ae50b0d811  
-
-./.git/objects/info:
-.  ..  
-
-./.git/objects/pack:
-.  ..  
-
-./.git/refs/heads:
-.  ..  ls  master  origin  
-
-./.git/refs/remotes:
-.  ..  origin  
-
-./.git/refs/tags:
-.  ..  hw1  
-
-./.git/logs/refs/heads:
-.  ..  ls  master  origin  
-
-./.git/logs/refs/remotes:
-.  ..  origin  
-
-./.git/refs/heads/origin:
-.  ..  
-
-./.git/refs/remotes/origin:
-.  ..  exec  HEAD  master  
-
-./.git/logs/refs/heads/origin:
-.  ..  
-
-./.git/logs/refs/remotes/origin:
-.  ..  exec  HEAD  master  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m #i think only the -Rl flag breaks the program
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test
-bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m #testing paths
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test bin
-ls  rshell  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test src
-ls.cpp  rshell.cpp  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test ..
-a.out  checksyscalls.sh  rshell  test.cpp  test2.cpp  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test ../..
-adt-bundle-linux-x86_64-20140702  android-studio  AndroidStudioProjects  Desktop  Documents  Downloads  Dropbox  gnuplot-iostream  Music  Pictures  Public  Templates  Videos  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test ../../../..
-bin  boot  cdrom  dev  etc  home  initrd.img  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  vmlinuz  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m #single paths work fine, how about multiple?
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test
-bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test bin src
-bin:
-ls  rshell  
-
-src:
-ls.cpp  rshell.cpp  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test bin src //[K[K../.. / ../b[K[K[K[K/.[Kbin
-bin:
-ls  rshell  
-
-src:
-ls.cpp  rshell.cpp  
-
-../..:
-adt-bundle-linux-x86_64-20140702  android-studio  AndroidStudioProjects  Desktop  Documents  Downloads  Dropbox  gnuplot-iostream  Music  Pictures  Public  Templates  Videos  
-
+ls.cpp  rshell.cpp  rshell.h  
+
+./tests:
+ls.script  piping.script  regrade.script  rshell.script  signals.script  
+
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ./bin. /ls /
+bin  boot  cdrom  dev  etc  home  initrd.img  lib  lib32  lib64  libx32  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  vmlinuz  
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ./bin/. ls / -a
+.  ..  bin  boot  cdrom  dev  etc  home  initrd.img  lib  lib32  lib64  libx32  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  vmlinuz  
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ./bin/ls - / -l
+total 34080
+drwxr-xr-x 2 root root   4096 Jan 28 20:46 bin
+drwxr-xr-x 3 root root   4096 Jan 28 23:08 boot
+drwxr-xr-x 2 root root   4096 Jan 28 18:47 cdrom
+drwxr-xr-x 17 root root   4320 Mar  9 16:54 dev
+drwxr-xr-x 146 root root  12288 Mar  9 16:58 etc
+drwxr-xr-x 3 root root   4096 Jan 28 18:47 home
+-rw-r--r-- 1 root root28975226 Jan 28 23:08 initrd.img
+drwxr-xr-x 25 root root   4096 Jan 28 20:10 lib
+drwxr-xr-x 2 root root   4096 Jan 28 20:10 lib32
+drwxr-xr-x 2 root root   4096 Jan 28 20:10 lib64
+drwxr-xr-x 2 root root   4096 Jan 28 20:10 libx32
+drwx------ 2 root root  16384 Jan 28 18:44 lost+found
+drwxr-xr-x 6 root root   4096 Feb 18 22:23 media
+drwxr-xr-x 3 root root   4096 Jan 28 22:46 mnt
+drwxr-xr-x 4 root root   4096 Feb  1 01:23 opt
+dr-xr-xr-x 183 root root      0 Mar  9 16:54 proc
+drwx------ 9 root root   4096 Jan 28 23:23 root
+drwxr-xr-x 25 root root    800 Mar  9 16:55 run
+drwxr-xr-x 2 root root  12288 Jan 28 20:45 sbin
+drwxr-xr-x 2 root root   4096 Nov 26 14:12 srv
+dr-xr-xr-x 13 root root      0 Mar  9 16:54 sys
+drwxrwxrwx 10 root root   4096 Mar  9 17:03 tmp
+drwxr-xr-x 12 root root   4096 Jan 28 20:10 usr
+drwxr-xr-x 11 root root   4096 Nov 26 14:48 var
+-rw-r--r-- 1 root root5808832 Nov 26 14:54 vmlinuz
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ./bion/   n/ls /-  -R
 /:
-bin  boot  cdrom  dev  etc  home  initrd.img  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  vmlinuz  
-
-/bin:
-bash  bunzip2  busybox  bzcat  bzcmp  bzdiff  bzegrep  bzexe  bzfgrep  bzgrep  bzip2  bzip2recover  bzless  bzmore  cat  chacl  chgrp  chmod  chown  chvt  cp  cpio  dash  date  dbus-cleanup-sockets  dbus-daemon  dbus-uuidgen  dd  df  dir  dmesg  dnsdomainname  domainname  dumpkeys  echo  ed  egrep  false  fgconsole  fgrep  findmnt  fuser  fusermount  getfacl  grep  gunzip  gzexe  gzip  hostname  ip  kbd_mode  keyctl  kill  kmod  less  lessecho  lessfile  lesskey  lesspipe  ln  loadkeys  login  loginctl  lowntfs-3g  ls  lsblk  lsmod  mkdir  mknod  mktemp  more  mount  mountpoint  mt  mt-gnu  mv  nano  nc  nc.openbsd  netcat  netstat  nisdomainname  ntfs-3g  ntfs-3g.probe  ntfs-3g.secaudit  ntfs-3g.usermap  ntfscat  ntfsck  ntfscluster  ntfscmp  ntfsdump_logfile  ntfsfix  ntfsinfo  ntfsls  ntfsmftalloc  ntfsmove  ntfstruncate  ntfswipe  open  openvt  pidof  ping  ping6  plymouth  plymouth-upstart-bridge  ps  pwd  rbash  readlink  red  rm  rmdir  rnano  run-parts  running-in-container  sed  setfacl  setfont  setupcon  sh  sh.distrib  sleep  ss  static-sh  stty  su  sync  tailf  tar  tempfile  touch  true  udevadm  ulockmgr_server  umount  uname  uncompress  unicode_start  vdir  vmmouse_detect  which  whiptail  ypdomainname  zcat  zcmp  zdiff  zegrep  zfgrep  zforce  zgrep  zless  zmore  znew  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m #isn't that pretty....
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m #how about with flags?
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m #[Kls
-[0m[01;34mbin[0m  LICENSE  ls.script  Makefile  README.md  rshell.script  [01;34msrc[0m
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test
-bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test =-[K[K-a bin
-.  ..  ls  rshell  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test bin -a
-.  ..  ls  rshell  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test bin -a src
-bin:
-.  ..  ls  rshell  
-
-src:
-.  ..  ls.cpp  rshell.cpp  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test bin src -a
-bin:
-.  ..  ls  rshell  
-
-src:
-.  ..  ls.cpp  rshell.cpp  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -a bin src
-bin:
-.  ..  ls  rshell  
-
-src:
-.  ..  ls.cpp  rshell.cpp  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test bin -l
-stat failed: No such file or directory
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -l bin
-stat failed: No such file or directory
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test-[K -[K[K
-bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -R bin
-bin:
-ls  rshell  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -[Kbin =-[K[K-R
-bin:
-ls  rshell  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test 
-bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m #time to test flags witihh[K[K[Kh multiple commands int h[K[K[K curr [Kent directory
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test bin -r src[K[K[K[K[KR src
-bin:
-ls  rshell  
-
-src:
-ls.cpp  rshell.cpp  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test bin src -R
-bin:
-ls  rshell  
-
-src:
-ls.cpp  rshell.cpp  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -R bin src
-bin:
-ls  rshell  
-
-src:
-ls.cpp  rshell.cpp  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -R src bin
-src:
-ls.cpp  rshell.cpp  
-
-bin:
-ls  rshell  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test src -R bin
-src:
-ls.cpp  rshell.cpp  
-
-bin:
-ls  rshell  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -a src bin
-src:
-.  ..  ls.cpp  rshell.cpp  
-
-bin:
-.  ..  ls  rshell  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -a bin src
-bin:
-.  ..  ls  rshell  
-
-src:
-.  ..  ls.cpp  rshell.cpp  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test bin -a src
-bin:
-.  ..  ls  rshell  
-
-src:
-.  ..  ls.cpp  rshell.cpp  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test src bin -a
-src:
-.  ..  ls.cpp  rshell.cpp  
-
-bin:
-.  ..  ls  rshell  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m #i'll skip -l because i know[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Ktest -l src bin
-src:
-stat failed: No such file or directory
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -l bin src
-bin:
-stat failed: No such file or directory
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -[Kbin l[K-l src
-bin:
-stat failed: No such file or directory
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test src -l bin
-src:
-stat failed: No such file or directory
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test
-bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m #how about multiple commands and multiple paths
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test 0-[K[K=-[K[K-al bin src
-bin:
-drwxr-xr-x 5 yoshi yoshi   4096 Feb  8 23:47 .
-drwxr-xr-x 3 yoshi yoshi   4096 Feb  8 23:34 ..
-stat failed: No such file or directory
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -ar[KR bin src
-bin:
-.  ..  ls  rshell  
-
-src:
-.  ..  ls.cpp  rshell.cpp  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -aR .. ../rshell
-..:
-.  ..  a.out  checksyscalls.sh  rshell  test.cpp  test2.cpp  
-
-../rshell:
-.  ..  .git  bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-
-../rshell:
-.  ..  .git  bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-
-../rshell/.git:
-.  ..  branches  COMMIT_EDITMSG  config  description  FETCH_HEAD  HEAD  hooks  index  info  logs  objects  ORIG_HEAD  packed-refs  refs  TAG_EDITMSG  
-
-../rshell/bin:
-.  ..  ls  rshell  
-
-../rshell/src:
-.  ..  ls.cpp  rshell.cpp  
-
-../rshell/.git:
-.  ..  branches  COMMIT_EDITMSG  config  description  FETCH_HEAD  HEAD  hooks  index  info  logs  objects  ORIG_HEAD  packed-refs  refs  TAG_EDITMSG  
-
-../rshell/bin:
-.  ..  ls  rshell  
-
-../rshell/src:
-.  ..  ls.cpp  rshell.cpp  
-
-../rshell/.git/branches:
-.  ..  
-
-../rshell/.git/hooks:
-.  ..  applypatch-msg.sample  commit-msg.sample  post-update.sample  pre-applypatch.sample  pre-commit.sample  pre-push.sample  pre-rebase.sample  prepare-commit-msg.sample  update.sample  
-
-../rshell/.git/info:
-.  ..  exclude  
-
-../rshell/.git/logs:
-.  ..  HEAD  refs  
-
-../rshell/.git/objects:
-.  ..  01  02  05  07  09  0a  0c  15  18  1a  1b  1c  1d  21  26  2c  2f  30  31  32  35  38  39  3a  3e  3f  40  43  46  4a  4b  51  52  54  55  58  59  5b  5c  5d  5e  5f  60  64  66  67  68  6b  6c  6e  70  74  7d  7f  81  82  85  86  89  93  94  96  9b  9c  9d  9e  a1  a2  a5  a6  a7  a9  ae  b0  b1  b4  b5  b7  b9  ba  bb  bd  bf  c1  c3  c6  cb  cc  d6  d7  d9  dc  dd  df  e0  e2  e3  e4  e5  e6  ed  f0  f2  f3  f5  f6  f8  f9  fc  ff  info  pack  
-
-../rshell/.git/refs:
-.  ..  heads  remotes  tags  
-
-../rshell/.git/branches:
-.  ..  
-
-../rshell/.git/hooks:
-.  ..  applypatch-msg.sample  commit-msg.sample  post-update.sample  pre-applypatch.sample  pre-commit.sample  pre-push.sample  pre-rebase.sample  prepare-commit-msg.sample  update.sample  
-
-../rshell/.git/info:
-.  ..  exclude  
-
-../rshell/.git/logs:
-.  ..  HEAD  refs  
-
-../rshell/.git/objects:
-.  ..  01  02  05  07  09  0a  0c  15  18  1a  1b  1c  1d  21  26  2c  2f  30  31  32  35  38  39  3a  3e  3f  40  43  46  4a  4b  51  52  54  55  58  59  5b  5c  5d  5e  5f  60  64  66  67  68  6b  6c  6e  70  74  7d  7f  81  82  85  86  89  93  94  96  9b  9c  9d  9e  a1  a2  a5  a6  a7  a9  ae  b0  b1  b4  b5  b7  b9  ba  bb  bd  bf  c1  c3  c6  cb  cc  d6  d7  d9  dc  dd  df  e0  e2  e3  e4  e5  e6  ed  f0  f2  f3  f5  f6  f8  f9  fc  ff  info  pack  
-
-../rshell/.git/refs:
-.  ..  heads  remotes  tags  
-
-../rshell/.git/logs/refs:
-.  ..  heads  remotes  
-
-../rshell/.git/objects/01:
-.  ..  6c70dff36bbb92b74c41ad02f06d42857f6697  
-
-../rshell/.git/objects/02:
-.  ..  01cb13422dfb5833c16b8bb7f561c16cfe8bd4  
-
-../rshell/.git/objects/05:
-.  ..  9a8204ba5e18deebf185e8bab6a417baa245e2  
-
-../rshell/.git/objects/07:
-.  ..  771028e33fe3d6d58d50674b018246ad559bcc  
-
-../rshell/.git/objects/09:
-.  ..  6fc78ceabc918bc1cd8738ff6ca7e1950a8435  7f51d9c367ce117d3a8ee5dd18b683ea63057a  cd5de3a47b877c22d72759218f8ebeac30a9f1  
-
-../rshell/.git/objects/0a:
-.  ..  f669b84c33344b4a82f9a001bafc8aa7e31c53  
-
-../rshell/.git/objects/0c:
-.  ..  fce3fe4bf6a81996a0ff98b901142eff1d4acf  
-
-../rshell/.git/objects/15:
-.  ..  90e854a03a0a55ffc51fb60fd11e022286b9cd  
-
-../rshell/.git/objects/18:
-.  ..  c09b9ed9a77ca45f7edec3956cb55d0cb6cb3b  
-
-../rshell/.git/objects/1a:
-.  ..  9030b7328135ed2f8794c14df997e60abcf625  c2b7ad929c5cec2fbc0818d4380e3d23ca64e2  
-
-../rshell/.git/objects/1b:
-.  ..  b1b47e570bea1d4dfba36cd3fe95fe0256a53c  f09bf99d43af774b3fd8d2322d2fe55d3be258  f5ef8a3318950b4b316d8796fed96594a28cae  
-
-../rshell/.git/objects/1c:
-.  ..  96f9d1a3f15e8e1287f6d2b7da8517c0fa22ce  
-
-../rshell/.git/objects/1d:
-.  ..  6d9cab3b7c7d59d9cca1d5e7883f6f228a9bed  
-
-../rshell/.git/objects/21:
-.  ..  57e7d7a800c100ac4fe9e5c246004f956fcbde  
-
-../rshell/.git/objects/26:
-.  ..  40d9a898425bf47ac487c79e644ad656dcfae3  
-
-../rshell/.git/objects/2c:
-.  ..  0fd6cfba1525b357944baedffd9a61ebcd1efd  
-
-../rshell/.git/objects/2f:
-.  ..  7596ec2f711d84bd67f91959c40e84cd47d495  
-
-../rshell/.git/objects/30:
-.  ..  3bc39e9a915193b5ff91bbce89cb0512775714  
-
-../rshell/.git/objects/31:
-.  ..  f5fefa97238423f354983fd729b9bf1e13ceca  
-
-../rshell/.git/objects/32:
-.  ..  56460a04994a9052da23683a7f51dcd8b89ce3  f7faba856fe9329e691c2e98c85e2ee6cb6787  
-
-../rshell/.git/objects/35:
-.  ..  ccd463d3a1ac6f99ec03a4705b0cad983435a8  
-
-../rshell/.git/objects/38:
-.  ..  030a6bd6707e9f9714ba5ee0ec3fe9d3f9b35a  
-
-../rshell/.git/objects/39:
-.  ..  1c70cb39430f6b85be99fe88e81601c73b1ce4  
-
-../rshell/.git/objects/3a:
-.  ..  a1dcbd85da6775a6308c43c560cc6b81b4d33e  aa262a21001ed693a5e50076dea75b66fb5b8e  
-
-../rshell/.git/objects/3e:
-.  ..  2cebe0ac58def14c00f88a4a8ec411b912d9aa  
-
-../rshell/.git/objects/3f:
-.  ..  4b9b4f9b53bcbcbe3c9cee8b8a38614dfb502b  a64312be32a2faa4a9ed84e18684cad80106ad  
-
-../rshell/.git/objects/40:
-.  ..  7779c26b4a04ccfc45c4b872df8c9fb3b68ea5  
-
-../rshell/.git/objects/43:
-.  ..  c358cb741f36e38612cebb1b15356aa9424a7c  
-
-../rshell/.git/objects/46:
-.  ..  e8b8147dd3111183fe1abec6965167eb8f0976  
-
-../rshell/.git/objects/4a:
-.  ..  a1e0344e471e7ad1911631d985c58b9a68b982  e75393b41064112017b37e594ba11f2d860523  
-
-../rshell/.git/objects/4b:
-.  ..  4e81352b9f010ef94abbca4cfa80a41864ffad  85346619b9bc02f6180871b97b080d37346f4a  
-
-../rshell/.git/objects/51:
-.  ..  4430c4c6073d129408823bc808d337c551c1da  
-
-../rshell/.git/objects/52:
-.  ..  d2a08a6c2f1e46d84c8d2f61ee382d0ce7f610  
-
-../rshell/.git/objects/54:
-.  ..  9a9f01a2a478fa67e3d9a8c860923f6b88096e  e71072bcec6a2bd780a7ff214b0f0ac37154c3  
-
-../rshell/.git/objects/55:
-.  ..  61b657df0c72d1523e28fb7e1cb9b87227087a  
-
-../rshell/.git/objects/58:
-.  ..  6a76610c4322fcfb9138d4b0f443bc6011906a  
-
-../rshell/.git/objects/59:
-.  ..  a15c7de23962b75eb192d0e965ed1dfcf9f10b  
-
-../rshell/.git/objects/5b:
-.  ..  d9c0b5091b4617f8107a927e97a77678611620  
-
-../rshell/.git/objects/5c:
-.  ..  571745334ea87cfe1b3c8b5ea7c0b0097c9e41  9a61df154a6ba13d39578f730a2a26a5d4f564  
-
-../rshell/.git/objects/5d:
-.  ..  579146d9942dcd272791d9b5347c5bc630c4d5  97af31598fc6d118f5c8dab0639db5dd2c0d0f  
-
-../rshell/.git/objects/5e:
-.  ..  64cb3e57ea27a1bc7dee84173b392861acff78  
-
-../rshell/.git/objects/5f:
-.  ..  412dc36a6922c51c343b1e98249ed28b3ac6f8  
-
-../rshell/.git/objects/60:
-.  ..  3bdcaa5064d17e1a2eee823fa47fc9d484c09d  
-
-../rshell/.git/objects/64:
-.  ..  03150be767ba65d4386abcfedd477b4e8430ac  
-
-../rshell/.git/objects/66:
-.  ..  cd8427d081b3f83a288bb9c3d98b8bd9628db2  
-
-../rshell/.git/objects/67:
-.  ..  1076600d84c03ccbbe3af15516bddddce233b0  c3a21382d97fc8ab1000ca3136c8c5a079a1e5  
-
-../rshell/.git/objects/68:
-.  ..  f7d30f23daf6c849b53af41cfb9c58ba593fb1  
-
-../rshell/.git/objects/6b:
-.  ..  83d48307cdf189a27005bd8fc13efa0aab721d  8d5099904874b94de0ccd36986e0b91f0ba98e  eef64314acc39ec71d5c2f5b165229bb2d84cd  
-
-../rshell/.git/objects/6c:
-.  ..  92b5b3c18e404aa43edf76a061d346b24047f2  
-
-../rshell/.git/objects/6e:
-.  ..  57e7bf01febbaf8eb46f9d9caddee71d08b5d7  
-
-../rshell/.git/objects/70:
-.  ..  2e00032ebf55952bae197639ab6728fed1b71d  
-
-../rshell/.git/objects/74:
-.  ..  41f093f4513b7af648a857302fb1b2796e8c4c  
-
-../rshell/.git/objects/7d:
-.  ..  39a1e0224913bd6b530800c3f05d6c55dc5b53  4f27d12ff2c761d0fd84e689dcf3ff296b126c  
-
-../rshell/.git/objects/7f:
-.  ..  09857d85e6e49b21cdd145a7e6a826d337e332  
-
-../rshell/.git/objects/81:
-.  ..  198b3cbfd050cdc47e8923afbf5363cd1ccae5  303a10ca52243c69a21e60507c8d40c6f78f55  452697ebdc0f4bb2a53dbc54ed5ded8e75381f  f77c41f5b5c2ea284d4bce9296468a04cb20e8  
-
-../rshell/.git/objects/82:
-.  ..  ff152e1fa706bc098edec499e01d3e57f53a9b  
-
-../rshell/.git/objects/85:
-.  ..  4bd625e132d006bbff7b552c91f1664d61e518  
-
-../rshell/.git/objects/86:
-.  ..  73bb640cf269ab9741e516b81709ef1f9fdfa4  
-
-../rshell/.git/objects/89:
-.  ..  d78a7b3e49d2144949c41ecb65d0b0366459a8  
-
-../rshell/.git/objects/93:
-.  ..  1d6ca760d8cccb505ee40ac170e4e6fab1211f  9d97a0f7db4202391e44571c4e0bc3d2266e22  
-
-../rshell/.git/objects/94:
-.  ..  295cd1c10a569fd4cf7cc922982b5d413ad493  
-
-../rshell/.git/objects/96:
-.  ..  740d40de9c7a6a85c08f707dfd4aff97627786  
-
-../rshell/.git/objects/9b:
-.  ..  0d954bf1f63b4879dce6d7f01e04048f753e4b  
-
-../rshell/.git/objects/9c:
-.  ..  776abe663038d1b2880ac1b7afa9e2dac99a08  e32d9ee93f1bd00fff214e29633ce096b912f2  
-
-../rshell/.git/objects/9d:
-.  ..  b2c2b658747d89688dc239e9609aa281e4d34b  
-
-../rshell/.git/objects/9e:
-.  ..  87cfe4650a90d7bfb996694cc048ad5f46c5fd  c3f72076be39b5c26768eb44ba3be6c3d97ca3  
-
-../rshell/.git/objects/a1:
-.  ..  63cb1961c54b708f870ddd8a33c8c3f224fe05  
-
-../rshell/.git/objects/a2:
-.  ..  803cd9945d7e535ea6970f4525489422411e17  a1366e098e389c1fb0ebfafb7720f64316d2c4  
-
-../rshell/.git/objects/a5:
-.  ..  80b5c1cc4805b7db4e7bde11e8f35f838bfd43  85d052ca5d2fe8e1f4f0e5b7b8c8dbecdca56b  ac1a47dc0c03601fa1d18b28146d8bf6ad3283  
-
-../rshell/.git/objects/a6:
-.  ..  31eb96563e3093438913d9f96cbf456ebc9f73  7f87db0c3518823f3c268268081f72231fcdd1  
-
-../rshell/.git/objects/a7:
-.  ..  6362193e637d15554232a48c3f71e801c2976e  
-
-../rshell/.git/objects/a9:
-.  ..  e26381d6338b00cf403612f31f596670d7c4ec  
-
-../rshell/.git/objects/ae:
-.  ..  4c1e6560f5095f5a7153bda7e7263c103fb487  
-
-../rshell/.git/objects/b0:
-.  ..  71daa90f18fe46ca489f0aa15f347386bfa0f4  
-
-../rshell/.git/objects/b1:
-.  ..  8646583d5102d8873d31d6c00adfbaac1e8a87  9f111353094cad0ce319b4f98468b561edc4b8  
-
-../rshell/.git/objects/b4:
-.  ..  0f13532522cff8a74d19df5a02de0601a2bf50  0fac867890af40af7722d2311a937cb83b9706  cb63242c42e165b38d0fc7401a7222d1dabbc3  
-
-../rshell/.git/objects/b5:
-.  ..  a9f70c2b21f2d3a97002c2f3b70c013e3cca1a  
-
-../rshell/.git/objects/b7:
-.  ..  36909fd3aad6642a82c3a2e84479f546c3c081  
-
-../rshell/.git/objects/b9:
-.  ..  fbfadc2a3bc2a2a1dcc7ee1a633d1eed65a895  
-
-../rshell/.git/objects/ba:
-.  ..  261b2d93e2f7aeb6a843fa9b724866f7fa9e5c  c2af21d8bd1da2a9f4cbc7d96e20cab6983e3f  
-
-../rshell/.git/objects/bb:
-.  ..  ee33655c6772b801f043cb031fb7c8a986c266  
-
-../rshell/.git/objects/bd:
-.  ..  0aaa4e514ef044219d68e086c3b1c274489f79  9cb7a8f6ca0238aedad4564613142d744e5b47  
-
-../rshell/.git/objects/bf:
-.  ..  bd1f91b51b5fd5df2d42020f1a6523454c304a  
-
-../rshell/.git/objects/c1:
-.  ..  777ba9c25c340716fe7f0ba7577b3fc684f631  
-
-../rshell/.git/objects/c3:
-.  ..  6e863886a5e008fa88b2e7d02c06c22daafa00  
-
-../rshell/.git/objects/c6:
-.  ..  90f9f8c6271333471f52bb6de85f76f186ce17  
-
-../rshell/.git/objects/cb:
-.  ..  99d27c3833f708ed65668be5ebceecff30be3f  
-
-../rshell/.git/objects/cc:
-.  ..  f1a85289fc3778799f380d7253c40f03c927b2  
-
-../rshell/.git/objects/d6:
-.  ..  a93266f748d606b884f9434ff662fe80b9dc21  eb9be76d4d887a60c0a75bb1914c666c0e9ac3  
-
-../rshell/.git/objects/d7:
-.  ..  df2a935bfbb71118832245bbcab80acc4df702  
-
-../rshell/.git/objects/d9:
-.  ..  730c16eb46386eb6ed0c7ce50a74745c600ccc  8f99426d3ba5385c88673c432f25bf7ea967e8  
-
-../rshell/.git/objects/dc:
-.  ..  46a94832fc89a12ce7bdefb3318066c3910973  ac09d3542b466b12fb0cb64e483ca9d97a0b2a  
-
-../rshell/.git/objects/dd:
-.  ..  b618342e805e00e97b83fa0411500b0c3b6d7c  e8338143b194a5955aa49ee79337ffc6612605  f3d9e0f474afcc04f5230f0755110e5cb6e721  
-
-../rshell/.git/objects/df:
-.  ..  2199f3e7466d3c6d77fb7b6e2d3d2c6fd037e1  752a03d1c8cbef8faf1fa7c895377c90c786a2  
-
-../rshell/.git/objects/e0:
-.  ..  32bd3792e3b531f0bda7f369a149b9961bd79f  b8c88c749864d302b1d6cdbc39e9a71bd1ec27  
-
-../rshell/.git/objects/e2:
-.  ..  057fe5069128712b3f45bdcdabb77a9026c291  efabc0352d512368f041301b1f00dc55b25e82  
-
-../rshell/.git/objects/e3:
-.  ..  01ac92b6fbb9e3bf320901e6dd12828c91d7bf  
-
-../rshell/.git/objects/e4:
-.  ..  68ca2f599c9c2448924f2ac5bb142162ae3bc6  
-
-../rshell/.git/objects/e5:
-.  ..  90996bfedc065a3953b266ddffb056e388925b  d129c309546c07a04b6e4a3aee7e234961d360  
-
-../rshell/.git/objects/e6:
-.  ..  368f46526f42818b0c52aa46c90dc923faa578  
-
-../rshell/.git/objects/ed:
-.  ..  914de40fb7ce391b932dd757c68cd040b93f4b  f052c47dcff9673d94e878349a15367f7d8c3b  
-
-../rshell/.git/objects/f0:
-.  ..  b094602e180d35cc138cb7b0bb8eebbace6273  c96adaba412ec1a6a1ddb6af5775651ba8dcda  
-
-../rshell/.git/objects/f2:
-.  ..  19bbe697f4105894c48b9892339948d058d9ba  
-
-../rshell/.git/objects/f3:
-.  ..  aa20147e8adc277d957e9cc77b4549fb54d850  
-
-../rshell/.git/objects/f5:
-.  ..  361cb6220915daa8e1040fd4f7a72150a099f7  d4733941f7e794f1ae0e026461348a532e08c9  
-
-../rshell/.git/objects/f6:
-.  ..  0d63bd85221b76a2151f2a97f11ef71e5a159f  7d56ce74a177a744755f9dea4e8ebfa3b7c9fa  
-
-../rshell/.git/objects/f8:
-.  ..  bfcb6735fcdedf99324a12f924855bb2a9651e  
-
-../rshell/.git/objects/f9:
-.  ..  4a0179e4d2c5dff5b992408795d0a5f4b6ff76  d88b1738341f5f8776f4277e5c6364f1136486  
-
-../rshell/.git/objects/fc:
-.  ..  7c0a2a083128366ef0d35123754e86eb8a644b  
-
-../rshell/.git/objects/ff:
-.  ..  0309b5b8affff7dbbfe92b864f6a7bf3c5b321  4270ef5b46166604f85dabfe2a46ae50b0d811  
-
-../rshell/.git/objects/info:
-.  ..  
-
-../rshell/.git/objects/pack:
-.  ..  
-
-../rshell/.git/refs/heads:
-.  ..  ls  master  origin  
-
-../rshell/.git/refs/remotes:
-.  ..  origin  
-
-../rshell/.git/refs/tags:
-.  ..  hw1  
-
-../rshell/.git/logs/refs:
-.  ..  heads  remotes  
-
-../rshell/.git/objects/01:
-.  ..  6c70dff36bbb92b74c41ad02f06d42857f6697  
-
-../rshell/.git/objects/02:
-.  ..  01cb13422dfb5833c16b8bb7f561c16cfe8bd4  
-
-../rshell/.git/objects/05:
-.  ..  9a8204ba5e18deebf185e8bab6a417baa245e2  
-
-../rshell/.git/objects/07:
-.  ..  771028e33fe3d6d58d50674b018246ad559bcc  
-
-../rshell/.git/objects/09:
-.  ..  6fc78ceabc918bc1cd8738ff6ca7e1950a8435  7f51d9c367ce117d3a8ee5dd18b683ea63057a  cd5de3a47b877c22d72759218f8ebeac30a9f1  
-
-../rshell/.git/objects/0a:
-.  ..  f669b84c33344b4a82f9a001bafc8aa7e31c53  
-
-../rshell/.git/objects/0c:
-.  ..  fce3fe4bf6a81996a0ff98b901142eff1d4acf  
-
-../rshell/.git/objects/15:
-.  ..  90e854a03a0a55ffc51fb60fd11e022286b9cd  
-
-../rshell/.git/objects/18:
-.  ..  c09b9ed9a77ca45f7edec3956cb55d0cb6cb3b  
-
-../rshell/.git/objects/1a:
-.  ..  9030b7328135ed2f8794c14df997e60abcf625  c2b7ad929c5cec2fbc0818d4380e3d23ca64e2  
-
-../rshell/.git/objects/1b:
-.  ..  b1b47e570bea1d4dfba36cd3fe95fe0256a53c  f09bf99d43af774b3fd8d2322d2fe55d3be258  f5ef8a3318950b4b316d8796fed96594a28cae  
-
-../rshell/.git/objects/1c:
-.  ..  96f9d1a3f15e8e1287f6d2b7da8517c0fa22ce  
-
-../rshell/.git/objects/1d:
-.  ..  6d9cab3b7c7d59d9cca1d5e7883f6f228a9bed  
-
-../rshell/.git/objects/21:
-.  ..  57e7d7a800c100ac4fe9e5c246004f956fcbde  
-
-../rshell/.git/objects/26:
-.  ..  40d9a898425bf47ac487c79e644ad656dcfae3  
-
-../rshell/.git/objects/2c:
-.  ..  0fd6cfba1525b357944baedffd9a61ebcd1efd  
-
-../rshell/.git/objects/2f:
-.  ..  7596ec2f711d84bd67f91959c40e84cd47d495  
-
-../rshell/.git/objects/30:
-.  ..  3bc39e9a915193b5ff91bbce89cb0512775714  
-
-../rshell/.git/objects/31:
-.  ..  f5fefa97238423f354983fd729b9bf1e13ceca  
-
-../rshell/.git/objects/32:
-.  ..  56460a04994a9052da23683a7f51dcd8b89ce3  f7faba856fe9329e691c2e98c85e2ee6cb6787  
-
-../rshell/.git/objects/35:
-.  ..  ccd463d3a1ac6f99ec03a4705b0cad983435a8  
-
-../rshell/.git/objects/38:
-.  ..  030a6bd6707e9f9714ba5ee0ec3fe9d3f9b35a  
-
-../rshell/.git/objects/39:
-.  ..  1c70cb39430f6b85be99fe88e81601c73b1ce4  
-
-../rshell/.git/objects/3a:
-.  ..  a1dcbd85da6775a6308c43c560cc6b81b4d33e  aa262a21001ed693a5e50076dea75b66fb5b8e  
-
-../rshell/.git/objects/3e:
-.  ..  2cebe0ac58def14c00f88a4a8ec411b912d9aa  
-
-../rshell/.git/objects/3f:
-.  ..  4b9b4f9b53bcbcbe3c9cee8b8a38614dfb502b  a64312be32a2faa4a9ed84e18684cad80106ad  
-
-../rshell/.git/objects/40:
-.  ..  7779c26b4a04ccfc45c4b872df8c9fb3b68ea5  
-
-../rshell/.git/objects/43:
-.  ..  c358cb741f36e38612cebb1b15356aa9424a7c  
-
-../rshell/.git/objects/46:
-.  ..  e8b8147dd3111183fe1abec6965167eb8f0976  
-
-../rshell/.git/objects/4a:
-.  ..  a1e0344e471e7ad1911631d985c58b9a68b982  e75393b41064112017b37e594ba11f2d860523  
-
-../rshell/.git/objects/4b:
-.  ..  4e81352b9f010ef94abbca4cfa80a41864ffad  85346619b9bc02f6180871b97b080d37346f4a  
-
-../rshell/.git/objects/51:
-.  ..  4430c4c6073d129408823bc808d337c551c1da  
-
-../rshell/.git/objects/52:
-.  ..  d2a08a6c2f1e46d84c8d2f61ee382d0ce7f610  
-
-../rshell/.git/objects/54:
-.  ..  9a9f01a2a478fa67e3d9a8c860923f6b88096e  e71072bcec6a2bd780a7ff214b0f0ac37154c3  
-
-../rshell/.git/objects/55:
-.  ..  61b657df0c72d1523e28fb7e1cb9b87227087a  
-
-../rshell/.git/objects/58:
-.  ..  6a76610c4322fcfb9138d4b0f443bc6011906a  
-
-../rshell/.git/objects/59:
-.  ..  a15c7de23962b75eb192d0e965ed1dfcf9f10b  
-
-../rshell/.git/objects/5b:
-.  ..  d9c0b5091b4617f8107a927e97a77678611620  
-
-../rshell/.git/objects/5c:
-.  ..  571745334ea87cfe1b3c8b5ea7c0b0097c9e41  9a61df154a6ba13d39578f730a2a26a5d4f564  
-
-../rshell/.git/objects/5d:
-.  ..  579146d9942dcd272791d9b5347c5bc630c4d5  97af31598fc6d118f5c8dab0639db5dd2c0d0f  
-
-../rshell/.git/objects/5e:
-.  ..  64cb3e57ea27a1bc7dee84173b392861acff78  
-
-../rshell/.git/objects/5f:
-.  ..  412dc36a6922c51c343b1e98249ed28b3ac6f8  
-
-../rshell/.git/objects/60:
-.  ..  3bdcaa5064d17e1a2eee823fa47fc9d484c09d  
-
-../rshell/.git/objects/64:
-.  ..  03150be767ba65d4386abcfedd477b4e8430ac  
-
-../rshell/.git/objects/66:
-.  ..  cd8427d081b3f83a288bb9c3d98b8bd9628db2  
-
-../rshell/.git/objects/67:
-.  ..  1076600d84c03ccbbe3af15516bddddce233b0  c3a21382d97fc8ab1000ca3136c8c5a079a1e5  
-
-../rshell/.git/objects/68:
-.  ..  f7d30f23daf6c849b53af41cfb9c58ba593fb1  
-
-../rshell/.git/objects/6b:
-.  ..  83d48307cdf189a27005bd8fc13efa0aab721d  8d5099904874b94de0ccd36986e0b91f0ba98e  eef64314acc39ec71d5c2f5b165229bb2d84cd  
-
-../rshell/.git/objects/6c:
-.  ..  92b5b3c18e404aa43edf76a061d346b24047f2  
-
-../rshell/.git/objects/6e:
-.  ..  57e7bf01febbaf8eb46f9d9caddee71d08b5d7  
-
-../rshell/.git/objects/70:
-.  ..  2e00032ebf55952bae197639ab6728fed1b71d  
-
-../rshell/.git/objects/74:
-.  ..  41f093f4513b7af648a857302fb1b2796e8c4c  
-
-../rshell/.git/objects/7d:
-.  ..  39a1e0224913bd6b530800c3f05d6c55dc5b53  4f27d12ff2c761d0fd84e689dcf3ff296b126c  
-
-../rshell/.git/objects/7f:
-.  ..  09857d85e6e49b21cdd145a7e6a826d337e332  
-
-../rshell/.git/objects/81:
-.  ..  198b3cbfd050cdc47e8923afbf5363cd1ccae5  303a10ca52243c69a21e60507c8d40c6f78f55  452697ebdc0f4bb2a53dbc54ed5ded8e75381f  f77c41f5b5c2ea284d4bce9296468a04cb20e8  
-
-../rshell/.git/objects/82:
-.  ..  ff152e1fa706bc098edec499e01d3e57f53a9b  
-
-../rshell/.git/objects/85:
-.  ..  4bd625e132d006bbff7b552c91f1664d61e518  
-
-../rshell/.git/objects/86:
-.  ..  73bb640cf269ab9741e516b81709ef1f9fdfa4  
-
-../rshell/.git/objects/89:
-.  ..  d78a7b3e49d2144949c41ecb65d0b0366459a8  
-
-../rshell/.git/objects/93:
-.  ..  1d6ca760d8cccb505ee40ac170e4e6fab1211f  9d97a0f7db4202391e44571c4e0bc3d2266e22  
-
-../rshell/.git/objects/94:
-.  ..  295cd1c10a569fd4cf7cc922982b5d413ad493  
-
-../rshell/.git/objects/96:
-.  ..  740d40de9c7a6a85c08f707dfd4aff97627786  
-
-../rshell/.git/objects/9b:
-.  ..  0d954bf1f63b4879dce6d7f01e04048f753e4b  
-
-../rshell/.git/objects/9c:
-.  ..  776abe663038d1b2880ac1b7afa9e2dac99a08  e32d9ee93f1bd00fff214e29633ce096b912f2  
-
-../rshell/.git/objects/9d:
-.  ..  b2c2b658747d89688dc239e9609aa281e4d34b  
-
-../rshell/.git/objects/9e:
-.  ..  87cfe4650a90d7bfb996694cc048ad5f46c5fd  c3f72076be39b5c26768eb44ba3be6c3d97ca3  
-
-../rshell/.git/objects/a1:
-.  ..  63cb1961c54b708f870ddd8a33c8c3f224fe05  
-
-../rshell/.git/objects/a2:
-.  ..  803cd9945d7e535ea6970f4525489422411e17  a1366e098e389c1fb0ebfafb7720f64316d2c4  
-
-../rshell/.git/objects/a5:
-.  ..  80b5c1cc4805b7db4e7bde11e8f35f838bfd43  85d052ca5d2fe8e1f4f0e5b7b8c8dbecdca56b  ac1a47dc0c03601fa1d18b28146d8bf6ad3283  
-
-../rshell/.git/objects/a6:
-.  ..  31eb96563e3093438913d9f96cbf456ebc9f73  7f87db0c3518823f3c268268081f72231fcdd1  
-
-../rshell/.git/objects/a7:
-.  ..  6362193e637d15554232a48c3f71e801c2976e  
-
-../rshell/.git/objects/a9:
-.  ..  e26381d6338b00cf403612f31f596670d7c4ec  
-
-../rshell/.git/objects/ae:
-.  ..  4c1e6560f5095f5a7153bda7e7263c103fb487  
-
-../rshell/.git/objects/b0:
-.  ..  71daa90f18fe46ca489f0aa15f347386bfa0f4  
-
-../rshell/.git/objects/b1:
-.  ..  8646583d5102d8873d31d6c00adfbaac1e8a87  9f111353094cad0ce319b4f98468b561edc4b8  
-
-../rshell/.git/objects/b4:
-.  ..  0f13532522cff8a74d19df5a02de0601a2bf50  0fac867890af40af7722d2311a937cb83b9706  cb63242c42e165b38d0fc7401a7222d1dabbc3  
-
-../rshell/.git/objects/b5:
-.  ..  a9f70c2b21f2d3a97002c2f3b70c013e3cca1a  
-
-../rshell/.git/objects/b7:
-.  ..  36909fd3aad6642a82c3a2e84479f546c3c081  
-
-../rshell/.git/objects/b9:
-.  ..  fbfadc2a3bc2a2a1dcc7ee1a633d1eed65a895  
-
-../rshell/.git/objects/ba:
-.  ..  261b2d93e2f7aeb6a843fa9b724866f7fa9e5c  c2af21d8bd1da2a9f4cbc7d96e20cab6983e3f  
-
-../rshell/.git/objects/bb:
-.  ..  ee33655c6772b801f043cb031fb7c8a986c266  
-
-../rshell/.git/objects/bd:
-.  ..  0aaa4e514ef044219d68e086c3b1c274489f79  9cb7a8f6ca0238aedad4564613142d744e5b47  
-
-../rshell/.git/objects/bf:
-.  ..  bd1f91b51b5fd5df2d42020f1a6523454c304a  
-
-../rshell/.git/objects/c1:
-.  ..  777ba9c25c340716fe7f0ba7577b3fc684f631  
-
-../rshell/.git/objects/c3:
-.  ..  6e863886a5e008fa88b2e7d02c06c22daafa00  
-
-../rshell/.git/objects/c6:
-.  ..  90f9f8c6271333471f52bb6de85f76f186ce17  
-
-../rshell/.git/objects/cb:
-.  ..  99d27c3833f708ed65668be5ebceecff30be3f  
-
-../rshell/.git/objects/cc:
-.  ..  f1a85289fc3778799f380d7253c40f03c927b2  
-
-../rshell/.git/objects/d6:
-.  ..  a93266f748d606b884f9434ff662fe80b9dc21  eb9be76d4d887a60c0a75bb1914c666c0e9ac3  
-
-../rshell/.git/objects/d7:
-.  ..  df2a935bfbb71118832245bbcab80acc4df702  
-
-../rshell/.git/objects/d9:
-.  ..  730c16eb46386eb6ed0c7ce50a74745c600ccc  8f99426d3ba5385c88673c432f25bf7ea967e8  
-
-../rshell/.git/objects/dc:
-.  ..  46a94832fc89a12ce7bdefb3318066c3910973  ac09d3542b466b12fb0cb64e483ca9d97a0b2a  
-
-../rshell/.git/objects/dd:
-.  ..  b618342e805e00e97b83fa0411500b0c3b6d7c  e8338143b194a5955aa49ee79337ffc6612605  f3d9e0f474afcc04f5230f0755110e5cb6e721  
-
-../rshell/.git/objects/df:
-.  ..  2199f3e7466d3c6d77fb7b6e2d3d2c6fd037e1  752a03d1c8cbef8faf1fa7c895377c90c786a2  
-
-../rshell/.git/objects/e0:
-.  ..  32bd3792e3b531f0bda7f369a149b9961bd79f  b8c88c749864d302b1d6cdbc39e9a71bd1ec27  
-
-../rshell/.git/objects/e2:
-.  ..  057fe5069128712b3f45bdcdabb77a9026c291  efabc0352d512368f041301b1f00dc55b25e82  
-
-../rshell/.git/objects/e3:
-.  ..  01ac92b6fbb9e3bf320901e6dd12828c91d7bf  
-
-../rshell/.git/objects/e4:
-.  ..  68ca2f599c9c2448924f2ac5bb142162ae3bc6  
-
-../rshell/.git/objects/e5:
-.  ..  90996bfedc065a3953b266ddffb056e388925b  d129c309546c07a04b6e4a3aee7e234961d360  
-
-../rshell/.git/objects/e6:
-.  ..  368f46526f42818b0c52aa46c90dc923faa578  
-
-../rshell/.git/objects/ed:
-.  ..  914de40fb7ce391b932dd757c68cd040b93f4b  f052c47dcff9673d94e878349a15367f7d8c3b  
-
-../rshell/.git/objects/f0:
-.  ..  b094602e180d35cc138cb7b0bb8eebbace6273  c96adaba412ec1a6a1ddb6af5775651ba8dcda  
-
-../rshell/.git/objects/f2:
-.  ..  19bbe697f4105894c48b9892339948d058d9ba  
-
-../rshell/.git/objects/f3:
-.  ..  aa20147e8adc277d957e9cc77b4549fb54d850  
-
-../rshell/.git/objects/f5:
-.  ..  361cb6220915daa8e1040fd4f7a72150a099f7  d4733941f7e794f1ae0e026461348a532e08c9  
-
-../rshell/.git/objects/f6:
-.  ..  0d63bd85221b76a2151f2a97f11ef71e5a159f  7d56ce74a177a744755f9dea4e8ebfa3b7c9fa  
-
-../rshell/.git/objects/f8:
-.  ..  bfcb6735fcdedf99324a12f924855bb2a9651e  
-
-../rshell/.git/objects/f9:
-.  ..  4a0179e4d2c5dff5b992408795d0a5f4b6ff76  d88b1738341f5f8776f4277e5c6364f1136486  
-
-../rshell/.git/objects/fc:
-.  ..  7c0a2a083128366ef0d35123754e86eb8a644b  
-
-../rshell/.git/objects/ff:
-.  ..  0309b5b8affff7dbbfe92b864f6a7bf3c5b321  4270ef5b46166604f85dabfe2a46ae50b0d811  
-
-../rshell/.git/objects/info:
-.  ..  
-
-../rshell/.git/objects/pack:
-.  ..  
-
-../rshell/.git/refs/heads:
-.  ..  ls  master  origin  
-
-../rshell/.git/refs/remotes:
-.  ..  origin  
-
-../rshell/.git/refs/tags:
-.  ..  hw1  
-
-../rshell/.git/logs/refs/heads:
-.  ..  ls  master  origin  
-
-../rshell/.git/logs/refs/remotes:
-.  ..  origin  
-
-../rshell/.git/refs/heads/origin:
-.  ..  
-
-../rshell/.git/refs/remotes/origin:
-.  ..  exec  HEAD  master  
-
-../rshell/.git/logs/refs/heads:
-.  ..  ls  master  origin  
-
-../rshell/.git/logs/refs/remotes:
-.  ..  origin  
-
-../rshell/.git/refs/heads/origin:
-.  ..  
-
-../rshell/.git/refs/remotes/origin:
-.  ..  exec  HEAD  master  
-
-../rshell/.git/logs/refs/heads/origin:
-.  ..  
-
-../rshell/.git/logs/refs/remotes/origin:
-.  ..  exec  HEAD  master  
-
-../rshell/.git/logs/refs/heads/origin:
-.  ..  
-
-../rshell/.git/logs/refs/remotes/origin:
-.  ..  exec  HEAD  master  
-
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m #that was long, but those two work fine
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -R /
-/:
-bin  boot  cdrom  dev  etc  home  initrd.img  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  vmlinuz  
+bin  boot  cdrom  dev  etc  home  initrd.img  lib  lib32  lib64  libx32  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  vmlinuz  
 
 //bin:
 stat failed: No such file or directory
-bash  [01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test -[K[K[K[K[K[K#hard paths don't work propre[K[Kerly for now
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m test
-bin  LICENSE  ls.script  Makefile  README.md  rshell.script  src  
-[01;32myoshi@yoshi[01;34m ~/Documents/rshell $[00m exit
+bash  gyosh@gyosh-/home/gyosh/Documents/rshell$ ./bin/ls -al
+total 52
+drwxr-xr-x 6 gyosh gyosh   4096 Mar  9 17:03 .
+drwxr-xr-x 9 gyosh gyosh   4096 Mar  9 14:08 ..
+drwxr-xr-x 8 gyosh gyosh   4096 Mar  9 14:27 .git
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 17:03 bin
+-rw-r--r-- 1 gyosh gyosh  18027 Feb  2 17:22 LICENSE
+-rw-r--r-- 1 gyosh gyosh    224 Feb 23 00:10 Makefile
+-rw-r--r-- 1 gyosh gyosh   1075 Feb 23 00:10 README.md
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 17:02 src
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 17:03 tests
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ./bin/ls -al
+total 52
+drwxr-xr-x 6 gyosh gyosh   4096 Mar  9 17:03 .
+drwxr-xr-x 9 gyosh gyosh   4096 Mar  9 14:08 ..
+drwxr-xr-x 8 gyosh gyosh   4096 Mar  9 14:27 .git
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 17:03 bin
+-rw-r--r-- 1 gyosh gyosh  18027 Feb  2 17:22 LICENSE
+-rw-r--r-- 1 gyosh gyosh    224 Feb 23 00:10 Makefile
+-rw-r--r-- 1 gyosh gyosh   1075 Feb 23 00:10 README.md
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 17:02 src
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 17:03 tests
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ./bin/ls -alR
+.:
+total 52
+drwxr-xr-x 6 gyosh gyosh   4096 Mar  9 17:03 .
+drwxr-xr-x 9 gyosh gyosh   4096 Mar  9 14:08 ..
+drwxr-xr-x 8 gyosh gyosh   4096 Mar  9 14:27 .git
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 17:03 bin
+-rw-r--r-- 1 gyosh gyosh  18027 Feb  2 17:22 LICENSE
+-rw-r--r-- 1 gyosh gyosh    224 Feb 23 00:10 Makefile
+-rw-r--r-- 1 gyosh gyosh   1075 Feb 23 00:10 README.md
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 17:02 src
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 17:03 tests
+
+./.git:
+total 64
+drwxr-xr-x 8 gyosh gyosh   4096 Mar  9 14:27 .
+drwxr-xr-x 6 gyosh gyosh   4096 Mar  9 17:03 ..
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  2 17:22 branches
+-rw-r--r-- 1 gyosh gyosh     14 Mar  9 14:25 COMMIT_EDITMSG
+-rw-r--r-- 1 gyosh gyosh    197 Mar  9 14:27 config
+-rw-r--r-- 1 gyosh gyosh     73 Feb  2 17:22 description
+-rw-r--r-- 1 gyosh gyosh    203 Feb 17 20:08 FETCH_HEAD
+-rw-r--r-- 1 gyosh gyosh     23 Mar  9 14:27 HEAD
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  2 17:22 hooks
+-rw-r--r-- 1 gyosh gyosh    920 Mar  9 14:27 index
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  2 17:22 info
+drwxr-xr-x 3 gyosh gyosh   4096 Feb  2 17:22 logs
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 objects
+-rw-r--r-- 1 gyosh gyosh     41 Mar  9 13:53 ORIG_HEAD
+-rw-r--r-- 1 gyosh gyosh    173 Feb  2 17:22 packed-refs
+drwxr-xr-x 5 gyosh gyosh   4096 Feb  2 17:22 refs
+
+./bin:
+total 156
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 17:03 .
+drwxr-xr-x 6 gyosh gyosh   4096 Mar  9 17:03 ..
+-rwxr-xr-x 1 gyosh gyosh  55930 Mar  9 17:03 ls
+-rwxr-xr-x 1 gyosh gyosh  94135 Mar  9 17:03 rshell
+
+./src:
+total 68
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 17:02 .
+drwxr-xr-x 6 gyosh gyosh   4096 Mar  9 17:03 ..
+-rw-r--r-- 1 gyosh gyosh  16384 Mar  9 17:02 .ls.cpp.swp
+-rw-r--r-- 1 gyosh gyosh  20480 Mar  9 17:01 .rshell.h.swp
+-rw-r--r-- 1 gyosh gyosh   5461 Mar  9 17:02 ls.cpp
+-rw-r--r-- 1 gyosh gyosh   2115 Mar  9 13:52 rshell.cpp
+-rw-r--r-- 1 gyosh gyosh   9246 Mar  9 17:01 rshell.h
+
+./tests:
+total 300
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 17:03 .
+drwxr-xr-x 6 gyosh gyosh   4096 Mar  9 17:03 ..
+-rw-r--r-- 1 gyosh gyosh   4096 Mar  9 17:04 ls.script
+-rw-r--r-- 1 gyosh gyosh   1515 Feb 23 00:10 piping.script
+-rw-r--r-- 1 gyosh gyosh 277245 Mar  9 14:19 regrade.script
+-rw-r--r-- 1 gyosh gyosh   2423 Feb 23 00:10 rshell.script
+-rw-r--r-- 1 gyosh gyosh   3433 Mar  9 14:24 signals.script
+
+./.git/branches:
+total 8
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  2 17:22 .
+drwxr-xr-x 8 gyosh gyosh   4096 Mar  9 14:27 ..
+
+./.git/hooks:
+total 48
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  2 17:22 .
+drwxr-xr-x 8 gyosh gyosh   4096 Mar  9 14:27 ..
+-rwxr-xr-x 1 gyosh gyosh    452 Feb  2 17:22 applypatch-msg.sample
+-rwxr-xr-x 1 gyosh gyosh    896 Feb  2 17:22 commit-msg.sample
+-rwxr-xr-x 1 gyosh gyosh    189 Feb  2 17:22 post-update.sample
+-rwxr-xr-x 1 gyosh gyosh    398 Feb  2 17:22 pre-applypatch.sample
+-rwxr-xr-x 1 gyosh gyosh   1642 Feb  2 17:22 pre-commit.sample
+-rwxr-xr-x 1 gyosh gyosh   1352 Feb  2 17:22 pre-push.sample
+-rwxr-xr-x 1 gyosh gyosh   4898 Feb  2 17:22 pre-rebase.sample
+-rwxr-xr-x 1 gyosh gyosh   1239 Feb  2 17:22 prepare-commit-msg.sample
+-rwxr-xr-x 1 gyosh gyosh   3611 Feb  2 17:22 update.sample
+
+./.git/info:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  2 17:22 .
+drwxr-xr-x 8 gyosh gyosh   4096 Mar  9 14:27 ..
+-rw-r--r-- 1 gyosh gyosh    240 Feb  2 17:22 exclude
+
+./.git/logs:
+total 20
+drwxr-xr-x 3 gyosh gyosh   4096 Feb  2 17:22 .
+drwxr-xr-x 8 gyosh gyosh   4096 Mar  9 14:27 ..
+-rw-r--r-- 1 gyosh gyosh   5255 Mar  9 14:27 HEAD
+drwxr-xr-x 4 gyosh gyosh   4096 Feb  2 17:22 refs
+
+./.git/objects:
+total 396
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 .
+drwxr-xr-x 8 gyosh gyosh   4096 Mar  9 14:27 ..
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 05
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 07
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 00:03 09
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:18 0b
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 26 00:05 0e
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:55 0f
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:06 10
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:04 11
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:25 16
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  8 11:49 1a
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 1c
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 1d
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:48 1f
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 21 20:01 22
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:35 24
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:55 25
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:04 27
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:55 2b
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 00:02 2c
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 2f
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 30
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:18 33
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:55 39
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 00:03 3a
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:25 41
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 44
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:34 45
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 48
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:18 4b
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:58 4d
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:47 4e
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 51
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:54 52
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:52 56
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 00:02 57
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  8 11:49 5c
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 5d
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 5e
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:25 5f
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:10 60
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:47 64
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 66
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 68
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  8 11:48 6b
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 6c
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:04 6d
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 6e
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 76
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 7c
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  8 11:48 7f
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 81
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 00:02 83
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 85
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:36 8c
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:06 8e
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:55 90
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:24 91
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 00:04 95
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 96
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:34 98
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 00:03 9c
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 9e
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:25 9f
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 a2
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 a6
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:55 a9
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 21 19:52 ae
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:55 b0
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 b1
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:04 b3
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 ba
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 bb
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 bd
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:35 bf
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 c1
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:45 c4
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:38 c5
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:34 c8
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 cb
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 cc
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:06 d0
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 d6
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 d7
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  8 11:49 e3
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  8 11:48 e4
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:35 e5
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  8 11:48 e8
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 e9
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 ed
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:55 f8
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 f9
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 fb
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 fc
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 fe
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 ff
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  2 17:22 info
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  2 17:22 pack
+
+./.git/refs:
+total 20
+drwxr-xr-x 5 gyosh gyosh   4096 Feb  2 17:22 .
+drwxr-xr-x 8 gyosh gyosh   4096 Mar  9 14:27 ..
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:27 heads
+drwxr-xr-x 3 gyosh gyosh   4096 Feb  2 17:22 remotes
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:24 tags
+
+./.git/logs/refs:
+total 16
+drwxr-xr-x 4 gyosh gyosh   4096 Feb  2 17:22 .
+drwxr-xr-x 3 gyosh gyosh   4096 Feb  2 17:22 ..
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:27 heads
+drwxr-xr-x 3 gyosh gyosh   4096 Feb  2 17:22 remotes
+
+./.git/objects/05:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    784 Feb 17 20:08 9a8204ba5e18deebf185e8bab6a417baa245e2
+
+./.git/objects/07:
+total 24
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh  13870 Feb 17 20:08 795c0f63ada5a1aedb8c4f8b7bdf187e0013fe
+
+./.git/objects/09:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 00:03 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    108 Mar  9 00:03 c99118330110e29c2f91920924f7c22def651a
+-r--r--r-- 1 gyosh gyosh    185 Feb 17 20:08 cd5de3a47b877c22d72759218f8ebeac30a9f1
+
+./.git/objects/0b:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:18 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    162 Feb 22 23:18 189a938bc2710ca195238297f50e9fe2a8d5a7
+
+./.git/objects/0e:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 26 00:05 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    185 Feb 26 00:05 5cc839abf841325ad6f2394221d819ca265424
+
+./.git/objects/0f:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:55 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh     85 Feb 22 23:55 92327e7f39675ae5426ec3d1121e5aafdbd227
+
+./.git/objects/10:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:06 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh     82 Feb 23 00:06 c6cf6b4ab227eca1a46ff73beb9a0af82d6f24
+
+./.git/objects/11:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:04 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   3143 Feb 23 00:04 40c9451da1d26a6348be259818c2927bb124b0
+
+./.git/objects/16:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:25 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    176 Mar  9 14:25 e598bcfb288905eaa9987e50cd53e5904e6c6d
+-r--r--r-- 1 gyosh gyosh    178 Mar  9 14:25 f538ac4983ebc9707a6dc70f38080cba82b1c6
+
+./.git/objects/1a:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  8 11:49 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    186 Feb  8 11:49 9030b7328135ed2f8794c14df997e60abcf625
+
+./.git/objects/1c:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    148 Mar  9 13:46 1df43021902b8765126507c4f1c1eec16f1652
+
+./.git/objects/1d:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   1543 Feb 17 20:08 6d9cab3b7c7d59d9cca1d5e7883f6f228a9bed
+
+./.git/objects/1f:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:48 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    134 Mar  9 13:48 127881006c7b98588028aa3bee7fd1a4fb187a
+
+./.git/objects/22:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 21 20:01 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    130 Feb 21 20:01 11125650caca0362695b5bfbaa34c8004794c7
+
+./.git/objects/24:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:35 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    177 Mar  9 13:35 f6ef82c711272b5f25dc4941d44b71a3bacbb1
+
+./.git/objects/25:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:55 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    128 Mar  9 13:55 c7713db91b48029af7986c774eaec9083779a4
+
+./.git/objects/27:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:04 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   4381 Feb 23 00:04 3dae8e328ecf696941f5a05b17f1b95757ccdc
+
+./.git/objects/2b:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:55 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh     82 Feb 22 23:55 24f442e96bd730897ae6d58223b4473c823d23
+
+./.git/objects/2c:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 00:02 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   1810 Feb 17 20:08 0fd6cfba1525b357944baedffd9a61ebcd1efd
+-r--r--r-- 1 gyosh gyosh   2955 Mar  9 00:02 b5243ce5568ece9a547d98228764b6110e5f40
+
+./.git/objects/2f:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    172 Feb 17 20:08 7596ec2f711d84bd67f91959c40e84cd47d495
+
+./.git/objects/30:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    115 Feb 17 20:08 3bc39e9a915193b5ff91bbce89cb0512775714
+
+./.git/objects/33:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:18 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh     82 Feb 22 23:18 3438eb3d337586e627ce3f3dea44fc78b767a9
+
+./.git/objects/39:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:55 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    115 Feb 17 20:08 1c70cb39430f6b85be99fe88e81601c73b1ce4
+-r--r--r-- 1 gyosh gyosh    177 Feb 22 23:55 cabfa53b9c57601d15ad87404b02d16bfe1ab9
+
+./.git/objects/3a:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 00:03 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    159 Mar  9 00:03 243b0a1b209043320f9587982bc61a23504d41
+
+./.git/objects/41:
+total 68
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:25 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh  58197 Mar  9 14:25 7424114257cf96568245a9037ae4c9ec4934ff
+
+./.git/objects/44:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    497 Feb 17 20:08 632c36d076d24904315b66990b8c2f7ee1e320
+
+./.git/objects/45:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:34 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    941 Mar  9 13:34 f444c8babb03b0945a2aa3c40682b72e83238f
+
+./.git/objects/48:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    164 Mar  9 13:46 495ae6ed0ef6af2cb0bddfd0f6897ebe4732ed
+-r--r--r-- 1 gyosh gyosh   2027 Mar  9 00:02 79e8a29fd0422d1df250c20aa9711849e8db0d
+
+./.git/objects/4b:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:18 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   5795 Feb 22 23:18 6e0cc4514a826559a9b6487350c3a0f55329dd
+
+./.git/objects/4d:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:58 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    624 Feb 22 23:58 0113bdc1403b0c695f4d0e8d2c8f7ac76ec833
+
+./.git/objects/4e:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:47 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    177 Mar  9 13:47 0987ddee644cf10032ab4963db763ef680932b
+
+./.git/objects/51:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    174 Feb 17 20:08 4430c4c6073d129408823bc808d337c551c1da
+
+./.git/objects/52:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:54 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   3128 Feb 22 23:54 8d3d4503bcd436673ef8e3f1be1af2fc8b8a68
+-r--r--r-- 1 gyosh gyosh    115 Feb 17 20:08 d2a08a6c2f1e46d84c8d2f61ee382d0ce7f610
+
+./.git/objects/56:
+total 32
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:52 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh  20393 Mar  9 13:34 464ad48d06abde179a7a7b38a013d4eb8f7839
+-r--r--r-- 1 gyosh gyosh    925 Mar  9 13:52 62701037e5af635310a6528f82ee54549d685b
+
+./.git/objects/57:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 00:02 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   1024 Mar  9 00:02 59ca6d7b009737defcd0dc7209b3390077ad27
+-r--r--r-- 1 gyosh gyosh    499 Feb 23 00:04 8b811f105b02ce2fb6da6b5e94e1dcb01a3771
+
+./.git/objects/5c:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  8 11:49 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    157 Feb  8 11:49 9a61df154a6ba13d39578f730a2a26a5d4f564
+
+./.git/objects/5d:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    163 Feb 17 20:08 d9a19ec7fed694a9870fa68903879498ebb48a
+
+./.git/objects/5e:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    185 Feb 17 20:08 64cb3e57ea27a1bc7dee84173b392861acff78
+
+./.git/objects/5f:
+total 20
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:25 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    157 Feb 17 20:08 412dc36a6922c51c343b1e98249ed28b3ac6f8
+-r--r--r-- 1 gyosh gyosh    108 Mar  9 13:47 80bb9b0d9780157c6ade2bcbfdc8c89890b0ba
+-r--r--r-- 1 gyosh gyosh    156 Mar  9 14:25 f49cf5d6e6ada8d3732e3e4deba1f2945806a7
+
+./.git/objects/60:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:10 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    125 Feb 23 00:10 0721c6bca96e9c2987e6ac71bfc503e57b2ad3
+
+./.git/objects/64:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:47 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    154 Mar  9 13:47 8b13943e947778bd6a1aaccec1d2b3a9a96c82
+
+./.git/objects/66:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   2453 Feb 17 20:08 cd8427d081b3f83a288bb9c3d98b8bd9628db2
+
+./.git/objects/68:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   1814 Feb 17 20:08 f7d30f23daf6c849b53af41cfb9c58ba593fb1
+
+./.git/objects/6b:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  8 11:48 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    198 Feb  8 11:48 83d48307cdf189a27005bd8fc13efa0aab721d
+
+./.git/objects/6c:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    182 Feb 17 20:08 92b5b3c18e404aa43edf76a061d346b24047f2
+
+./.git/objects/6d:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:04 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    115 Feb 23 00:04 b2f0dc4e8e26149af9a20d7cc8289d775c0496
+
+./.git/objects/6e:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    185 Feb 17 20:08 57e7bf01febbaf8eb46f9d9caddee71d08b5d7
+
+./.git/objects/76:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    203 Mar  9 13:46 0641aa1fd7e78f1192b02c186f9a8f8a7d1f1e
+
+./.git/objects/7c:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    211 Feb 17 20:08 6e505fb133176aaca26fbb63bd3720e7902192
+
+./.git/objects/7f:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  8 11:48 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    160 Feb  8 11:48 09857d85e6e49b21cdd145a7e6a826d337e332
+
+./.git/objects/81:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   1428 Feb 17 20:08 452697ebdc0f4bb2a53dbc54ed5ded8e75381f
+-r--r--r-- 1 gyosh gyosh    773 Feb 17 20:08 f77c41f5b5c2ea284d4bce9296468a04cb20e8
+
+./.git/objects/83:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 00:02 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   5090 Mar  9 00:02 3928410adb45abfff7b65bcfde7bc8cc09d696
+
+./.git/objects/85:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    185 Feb 17 20:08 4bd625e132d006bbff7b552c91f1664d61e518
+
+./.git/objects/8c:
+total 20
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:36 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    125 Mar  9 13:36 1b8c45f78135c3f712ffc9e36a33c75f85ea81
+-r--r--r-- 1 gyosh gyosh   3383 Mar  9 13:34 2a87a4e60a63ee779b511c834a4aa877ad1556
+-r--r--r-- 1 gyosh gyosh    169 Feb 23 00:04 560b0b0032ae474ccf1fd940d4c6bc2704bab7
+
+./.git/objects/8e:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:06 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    177 Feb 23 00:06 3060c6d893fc0df9f9c5f9bca226a1626a11f7
+
+./.git/objects/90:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 22 23:55 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    167 Feb 22 23:18 726cfe0255a0115b4a034843b1ee207f1a7604
+-r--r--r-- 1 gyosh gyosh    178 Feb 22 23:55 fdd2cdd971b9a3c098a510a4f1fa66cdb2ed47
+
+./.git/objects/91:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:24 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    124 Mar  9 14:24 16bc8fc494df2de70f7454e950c8b8f2ece223
+
+./.git/objects/95:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 00:04 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    130 Mar  9 00:04 fac3e2c818d55b43afb4c939142d1dc29af76d
+
+./.git/objects/96:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    158 Feb 17 20:08 740d40de9c7a6a85c08f707dfd4aff97627786
+
+./.git/objects/98:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:34 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh     85 Mar  9 13:34 ba924f643c0af9e3576284aaa66e1c98413236
+
+./.git/objects/9c:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 00:03 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    177 Mar  9 00:03 68a7404d24a44c1d5446fd261d2ef6345de83e
+
+./.git/objects/9e:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    154 Feb 17 20:08 87cfe4650a90d7bfb996694cc048ad5f46c5fd
+
+./.git/objects/9f:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:25 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    341 Mar  9 00:02 c611fa9e9c6dd6974c5132b162bc9b4f6bfc37
+-r--r--r-- 1 gyosh gyosh    882 Mar  9 14:25 e3333608314964b7b8b776a2127884c76f34e6
+
+./.git/objects/a2:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    141 Mar  9 13:46 4d650730371cafc941a38da0271274bfddfd5a
+
+./.git/objects/a6:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    167 Feb 17 20:08 5d3d3b35dfbec2dc5e736d990a64c51903a58f
+
+./.git/objects/a9:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:55 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    177 Mar  9 13:55 dc48b46e95f5a134fcb0202d59b7368c2dcd62
+
+./.git/objects/ae:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 21 19:52 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    498 Feb 21 19:52 319f80d1f4c20a3b211580c4abe556062bdcfa
+-r--r--r-- 1 gyosh gyosh    160 Feb 17 20:08 4c1e6560f5095f5a7153bda7e7263c103fb487
+
+./.git/objects/b0:
+total 20
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:55 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    155 Mar  9 13:55 27da8d14d53b9fa6f4560e059f95597ef5ac99
+-r--r--r-- 1 gyosh gyosh    117 Feb 23 00:04 69d2b854989e8293b020d0ef95f34c48507f52
+-r--r--r-- 1 gyosh gyosh    212 Feb 22 23:18 87cfa1789ebd3779cf66382d1871760b25ce93
+
+./.git/objects/b1:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   1819 Feb 17 20:08 d00c27353f6291071a3ca2ea19a0b0d2bdce34
+
+./.git/objects/b3:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:04 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    177 Feb 23 00:04 3248c2574e77667a6ff4ed8302d8435261ab40
+
+./.git/objects/ba:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    185 Feb 17 20:08 261b2d93e2f7aeb6a843fa9b724866f7fa9e5c
+
+./.git/objects/bb:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh     82 Feb 17 20:08 ee33655c6772b801f043cb031fb7c8a986c266
+
+./.git/objects/bd:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   1543 Feb 17 20:08 0aaa4e514ef044219d68e086c3b1c274489f79
+-r--r--r-- 1 gyosh gyosh    554 Mar  9 13:46 a1ea9424b8f86975d151ca5625b42c7d3f4a76
+
+./.git/objects/bf:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:35 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    108 Mar  9 13:35 1e8389a9e13f768d9250a345b1147a63943f76
+
+./.git/objects/c1:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    450 Feb 17 20:08 777ba9c25c340716fe7f0ba7577b3fc684f631
+
+./.git/objects/c4:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:45 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   3105 Mar  9 13:45 7b05c5bdcfa058d4ba1e55d803b286cfb880dd
+
+./.git/objects/c5:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:38 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   3105 Mar  9 13:38 65c6b095e14c3f1cfe0a2e00e5c9a1e91a910d
+
+./.git/objects/c8:
+total 40
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:34 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh  31554 Mar  9 13:34 2ee6dcf550d486d665ffeda712d7a2fc4f269f
+
+./.git/objects/cb:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh     76 Mar  9 13:46 eb547aff6a11869a28c05c8486532a3b616c28
+
+./.git/objects/cc:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   1383 Mar  9 13:46 a0edbb3f8a73974d583fb6469208fe9630b3a4
+
+./.git/objects/d0:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:06 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    157 Feb 23 00:06 84c82d403c386e630b23588393f941c0da5fa2
+
+./.git/objects/d6:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh     82 Feb 17 20:08 eb9be76d4d887a60c0a75bb1914c666c0e9ac3
+
+./.git/objects/d7:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    185 Feb 17 20:08 df2a935bfbb71118832245bbcab80acc4df702
+
+./.git/objects/e3:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  8 11:49 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh     82 Feb  8 11:49 01ac92b6fbb9e3bf320901e6dd12828c91d7bf
+
+./.git/objects/e4:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  8 11:48 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    598 Feb  8 11:48 68ca2f599c9c2448924f2ac5bb142162ae3bc6
+
+./.git/objects/e5:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:35 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    170 Mar  9 13:35 f3d9e2c107831c077dbc50c5af8532cae15c7b
+
+./.git/objects/e8:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  8 11:48 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    490 Feb  8 11:48 73440db23087130c223b8c77b46752f68e14f5
+
+./.git/objects/e9:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh     82 Feb 17 20:08 16a1f527f40f4c223b8361a2729c5943d67ede
+
+./.git/objects/ed:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   2772 Feb 17 20:08 f052c47dcff9673d94e878349a15367f7d8c3b
+
+./.git/objects/f8:
+total 20
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:55 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   3121 Feb 22 23:18 0f4a64b4b2b547e076f9f6bc8083db33447b2d
+-r--r--r-- 1 gyosh gyosh    185 Feb 17 20:08 bfcb6735fcdedf99324a12f924855bb2a9651e
+-r--r--r-- 1 gyosh gyosh    107 Mar  9 13:55 c06c7cefc7300a27280b43e3a3762f0290fbbc
+
+./.git/objects/f9:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh     82 Feb 17 20:08 d88b1738341f5f8776f4277e5c6364f1136486
+
+./.git/objects/fb:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh    212 Feb 17 20:08 896f173ca53289a3dade1ecaefed3dd835324e
+
+./.git/objects/fc:
+total 40
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh  31335 Mar  9 13:46 83653d163b2f24d22fb3505336808d85395828
+
+./.git/objects/fe:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 13:46 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   1845 Mar  9 00:02 d434782b2047767dd63837f153f833a29fd289
+-r--r--r-- 1 gyosh gyosh    948 Mar  9 13:46 f346a5f5ac96af42b28b1aacb0d4f91f3dffb7
+
+./.git/objects/ff:
+total 12
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 17 20:08 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh     82 Feb 17 20:08 4270ef5b46166604f85dabfe2a46ae50b0d811
+
+./.git/objects/info:
+total 8
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  2 17:22 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+
+./.git/objects/pack:
+total 88
+drwxr-xr-x 2 gyosh gyosh   4096 Feb  2 17:22 .
+drwxr-xr-x 99 gyosh gyosh   4096 Mar  9 14:25 ..
+-r--r--r-- 1 gyosh gyosh   4292 Feb  2 17:22 pack-5e20ecec0181a2bf0deecba0233700a38c1a7d0a.idx
+-r--r--r-- 1 gyosh gyosh  71581 Feb  2 17:22 pack-5e20ecec0181a2bf0deecba0233700a38c1a7d0a.pack
+
+./.git/refs/heads:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:27 .
+drwxr-xr-x 5 gyosh gyosh   4096 Feb  2 17:22 ..
+-rw-r--r-- 1 gyosh gyosh     41 Mar  9 14:27 master
+-rw-r--r-- 1 gyosh gyosh     41 Mar  9 14:25 redirect
+
+./.git/refs/remotes:
+total 12
+drwxr-xr-x 3 gyosh gyosh   4096 Feb  2 17:22 .
+drwxr-xr-x 5 gyosh gyosh   4096 Feb  2 17:22 ..
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:27 origin
+
+./.git/refs/tags:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:24 .
+drwxr-xr-x 5 gyosh gyosh   4096 Feb  2 17:22 ..
+-rw-r--r-- 1 gyosh gyosh     41 Feb 23 00:10 hw2
+-rw-r--r-- 1 gyosh gyosh     41 Mar  9 14:24 hw3
+
+./.git/logs/refs/heads:
+total 16
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:27 .
+drwxr-xr-x 4 gyosh gyosh   4096 Feb  2 17:22 ..
+-rw-r--r-- 1 gyosh gyosh    157 Mar  9 14:27 master
+-rw-r--r-- 1 gyosh gyosh   1977 Mar  9 14:25 redirect
+
+./.git/logs/refs/remotes:
+total 12
+drwxr-xr-x 3 gyosh gyosh   4096 Feb  2 17:22 .
+drwxr-xr-x 4 gyosh gyosh   4096 Feb  2 17:22 ..
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:13 origin
+
+./.git/refs/remotes/origin:
+total 20
+drwxr-xr-x 2 gyosh gyosh   4096 Mar  9 14:27 .
+drwxr-xr-x 3 gyosh gyosh   4096 Feb  2 17:22 ..
+-rw-r--r-- 1 gyosh gyosh     32 Feb  2 17:22 HEAD
+-rw-r--r-- 1 gyosh gyosh     41 Mar  9 14:27 master
+-rw-r--r-- 1 gyosh gyosh     41 Mar  9 14:27 redirect
+
+./.git/logs/refs/remotes/origin:
+total 20
+drwxr-xr-x 2 gyosh gyosh   4096 Feb 23 00:13 .
+drwxr-xr-x 3 gyosh gyosh   4096 Feb  2 17:22 ..
+-rw-r--r-- 1 gyosh gyosh    178 Feb  2 17:22 HEAD
+-rw-r--r-- 1 gyosh gyosh    587 Mar  9 14:27 master
+-rw-r--r-- 1 gyosh gyosh    438 Mar  9 14:27 redirect
+
+gyosh@gyosh-/home/gyosh/Documents/rshell$ ./bin/ls        exit
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m ls
+[0m[01;34mbin[0m  LICENSE  Makefile  README.md  [01;34msrc[0m  [01;34mtests[0m
+[01;32mgyosh@gyosh-MBP[01;34m ~/Documents/rshell $[00m exit
 exit
 
-Script done on Sun 08 Feb 2015 11:55:30 PM PST
+Script done on Mon 09 Mar 2015 05:04:27 PM PDT
